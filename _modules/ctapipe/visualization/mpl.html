@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev129</title>
+  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev131</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev129" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev131" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -165,7 +165,6 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-
 <span class="sd">    geometry : `~ctapipe.io.CameraGeometry`</span>
 <span class="sd">        Definition of the Camera/Image</span>
 <span class="sd">    axis : `matplotlib.axes._subplots.AxesSubplot`</span>
@@ -173,7 +172,7 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-
+<span class="sd">    </span>
 <span class="sd">    Implementation detail: Pixels are rendered as a</span>
 <span class="sd">    `matplotlib.collections.RegularPolyCollection`, which is the most</span>
 <span class="sd">    efficient way in MatPlotLib to display complex pixel shapes.</span>
@@ -224,15 +223,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="p">))</span>
-            <span class="c">#self.pixels.set_transform(trans)</span>
-            <span class="c">#self.pixels.set_offset_position(&#39;data&#39;)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;POS:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">get_offset_position</span><span class="p">()))</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;TRN:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">get_offset_transform</span><span class="p">()))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">,</span> <span class="n">autolim</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s">&quot;Unimplemented pixel type: {}&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_type</span><span class="p">)</span>
-
 
         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;X position ({})&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
@@ -269,8 +265,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>  <span class="c"># is there a better way to update this?</span>
 </div>
-<div class="viewcode-block" id="CameraDisplay.add_ellipse"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_ellipse">[docs]</a>    <span class="k">def</span> <span class="nf">add_ellipse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">assymmetry</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                           <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CameraDisplay.add_ellipse"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_ellipse">[docs]</a>    <span class="k">def</span> <span class="nf">add_ellipse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">asymmetry</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        plot an ellipse on top of the camera</span>
 
@@ -284,7 +280,7 @@
 <span class="sd">            minor axis</span>
 <span class="sd">        angle: float</span>
 <span class="sd">            rotation angle wrt &quot;up&quot; about the centroid, clockwise, in radians</span>
-<span class="sd">        assymmetry: float</span>
+<span class="sd">        asymmetry: float</span>
 <span class="sd">            3rd-order moment for directionality if known</span>
 <span class="sd">        kwargs: </span>
 <span class="sd">            any MatPlotLib style arguments to pass to the Ellipse patch</span>
@@ -326,7 +322,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev129',
+            VERSION:'0.0.dev131',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

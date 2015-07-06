@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.reco.hillas &mdash; ctapipe v0.0.dev129</title>
+  <title>ctapipe.reco.hillas &mdash; ctapipe v0.0.dev131</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev129" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev131" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -152,7 +152,7 @@
 <span class="sd">-----</span>
 
 <span class="sd">- Should have a separate function or option to compute 3rd order</span>
-<span class="sd">  moments + assymmetry (whichi are not always needed)</span>
+<span class="sd">  moments + assymmetry (which are not always needed)</span>
 
 <span class="sd">- remove alpha calculation (which is only about (0,0), and make a get</span>
 <span class="sd">  alpha function that does it from an arbitrary point given a</span>
@@ -164,7 +164,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;hillas_parameters&#39;</span><span class="p">,</span><span class="s">&#39;hillas_parameters_2&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="hillas_parameters"><a class="viewcode-back" href="../../../api/ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters">[docs]</a><span class="k">def</span> <span class="nf">hillas_parameters</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<div class="viewcode-block" id="hillas_parameters"><a class="viewcode-back" href="../../../api/ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters">[docs]</a><span class="k">def</span> <span class="nf">hillas_parameters</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute Hillas parameters for a given shower image.</span>
 
 <span class="sd">    Reference: Appendix of the Whipple Crab paper Weekes et al. (1998)</span>
@@ -173,31 +173,31 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x : array_like</span>
+<span class="sd">    pix_x : array_like</span>
 <span class="sd">        Pixel x-coordinate</span>
-<span class="sd">    y : array_like</span>
+<span class="sd">    pix_y : array_like</span>
 <span class="sd">        Pixel y-coordinate</span>
-<span class="sd">    s : array_like</span>
-<span class="sd">        Pixel value</span>
+<span class="sd">    image : array_like</span>
+<span class="sd">        Pixel values corresponding</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    hillas_parameters : dict</span>
 <span class="sd">        Dictionary of Hillas parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span>
-    <span class="k">assert</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">pix_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">pix_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">pix_y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">pix_x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">assert</span> <span class="n">pix_y</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
 
     <span class="c"># Compute image moments</span>
-    <span class="n">_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">m_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
-    <span class="n">m_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
-    <span class="n">m_xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>  <span class="c"># note: typo in paper</span>
-    <span class="n">m_yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
-    <span class="n">m_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>  <span class="c"># note: typo in paper</span>
+    <span class="n">_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">m_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">pix_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
+    <span class="n">m_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">pix_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
+    <span class="n">m_xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">pix_x</span> <span class="o">*</span> <span class="n">pix_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>  <span class="c"># note: typo in paper</span>
+    <span class="n">m_yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">pix_y</span> <span class="o">*</span> <span class="n">pix_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
+    <span class="n">m_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">pix_x</span> <span class="o">*</span> <span class="n">pix_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>  <span class="c"># note: typo in paper</span>
 
     <span class="c"># Compute major axis line representation y = a * x + b</span>
     <span class="n">S_xx</span> <span class="o">=</span> <span class="n">m_xx</span> <span class="o">-</span> <span class="n">m_x</span> <span class="o">*</span> <span class="n">m_x</span>
@@ -219,9 +219,9 @@
     <span class="c"># Compute azwidth by transforming to (p, q) coordinates</span>
     <span class="n">sin_theta</span> <span class="o">=</span> <span class="n">m_y</span> <span class="o">/</span> <span class="n">r</span>
     <span class="n">cos_theta</span> <span class="o">=</span> <span class="n">m_x</span> <span class="o">/</span> <span class="n">r</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="n">m_x</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin_theta</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">m_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos_theta</span>
-    <span class="n">m_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
-    <span class="n">m_qq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">q</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="n">m_x</span> <span class="o">-</span> <span class="n">pix_x</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin_theta</span> <span class="o">+</span> <span class="p">(</span><span class="n">pix_y</span> <span class="o">-</span> <span class="n">m_y</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos_theta</span>
+    <span class="n">m_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
+    <span class="n">m_qq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="n">q</span> <span class="o">*</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">_s</span>
     <span class="n">azwidth_2</span> <span class="o">=</span> <span class="n">m_qq</span> <span class="o">-</span> <span class="n">m_q</span> <span class="o">*</span> <span class="n">m_q</span>
     <span class="n">azwidth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">azwidth_2</span><span class="p">)</span>
 
@@ -240,7 +240,11 @@
 
 </div>
 <div class="viewcode-block" id="hillas_parameters_2"><a class="viewcode-back" href="../../../api/ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2">[docs]</a><span class="k">def</span> <span class="nf">hillas_parameters_2</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Alternate implementation of Hillas parameters.</span>
+    <span class="sd">&quot;&quot;&quot;Compute Hillas parameters for a given shower image.</span>
+
+<span class="sd">    Alternate implementation of `hillas_parameters` ...</span>
+<span class="sd">    in the end we&#39;ll just keep one, but we&#39;re using Hilllas parameter</span>
+<span class="sd">    computation as an example for performance checks.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -251,6 +255,10 @@
 <span class="sd">    image : array_like</span>
 <span class="sd">        Pixel values corresponding</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hillas_parameters : dict</span>
+<span class="sd">        Dictionary of Hillas parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pix_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
     <span class="n">pix_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">pix_y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -308,7 +316,7 @@
     <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">cx</span><span class="o">=</span><span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cy</span><span class="o">=</span><span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
-                <span class="n">distance</span> <span class="o">=</span> <span class="n">distance</span><span class="p">,</span> <span class="n">azwidth</span><span class="o">=</span><span class="n">azwidth</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="n">psi</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="n">phi</span> <span class="p">)</span></div>
+                <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span> <span class="n">azwidth</span><span class="o">=</span><span class="n">azwidth</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="n">psi</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
@@ -340,7 +348,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev129',
+            VERSION:'0.0.dev131',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

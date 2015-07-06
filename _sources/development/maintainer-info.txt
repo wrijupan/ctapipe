@@ -27,7 +27,7 @@ If there's no warnings, you can publish the docs with this command
 
 .. code-block:: bash
 
-    ghp-import -n -m -p 'Update gh-pages docs' docs/_build/html
+    ghp-import -n -p -m 'Update gh-pages docs' docs/_build/html
 
 which is equivalent to this make target so that you don't have to remember it:
 
