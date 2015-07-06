@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Support Libraries &mdash; ctapipe v0.0.dev124</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ctapipe v0.0.dev124" href="../index.html"/>
+        <link rel="up" title="Development Resources" href="index.html"/>
+        <link rel="next" title="Future Plans" href="futureplans.html"/>
+        <link rel="prev" title="Development Resources" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> ctapipe</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development Resources</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futureplans.html">Future Plans</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#module">Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Development Resources</a> &raquo;</li>
+      
+    <li>Support Libraries</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/development/support-libraries.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="support-libraries">
+<h1><a class="toc-backref" href="#id2">Support Libraries</a><a class="headerlink" href="#support-libraries" title="Permalink to this headline">¶</a></h1>
+<p>In general, we will try to avoid re-implementing complex mathematical
+algorhtms, and use instead a small set of well-tested, community
+supported packages. All packages chosen have very large developer
+bases, and a wide community of users, ensuring long-term support.</p>
+<p>The following are support libraries that are
+recommended when developing CTA Pipeline algorithms:</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#support-libraries" id="id2">Support Libraries</a><ul>
+<li><a class="reference internal" href="#math-stats" id="id3">Math/Stats</a></li>
+<li><a class="reference internal" href="#multivariate-analysis-and-machine-learning" id="id4">Multivariate Analysis and Machine Learning</a></li>
+<li><a class="reference internal" href="#astronomical-calculations" id="id5">Astronomical Calculations</a></li>
+<li><a class="reference internal" href="#fits-table-access" id="id6">FITS Table Access</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="math-stats">
+<h2><a class="toc-backref" href="#id3">Math/Stats</a><a class="headerlink" href="#math-stats" title="Permalink to this headline">¶</a></h2>
+<p>A large variety of advanced math and statistcs functions can be found
+in the <a class="reference external" href="http://www.numpy.org">numpy</a>  (data structures and numerics
+)and <a class="reference external" href="http://www.scipy.org">scipy</a> packages (advanced mathematics).</p>
+<ul class="simple">
+<li>NumPy user guide : <a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">http://docs.scipy.org/doc/numpy/user/</a>  (more high-level)</li>
+<li>NumPy reference  : <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">http://docs.scipy.org/doc/numpy/reference/</a></li>
+<li>SciPy user guide : <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/">http://docs.scipy.org/doc/scipy/reference/</a></li>
+<li>SciPy reference : <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/index.html">http://docs.scipy.org/doc/scipy/reference/index.html</a></li>
+</ul>
+<p>Specific functionality:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.stats</span></code></a>: statistical models (pdfs, random sampling, etc) for
+discrete or continuous distributions</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html#module-scipy.linalg" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.linalg</span></code></a>:  fast linear algebra operations</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.optimize</span></code></a>: fitting and minimization</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/integrate.html#module-scipy.integrate" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.integrate</span></code></a>: integration, including multivariate integration</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.signal</span></code></a>: signal processing</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html#module-scipy.interpolate" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.interpolate</span></code></a>: interpolation of multi-variate datasets</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/spatial.html#module-scipy.spatial" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.spatial</span></code></a>: spatial algorithms (clustering, nearest neighbors)</li>
+<li><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/special.html#module-scipy.special" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.special</span></code></a>: special functions</li>
+</ul>
+<p>these functions are all based on <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.9)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.ndarray</span></code></a> data structures,
+which provide c-like speeds.</p>
+</div>
+<div class="section" id="multivariate-analysis-and-machine-learning">
+<h2><a class="toc-backref" href="#id4">Multivariate Analysis and Machine Learning</a><a class="headerlink" href="#multivariate-analysis-and-machine-learning" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://scikit-learn.org">SciKit-Learn</a>, an extension of SciPy, provides
+very friendly and well-documented interface to a wide variety of MVA
+techniques, both for classification and regression.</p>
+<ul class="simple">
+<li>Decision Trees</li>
+<li>Support vector machines</li>
+<li>Random Forrests</li>
+<li>Perceptrons</li>
+<li>Clustering</li>
+<li>Dimensionality Reduction</li>
+<li>training/cross-checks</li>
+<li>etc.</li>
+</ul>
+</div>
+<div class="section" id="astronomical-calculations">
+<h2><a class="toc-backref" href="#id5">Astronomical Calculations</a><a class="headerlink" href="#astronomical-calculations" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://astropy.org">AstroPy</a> is the accepted package for all
+astronomical calculations. Specifically:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html#module-astropy.coordinates" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.coordinates</span></code></a>: coordinate transforms and frames</li>
+<li><a class="reference external" href="http://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.time</span></code></a>: time transformations and frames</li>
+<li><a class="reference external" href="http://docs.astropy.org/en/stable/wcs/index.html#module-astropy.wcs" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.wcs</span></code></a>: projections</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">astropy.io</span></code>: low-level FITS access</li>
+<li><a class="reference external" href="http://docs.astropy.org/en/stable/units/index.html#module-astropy.units" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.units</span></code></a>: unit quantities with automatic propegation and
+cross-checks</li>
+<li><a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#module-astropy.table" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table</span></code></a>: quick and easy reading of tables in nearly any
+format (FITS, ascii, HDF, VO, etc)</li>
+<li><a class="reference external" href="http://docs.astropy.org/en/stable/convolution/index.html#module-astropy.convolution" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.convolution</span></code></a>: convolution and filtering (built upon
+scipy.signal, but with more robust defaults)</li>
+</ul>
+<p>subpackages of Astropy that are not marked as &#8220;reasonable stable&#8221; or
+&#8220;mature&#8221; should be avoided until their interfaces are solidified. The
+list can be found on the astropy documentation page, under the list
+<em>current status of subpackages</em></p>
+</div>
+<div class="section" id="fits-table-access">
+<h2><a class="toc-backref" href="#id6">FITS Table Access</a><a class="headerlink" href="#fits-table-access" title="Permalink to this headline">¶</a></h2>
+<p>FITS Tables can be read via <a class="reference external" href="http://docs.astropy.org/en/stable/table/index.html#module-astropy.table" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.table</span></code></a>, or <a class="reference external" href="http://docs.astropy.org/en/stable/io/fits/index.html#module-astropy.io.fits" title="(in Astropy v1.0.3)"><code class="xref py py-obj docutils literal"><span class="pre">astropy.io.fits</span></code></a>
+(formerly called <code class="xref py py-obj docutils literal"><span class="pre">pyfits</span></code>), however these implementations are not
+intended for efficient access to very large files (As they access all
+tables column-wise). In the case we want to load GBs or more of data
+in a FITS table, the <code class="xref py py-obj docutils literal"><span class="pre">fitsio</span></code> module should be used instead. It is a
+simple wrapper for libCFITSIO, and supports efficient row-wise table
+access.  It is not yet included in Anaconda&#8217;s distribution, so must be
+installed via pip</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install --user fitsio
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="futureplans.html" class="btn btn-neutral float-right" title="Future Plans"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Development Resources"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ctapipe developers.
+      Last updated on 06 Jul 2015.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.dev124',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

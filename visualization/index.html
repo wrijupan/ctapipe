@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Visualization &mdash; ctapipe v0.0.dev124</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ctapipe v0.0.dev124" href="../index.html"/>
+        <link rel="next" title="CameraDisplay" href="../api/ctapipe.visualization.CameraDisplay.html"/>
+        <link rel="prev" title="info" href="../api/ctapipe.tools.info.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> ctapipe</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#module">Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Visualization</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/visualization/index.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="visualization">
+<span id="id1"></span><h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This module provides methods to display various information related to
+events and reconstruction, like Cherenkov Camera images, image
+parameterizations, etc. The default implementation uses MatPlotLib
+to render displays, but in the future more rendering methods may be supported.</p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Example of drawing a Camera using a mock shower image</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ctapipe</span> <span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">visualization</span>
+<span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">mock</span>
+<span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">hillas_parameters</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+
+<span class="k">def</span> <span class="nf">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">pixel_index</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; draw lines between a pixel and its neighbors&quot;&quot;&quot;</span>
+    <span class="n">neigh</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">pixel_index</span><span class="p">]</span>  <span class="c"># neighbor indices (not pixel ids)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="p">[</span><span class="n">pixel_index</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_y</span><span class="p">[</span><span class="n">pixel_index</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">for</span> <span class="n">nn</span> <span class="ow">in</span> <span class="n">neigh</span><span class="p">:</span>
+        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_y</span><span class="p">[</span><span class="n">nn</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">nx</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">ny</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c"># load the camera</span>
+    <span class="n">geom</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">get_camera_geometry</span><span class="p">(</span><span class="s">&quot;hess&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">visualization</span><span class="o">.</span><span class="n">CameraDisplay</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+
+    <span class="c"># create a fake camera image to display:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+                              <span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                              <span class="n">length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                              <span class="n">psi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">35</span><span class="p">))</span>
+
+    <span class="n">image</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">pdf</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                                              <span class="n">nsb_level_pe</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="c"># apply really stupid image cleaning (single threshold):</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">clean</span><span class="p">[</span><span class="n">image</span> <span class="o">&lt;=</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c"># calculate image parameters</span>
+    <span class="n">hillas</span> <span class="o">=</span> <span class="n">hillas_parameters</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_y</span><span class="p">,</span> <span class="n">clean</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">hillas</span><span class="p">)</span>
+
+    <span class="c"># show the camera image and overlay Hillas ellipse</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">add_ellipse</span><span class="p">(</span><span class="n">centroid</span><span class="o">=</span><span class="p">(</span><span class="n">hillas</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">hillas</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
+                     <span class="n">length</span><span class="o">=</span><span class="n">hillas</span><span class="p">[</span><span class="s">&#39;length&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                     <span class="n">width</span><span class="o">=</span><span class="n">hillas</span><span class="p">[</span><span class="s">&#39;width&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">35</span><span class="p">),</span>
+                     <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c"># draw the neighbors of pixel 100 in red, and the</span>
+    <span class="c"># neighbor-neighbors in green</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">geom</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="mi">130</span><span class="p">]:</span>
+        <span class="n">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference-api">
+<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ctapipe.visualization">
+<span id="ctapipe-visualization-package"></span><h3>ctapipe.visualization Package<a class="headerlink" href="#module-ctapipe.visualization" title="Permalink to this headline">¶</a></h3>
+<p>Visualization: Methods for displaying data</p>
+<div class="section" id="classes">
+<h4>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay" title="ctapipe.visualization.CameraDisplay"><code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay</span></code></a>(geometry[,&nbsp;axes,&nbsp;title])</td>
+<td>Camera Display using MatPlotLib</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/ctapipe.visualization.CameraDisplay.html" class="btn btn-neutral float-right" title="CameraDisplay"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api/ctapipe.tools.info.html" class="btn btn-neutral" title="info"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ctapipe developers.
+      Last updated on 06 Jul 2015.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.dev124',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

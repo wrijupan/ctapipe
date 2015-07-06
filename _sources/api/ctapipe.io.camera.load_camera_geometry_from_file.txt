@@ -1,0 +1,8 @@
+
+
+load_camera_geometry_from_file
+================================================
+
+.. currentmodule:: ctapipe.io.camera
+
+.. autofunction:: load_camera_geometry_from_file

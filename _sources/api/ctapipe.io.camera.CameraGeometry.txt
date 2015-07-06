@@ -1,0 +1,27 @@
+
+
+CameraGeometry
+================================
+
+.. currentmodule:: ctapipe.io.camera
+
+.. autoclass:: CameraGeometry
+   :show-inheritance:
+
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

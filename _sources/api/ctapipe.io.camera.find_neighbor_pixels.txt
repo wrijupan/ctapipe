@@ -1,0 +1,8 @@
+
+
+find_neighbor_pixels
+======================================
+
+.. currentmodule:: ctapipe.io.camera
+
+.. autofunction:: find_neighbor_pixels

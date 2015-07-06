@@ -1,0 +1,48 @@
+
+
+CameraDisplay
+===================================
+
+.. currentmodule:: ctapipe.visualization
+
+.. autoclass:: CameraDisplay
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+   
+      ~CameraDisplay.add_ellipse
+      ~CameraDisplay.set_cmap
+      ~CameraDisplay.set_image
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Methods Documentation
+
+   
+   .. automethod:: add_ellipse
+   .. automethod:: set_cmap
+   .. automethod:: set_image
+
+   
+   

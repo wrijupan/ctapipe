@@ -1,0 +1,8 @@
+
+
+hillas_parameters
+==============================
+
+.. currentmodule:: ctapipe.reco
+
+.. autofunction:: hillas_parameters
