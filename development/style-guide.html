@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calibration &mdash; ctapipe v0.0.dev129</title>
+  <title>Style Guide &mdash; ctapipe v0.0.dev129</title>
   
 
   
@@ -31,8 +31,9 @@
 
   
     <link rel="top" title="ctapipe v0.0.dev129" href="../index.html"/>
-        <link rel="next" title="Datasets" href="../datasets/index.html"/>
-        <link rel="prev" title="Analysis" href="../analysis/index.html"/> 
+        <link rel="up" title="Development Resources" href="index.html"/>
+        <link rel="next" title="Support Libraries" href="support-libraries.html"/>
+        <link rel="prev" title="Development Resources" href="index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -67,10 +68,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Calibration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -79,11 +80,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development Resources</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
@@ -134,10 +135,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Calibration</li>
+          <li><a href="index.html">Development Resources</a> &raquo;</li>
+      
+    <li>Style Guide</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/calib/index.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/development/style-guide.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -145,23 +148,24 @@
 </div>
           <div role="main">
             
-  <div class="section" id="calibration">
-<span id="calib"></span><h1>Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#module-ctapipe.calib" title="ctapipe.calib"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.calib</span></code></a> contains functions and classes for calibration.</p>
-<p>TODO: add high-level description.</p>
+  <div class="section" id="style-guide">
+<h1>Style Guide<a class="headerlink" href="#style-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="coding-style">
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
+<p>Code should follow the Python PEP8 style guide when appropriate. The
+<code class="xref py py-obj docutils literal"><span class="pre">autopep8</span></code> command-line utility can be used to automatically reformat
+non-conforming code to the PEP8 style.  It can also be used within
+many IDEs, for example:</p>
+<ul class="simple">
+<li>emacs (with elpy-mode enabled): <code class="xref py py-obj docutils literal"><span class="pre">M-x</span> <span class="pre">py-autopep8-buffer</span></code></li>
+</ul>
 </div>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>TODO: add examples.</p>
-</div>
-<div class="section" id="reference-api">
-<h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="module-ctapipe.calib">
-<span id="ctapipe-calib-package"></span><h3>ctapipe.calib Package<a class="headerlink" href="#module-ctapipe.calib" title="Permalink to this headline">¶</a></h3>
-<p>Calibration</p>
-</div>
+<div class="section" id="api-documentation-style">
+<h2>API Documentation Style<a class="headerlink" href="#api-documentation-style" title="Permalink to this headline">¶</a></h2>
+<p>All functions, classes, and modules should contain appropriate API
+documentation in their <em>docstrings</em>.  The <em>docstrings</em> should be
+written in ReStructuredText format (same as the Sphinx high-level
+documentation), and should follow the <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt#docstring-standard">NumPy Docstring Standards</a></p>
 </div>
 </div>
 
@@ -171,10 +175,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../datasets/index.html" class="btn btn-neutral float-right" title="Datasets"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="support-libraries.html" class="btn btn-neutral float-right" title="Support Libraries"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../analysis/index.html" class="btn btn-neutral" title="Analysis"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral" title="Development Resources"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
