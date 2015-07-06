@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>hillas_parameters &mdash; ctapipe v0.0.dev134</title>
+  <title>TiltedTelescopeFrame &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -31,9 +31,9 @@
 
   
     <link rel="top" title="ctapipe v0.0.dev134" href="../index.html"/>
-        <link rel="up" title="Reconstruction" href="../reco/index.html"/>
-        <link rel="next" title="hillas_parameters_2" href="ctapipe.reco.hillas_parameters_2.html"/>
-        <link rel="prev" title="shower_model" href="ctapipe.reco.shower_model.html"/> 
+        <link rel="up" title="Coordinates" href="../coordinates/index.html"/>
+        <link rel="next" title="Datasets" href="../datasets/index.html"/>
+        <link rel="prev" title="TelescopeFrame" href="ctapipe.coordinates.TelescopeFrame.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -74,10 +74,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -100,10 +100,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#module">Module</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
@@ -141,12 +141,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
+          <li><a href="../coordinates/index.html">Coordinates</a> &raquo;</li>
       
-    <li>hillas_parameters</li>
+    <li>TiltedTelescopeFrame</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.reco.hillas_parameters.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.coordinates.TiltedTelescopeFrame.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -154,41 +154,63 @@
 </div>
           <div role="main">
             
-  <div class="section" id="hillas-parameters">
-<h1>hillas_parameters<a class="headerlink" href="#hillas-parameters" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="ctapipe.reco.hillas_parameters">
-<code class="descclassname">ctapipe.reco.</code><code class="descname">hillas_parameters</code><span class="sig-paren">(</span><em>pix_x</em>, <em>pix_y</em>, <em>image</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/reco/hillas.html#hillas_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.reco.hillas_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute Hillas parameters for a given shower image.</p>
-<p>Reference: Appendix of the Whipple Crab paper Weekes et al. (1998)
-<a class="reference external" href="http://adsabs.harvard.edu/abs/1989ApJ...342..379W">http://adsabs.harvard.edu/abs/1989ApJ...342..379W</a>
-(corrected for some obvious typos)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+  <div class="section" id="tiltedtelescopeframe">
+<h1>TiltedTelescopeFrame<a class="headerlink" href="#tiltedtelescopeframe" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctapipe.coordinates.TiltedTelescopeFrame">
+<em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">TiltedTelescopeFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/coordinates/frames.html#TiltedTelescopeFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.coordinates.TiltedTelescopeFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.BaseCoordinateFrame.html#astropy.coordinates.BaseCoordinateFrame" title="astropy.coordinates.BaseCoordinateFrame"><code class="docutils literal"><span class="pre">astropy.coordinates.BaseCoordinateFrame</span></code></a></p>
+<p>Tilted telescope coordinate frame.</p>
+<p class="rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pix_x</strong> : array_like</p>
-<blockquote>
-<div><p>Pixel x-coordinate</p>
-</div></blockquote>
-<p><strong>pix_y</strong> : array_like</p>
-<blockquote>
-<div><p>Pixel y-coordinate</p>
-</div></blockquote>
-<p><strong>image</strong> : array_like</p>
-<blockquote>
-<div><p>Pixel values corresponding</p>
-</div></blockquote>
-</td>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.coordinates.TiltedTelescopeFrame.default_representation" title="ctapipe.coordinates.TiltedTelescopeFrame.default_representation"><code class="xref py py-obj docutils literal"><span class="pre">default_representation</span></code></a></td>
+<td></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hillas_parameters</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary of Hillas parameters</p>
-</div></blockquote>
-</td>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.coordinates.TiltedTelescopeFrame.frame_specific_representation_info" title="ctapipe.coordinates.TiltedTelescopeFrame.frame_specific_representation_info"><code class="xref py py-obj docutils literal"><span class="pre">frame_specific_representation_info</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.coordinates.TiltedTelescopeFrame.name" title="ctapipe.coordinates.TiltedTelescopeFrame.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.coordinates.TiltedTelescopeFrame.pointing_direction" title="ctapipe.coordinates.TiltedTelescopeFrame.pointing_direction"><code class="xref py py-obj docutils literal"><span class="pre">pointing_direction</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.coordinates.TiltedTelescopeFrame.telescope_location" title="ctapipe.coordinates.TiltedTelescopeFrame.telescope_location"><code class="xref py py-obj docutils literal"><span class="pre">telescope_location</span></code></a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="ctapipe.coordinates.TiltedTelescopeFrame.default_representation">
+<code class="descname">default_representation</code><a class="headerlink" href="#ctapipe.coordinates.TiltedTelescopeFrame.default_representation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.coordinates.TiltedTelescopeFrame.frame_specific_representation_info">
+<code class="descname">frame_specific_representation_info</code><a class="headerlink" href="#ctapipe.coordinates.TiltedTelescopeFrame.frame_specific_representation_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.coordinates.TiltedTelescopeFrame.name">
+<code class="descname">name</code><em class="property"> = 'tiltedtelescopeframe'</em><a class="headerlink" href="#ctapipe.coordinates.TiltedTelescopeFrame.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.coordinates.TiltedTelescopeFrame.pointing_direction">
+<code class="descname">pointing_direction</code><em class="property"> = None</em><a class="headerlink" href="#ctapipe.coordinates.TiltedTelescopeFrame.pointing_direction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.coordinates.TiltedTelescopeFrame.telescope_location">
+<code class="descname">telescope_location</code><em class="property"> = None</em><a class="headerlink" href="#ctapipe.coordinates.TiltedTelescopeFrame.telescope_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -199,10 +221,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.reco.hillas_parameters_2.html" class="btn btn-neutral float-right" title="hillas_parameters_2"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../datasets/index.html" class="btn btn-neutral float-right" title="Datasets"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.shower_model.html" class="btn btn-neutral" title="shower_model"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.coordinates.TelescopeFrame.html" class="btn btn-neutral" title="TelescopeFrame"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

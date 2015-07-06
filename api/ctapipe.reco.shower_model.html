@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>hillas_parameters &mdash; ctapipe v0.0.dev134</title>
+  <title>shower_model &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="ctapipe v0.0.dev134" href="../index.html"/>
         <link rel="up" title="Reconstruction" href="../reco/index.html"/>
-        <link rel="next" title="hillas_parameters_2" href="ctapipe.reco.hillas_parameters_2.html"/>
-        <link rel="prev" title="shower_model" href="ctapipe.reco.shower_model.html"/> 
+        <link rel="next" title="Command line tools" href="../tools/index.html"/>
+        <link rel="prev" title="make_mock_shower_image" href="ctapipe.reco.make_mock_shower_image.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -143,10 +143,10 @@
       
           <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
       
-    <li>hillas_parameters</li>
+    <li>shower_model</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.reco.hillas_parameters.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.reco.shower_model.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -154,37 +154,37 @@
 </div>
           <div role="main">
             
-  <div class="section" id="hillas-parameters">
-<h1>hillas_parameters<a class="headerlink" href="#hillas-parameters" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="shower-model">
+<h1>shower_model<a class="headerlink" href="#shower-model" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="ctapipe.reco.hillas_parameters">
-<code class="descclassname">ctapipe.reco.</code><code class="descname">hillas_parameters</code><span class="sig-paren">(</span><em>pix_x</em>, <em>pix_y</em>, <em>image</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/reco/hillas.html#hillas_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.reco.hillas_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute Hillas parameters for a given shower image.</p>
-<p>Reference: Appendix of the Whipple Crab paper Weekes et al. (1998)
-<a class="reference external" href="http://adsabs.harvard.edu/abs/1989ApJ...342..379W">http://adsabs.harvard.edu/abs/1989ApJ...342..379W</a>
-(corrected for some obvious typos)</p>
+<dt id="ctapipe.reco.shower_model">
+<code class="descclassname">ctapipe.reco.</code><code class="descname">shower_model</code><span class="sig-paren">(</span><em>centroid</em>, <em>width</em>, <em>length</em>, <em>psi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/reco/mock.html#shower_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.reco.shower_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a stastical model (2D gaussian) for a shower image in a
+camera. The model&#8217;s PDF (<code class="xref py py-obj docutils literal"><span class="pre">model.pdf</span></code>) can be passed to
+<a class="reference internal" href="ctapipe.reco.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image" title="ctapipe.reco.make_mock_shower_image"><code class="xref py py-obj docutils literal"><span class="pre">make_mock_shower_image</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pix_x</strong> : array_like</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>centroid</strong> : (float,float)</p>
 <blockquote>
-<div><p>Pixel x-coordinate</p>
+<div><p>position of the centroid of the shower in camera coordinates</p>
 </div></blockquote>
-<p><strong>pix_y</strong> : array_like</p>
+<p><strong>width</strong> : float</p>
 <blockquote>
-<div><p>Pixel y-coordinate</p>
+<div><p>width of shower (minor axis)</p>
 </div></blockquote>
-<p><strong>image</strong> : array_like</p>
+<p><strong>length</strong> : float</p>
 <blockquote>
-<div><p>Pixel values corresponding</p>
+<div><p>length of shower (major axis)</p>
+</div></blockquote>
+<p><strong>psi</strong> : float</p>
+<blockquote>
+<div><p>rotation angle in radians about the centroid (0=up)</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hillas_parameters</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary of Hillas parameters</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.stats</span></code></a> object</p>
 </td>
 </tr>
 </tbody>
@@ -199,10 +199,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.reco.hillas_parameters_2.html" class="btn btn-neutral float-right" title="hillas_parameters_2"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../tools/index.html" class="btn btn-neutral float-right" title="Command line tools"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.shower_model.html" class="btn btn-neutral" title="shower_model"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.reco.make_mock_shower_image.html" class="btn btn-neutral" title="make_mock_shower_image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

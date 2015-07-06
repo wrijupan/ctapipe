@@ -1,8 +1,0 @@
-
-
-shower_model
-==============================
-
-.. currentmodule:: ctapipe.reco.mock
-
-.. autofunction:: shower_model

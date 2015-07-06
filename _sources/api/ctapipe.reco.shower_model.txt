@@ -1,0 +1,8 @@
+
+
+shower_model
+=========================
+
+.. currentmodule:: ctapipe.reco
+
+.. autofunction:: shower_model

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>make_rectangular_camera_geometry &mdash; ctapipe v0.0.dev131</title>
+  <title>make_rectangular_camera_geometry &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev131" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev134" href="../index.html"/>
         <link rel="up" title="Input/Output" href="../io/index.html"/>
         <link rel="next" title="find_neighbor_pixels" href="ctapipe.io.camera.find_neighbor_pixels.html"/>
         <link rel="prev" title="load_camera_geometry_from_file" href="ctapipe.io.camera.load_camera_geometry_from_file.html"/> 
@@ -72,6 +72,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -153,27 +159,27 @@
 <dl class="function">
 <dt id="ctapipe.io.camera.make_rectangular_camera_geometry">
 <code class="descclassname">ctapipe.io.camera.</code><code class="descname">make_rectangular_camera_geometry</code><span class="sig-paren">(</span><em>npix_x=40</em>, <em>npix_y=40</em>, <em>range_x=(-0.5</em>, <em>0.5)</em>, <em>range_y=(-0.5</em>, <em>0.5)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/camera.html#make_rectangular_camera_geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.camera.make_rectangular_camera_geometry" title="Permalink to this definition">¶</a></dt>
-<dd><p>generates a simple camera with 2D rectangular geometry, for
-testing purposes</p>
+<dd><p>Generate a simple camera with 2D rectangular geometry.</p>
+<p>Used for testing.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>npix_x: int</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>npix_x</strong> : int</p>
 <blockquote>
 <div><p>number of pixels in X-dimension</p>
 </div></blockquote>
-<p><strong>npix_y: int</strong></p>
+<p><strong>npix_y</strong> : int</p>
 <blockquote>
 <div><p>number of pixels in Y-dimension</p>
 </div></blockquote>
-<p><strong>range_x: (float,float)</strong></p>
+<p><strong>range_x</strong> : (float,float)</p>
 <blockquote>
 <div><p>min and max of x pixel coordinates in meters</p>
 </div></blockquote>
-<p><strong>range_y: (float,float)</strong></p>
+<p><strong>range_y</strong> : (float,float)</p>
 <blockquote>
-<div><p>min and max of y pixel coodinates in meters</p>
+<div><p>min and max of y pixel coordinates in meters</p>
 </div></blockquote>
 </td>
 </tr>
@@ -225,7 +231,7 @@ testing purposes</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev131',
+            VERSION:'0.0.dev134',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

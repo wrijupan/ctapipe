@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev131</title>
+  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev131" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev134" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -70,6 +70,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a><ul>
@@ -184,11 +190,11 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    pix_x: array_like</span>
+<span class="sd">    pix_x : array_like</span>
 <span class="sd">        x position of each pixel</span>
-<span class="sd">    pix_y: array_like</span>
+<span class="sd">    pix_y : array_like</span>
 <span class="sd">        y position of each pixels</span>
-<span class="sd">    rad: float</span>
+<span class="sd">    rad : float</span>
 <span class="sd">        radius to consider neighbor it should be slightly larger</span>
 <span class="sd">        than the pixel diameter.</span>
 
@@ -208,15 +214,15 @@
 </div>
 <div class="viewcode-block" id="get_camera_geometry"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.get_camera_geometry.html#ctapipe.io.camera.get_camera_geometry">[docs]</a><span class="k">def</span> <span class="nf">get_camera_geometry</span><span class="p">(</span><span class="n">instrument_name</span><span class="p">,</span> <span class="n">cam_id</span><span class="p">,</span> <span class="n">recalc_neighbors</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Helper function to provide the camera geometry definition for a</span>
-<span class="sd">    camera by name</span>
+<span class="sd">    camera by name.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    instrument_name: [&#39;hess&#39;,]</span>
+<span class="sd">    instrument_name : {&#39;hess&#39;}</span>
 <span class="sd">        name of instrument</span>
-<span class="sd">    cam_id: int</span>
+<span class="sd">    cam_id : int</span>
 <span class="sd">        identifier of camera, in case of multiple versions</span>
-<span class="sd">    recalc_neighbors: bool</span>
+<span class="sd">    recalc_neighbors : bool</span>
 <span class="sd">        if True, recalculate the neighbor pixel list, otherwise</span>
 <span class="sd">        use what is in the file</span>
 
@@ -260,7 +266,7 @@
 </div>
 <div class="viewcode-block" id="load_camera_geometry_from_file"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.load_camera_geometry_from_file.html#ctapipe.io.camera.load_camera_geometry_from_file">[docs]</a><span class="k">def</span> <span class="nf">load_camera_geometry_from_file</span><span class="p">(</span><span class="n">cam_id</span><span class="p">,</span> <span class="n">geomfile</span><span class="o">=</span><span class="s">&#39;chercam.fits.gz&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Read camera geometry from a  FITS file with a CHERCAM extension.</span>
+<span class="sd">    Read camera geometry from a  FITS file with a ``CHERCAM`` extension.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -268,7 +274,7 @@
 <span class="sd">    cam_id : int</span>
 <span class="sd">        ID number of camera in the fits file</span>
 <span class="sd">    geomfile : str</span>
-<span class="sd">        FITS file containing camera geometry in CHERCAM extension</span>
+<span class="sd">        FITS file containing camera geometry in ``CHERCAM`` extension</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -283,19 +289,20 @@
 </div>
 <div class="viewcode-block" id="make_rectangular_camera_geometry"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry">[docs]</a><span class="k">def</span> <span class="nf">make_rectangular_camera_geometry</span><span class="p">(</span><span class="n">npix_x</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">npix_y</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
                                      <span class="n">range_x</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">range_y</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;generates a simple camera with 2D rectangular geometry, for</span>
-<span class="sd">    testing purposes</span>
+    <span class="sd">&quot;&quot;&quot;Generate a simple camera with 2D rectangular geometry.</span>
+
+<span class="sd">    Used for testing.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    npix_x: int</span>
+<span class="sd">    npix_x : int</span>
 <span class="sd">        number of pixels in X-dimension</span>
-<span class="sd">    npix_y: int</span>
+<span class="sd">    npix_y : int</span>
 <span class="sd">        number of pixels in Y-dimension</span>
-<span class="sd">    range_x: (float,float)</span>
+<span class="sd">    range_x : (float,float)</span>
 <span class="sd">        min and max of x pixel coordinates in meters</span>
-<span class="sd">    range_y: (float,float)</span>
-<span class="sd">        min and max of y pixel coodinates in meters</span>
+<span class="sd">    range_y : (float,float)</span>
+<span class="sd">        min and max of y pixel coordinates in meters</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -352,7 +359,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev131',
+            VERSION:'0.0.dev134',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -1,0 +1,48 @@
+
+
+TelescopeFrame
+==================================
+
+.. currentmodule:: ctapipe.coordinates
+
+.. autoclass:: TelescopeFrame
+   :show-inheritance:
+
+   
+
+   
+   
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+   
+      ~TelescopeFrame.default_representation
+      ~TelescopeFrame.focal_length
+      ~TelescopeFrame.frame_specific_representation_info
+      ~TelescopeFrame.name
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Attributes Documentation
+
+   
+   .. autoattribute:: default_representation
+   .. autoattribute:: focal_length
+   .. autoattribute:: frame_specific_representation_info
+   .. autoattribute:: name
+
+   
+   
+
+   
+   
+   

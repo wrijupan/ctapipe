@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ctapipe.coordinates.frames &mdash; ctapipe v0.0.dev134</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/astropy_logo.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="ctapipe v0.0.dev134" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="fa fa-home"> ctapipe</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#module">Module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reco/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reco/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reco/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Command line tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tools/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tools/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tools/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization/index.html">Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ctapipe.coordinates.frames</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <h1>Source code for ctapipe.coordinates.frames</h1><div class="highlight"><pre>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">TODO / Questions</span>
+<span class="sd">----------------</span>
+
+<span class="sd">- Is part of this implemented in SOFA? (exposed via Astropy?)</span>
+<span class="sd">- Check against which other code(s)? HESS?</span>
+
+<span class="sd">Coordinate frames</span>
+<span class="sd">-----------------</span>
+
+<span class="sd">- AltAz (1)</span>
+<span class="sd">- GroundFrame (1)</span>
+<span class="sd">- TiltedTelescopeFrame (N) - attributes: tel locations + tel pointings</span>
+<span class="sd">- TelescopeFrame (N)</span>
+<span class="sd">- CameraFrame (N)</span>
+
+<span class="sd">Attributes:</span>
+
+<span class="sd">- Camera focal length f (in meters)</span>
+<span class="sd">- Pointing direction (Alt, Az)</span>
+<span class="sd">- Telescope location (X, Y, Z) in ground system (array center is at (0, 0, 0)</span>
+<span class="sd">- IACT array location on Earth</span>
+
+<span class="sd">How to implement this?</span>
+<span class="sd">----------------------</span>
+
+<span class="sd">Step 0</span>
+<span class="sd">++++++</span>
+
+<span class="sd">Define CameraFrame (attributes: pointing Alt, Az + focal length) and connect it to AltAzFrame</span>
+
+<span class="sd">Step 1</span>
+<span class="sd">++++++</span>
+
+<span class="sd">Goal: Starting with Hillas parameters from two showers, use the major axis line intersection</span>
+<span class="sd">to compute the event direction and impact location (it&#39;s in the tilted system).</span>
+<span class="sd">Use the HESS shower example images and reco parameters in the FITS file for testing ...</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+
+<span class="sd">* Gillessen PhD thesis section 4.1 (http://archiv.ub.uni-heidelberg.de/volltextserver/4754/)</span>
+<span class="sd">* Isabel Braun PhD thesis (http://archiv.ub.uni-heidelberg.de/volltextserver/7354/)</span>
+<span class="sd">* Function cam_to_ref in rec_tools.c in hessioxxx</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="kn">as</span> <span class="nn">u</span>
+<span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="p">(</span><span class="n">BaseCoordinateFrame</span><span class="p">,</span> <span class="n">FrameAttribute</span><span class="p">,</span> <span class="n">SphericalRepresentation</span><span class="p">,</span>
+                                 <span class="n">CartesianRepresentation</span><span class="p">,</span> <span class="n">RepresentationMapping</span><span class="p">,</span> <span class="n">FunctionTransform</span><span class="p">,</span>
+                                 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">astropy.coordinates</span> <span class="kn">import</span> <span class="n">frame_transform_graph</span>
+<span class="kn">from</span> <span class="nn">astropy.coordinates.angles</span> <span class="kn">import</span> <span class="n">rotation_matrix</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;CameraFrame&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TelescopeFrame&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TiltedTelescopeFrame&#39;</span><span class="p">,</span>
+    <span class="s">&#39;GroundFrame&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="CameraFrame"><a class="viewcode-back" href="../../../api/ctapipe.coordinates.CameraFrame.html#ctapipe.coordinates.CameraFrame">[docs]</a><span class="k">class</span> <span class="nc">CameraFrame</span><span class="p">(</span><span class="n">BaseCoordinateFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Camera coordinate frame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_representation</span> <span class="o">=</span> <span class="n">CartesianRepresentation</span>
+
+</div>
+<div class="viewcode-block" id="TelescopeFrame"><a class="viewcode-back" href="../../../api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame">[docs]</a><span class="k">class</span> <span class="nc">TelescopeFrame</span><span class="p">(</span><span class="n">BaseCoordinateFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Telescope coordinate frame.</span>
+
+<span class="sd">    Frame attributes:</span>
+
+<span class="sd">    - Focal length</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_representation</span> <span class="o">=</span> <span class="n">CartesianRepresentation</span>
+
+    <span class="c"># TODO: probably this should not have a default!</span>
+    <span class="n">focal_length</span> <span class="o">=</span> <span class="n">FrameAttribute</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mf">15.</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+    <span class="c"># focal_length = FrameAttribute(default=None)</span>
+
+</div>
+<div class="viewcode-block" id="TiltedTelescopeFrame"><a class="viewcode-back" href="../../../api/ctapipe.coordinates.TiltedTelescopeFrame.html#ctapipe.coordinates.TiltedTelescopeFrame">[docs]</a><span class="k">class</span> <span class="nc">TiltedTelescopeFrame</span><span class="p">(</span><span class="n">BaseCoordinateFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tilted telescope coordinate frame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_representation</span> <span class="o">=</span> <span class="n">CartesianRepresentation</span>
+
+    <span class="c"># Is this the right frame for these attributes?</span>
+    <span class="n">pointing_direction</span> <span class="o">=</span> <span class="n">FrameAttribute</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+    <span class="n">telescope_location</span> <span class="o">=</span> <span class="n">FrameAttribute</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+    <span class="c"># time?</span>
+
+</div>
+<div class="viewcode-block" id="GroundFrame"><a class="viewcode-back" href="../../../api/ctapipe.coordinates.GroundFrame.html#ctapipe.coordinates.GroundFrame">[docs]</a><span class="k">class</span> <span class="nc">GroundFrame</span><span class="p">(</span><span class="n">BaseCoordinateFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Ground coordinate frame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_representation</span> <span class="o">=</span> <span class="n">CartesianRepresentation</span>
+
+    <span class="n">observatory_location</span> <span class="o">=</span> <span class="n">FrameAttribute</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+</div>
+<span class="nd">@frame_transform_graph.transform</span><span class="p">(</span><span class="n">FunctionTransform</span><span class="p">,</span> <span class="n">CameraFrame</span><span class="p">,</span> <span class="n">TelescopeFrame</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">camera_to_telescope</span><span class="p">(</span><span class="n">camera_coord</span><span class="p">,</span> <span class="n">telescope_frame</span><span class="p">):</span>
+
+    <span class="n">xyz_camera</span> <span class="o">=</span> <span class="n">camera_coord</span><span class="o">.</span><span class="n">cartesian</span><span class="o">.</span><span class="n">xyz</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">telescope_frame</span><span class="o">.</span><span class="n">focal_length</span>
+
+    <span class="n">xyz_telescope</span> <span class="o">=</span> <span class="n">xyz_camera</span> <span class="o">/</span> <span class="n">f</span>
+
+    <span class="n">representation</span> <span class="o">=</span> <span class="n">CartesianRepresentation</span><span class="p">(</span><span class="n">xyz_telescope</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">telescope_frame</span><span class="o">.</span><span class="n">realize_frame</span><span class="p">(</span><span class="n">representation</span><span class="p">)</span>
+
+
+<span class="nd">@frame_transform_graph.transform</span><span class="p">(</span><span class="n">FunctionTransform</span><span class="p">,</span> <span class="n">TelescopeFrame</span><span class="p">,</span> <span class="n">CameraFrame</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">telescope_to_camera</span><span class="p">(</span><span class="n">telescope_coord</span><span class="p">,</span> <span class="n">camera_frame</span><span class="p">):</span>
+
+    <span class="n">xyz_telescope</span> <span class="o">=</span> <span class="n">telescope_coord</span><span class="o">.</span><span class="n">cartesian</span><span class="o">.</span><span class="n">xyz</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">telescope_coord</span><span class="o">.</span><span class="n">focal_length</span>
+
+    <span class="n">xyz_camera</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">xyz_telescope</span>
+
+    <span class="n">representation</span> <span class="o">=</span> <span class="n">CartesianRepresentation</span><span class="p">(</span><span class="n">xyz_camera</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">camera_frame</span><span class="o">.</span><span class="n">realize_frame</span><span class="p">(</span><span class="n">representation</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ctapipe developers.
+      Last updated on 06 Jul 2015.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.dev134',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

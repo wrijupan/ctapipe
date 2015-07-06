@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Reconstruction &mdash; ctapipe v0.0.dev131</title>
+  <title>Reconstruction &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev131" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev134" href="../index.html"/>
         <link rel="next" title="hillas_parameters" href="../api/ctapipe.reco.hillas_parameters.html"/>
         <link rel="prev" title="CameraGeometry" href="../api/ctapipe.io.camera.CameraGeometry.html"/> 
 
@@ -71,6 +71,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -158,7 +164,7 @@ This will include two levels:</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>TODO: add examples.</p>
+<p>(<a class="reference external" href="../reco/index-1.py">Source code</a>)</p>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
@@ -187,33 +193,10 @@ define the columns somehow: in a class? a namedtiple?)</li>
 <tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2" title="ctapipe.reco.hillas_parameters_2"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters_2</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;image)</td>
 <td>Compute Hillas parameters for a given shower image.</td>
 </tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="module-ctapipe.reco.mock">
-<span id="ctapipe-reco-mock-module"></span><h3>ctapipe.reco.mock Module<a class="headerlink" href="#module-ctapipe.reco.mock" title="Permalink to this headline">¶</a></h3>
-<p>utilities to generate mock (fake) reconstruction inputs for testing purposes.</p>
-<p>Example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">ctapipe.io</span> <span class="kn">import</span> <span class="n">camera</span>
-<span class="n">geom</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">make_rectangular_camera_geometry</span><span class="p">()</span>
-<span class="n">showermodel</span> <span class="o">=</span> <span class="n">shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> 
-                           <span class="n">length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
-<span class="n">image</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">showermodel</span><span class="o">.</span><span class="n">pdf</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="section" id="id1">
-<h4>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.reco.mock.make_mock_shower_image.html#ctapipe.reco.mock.make_mock_shower_image" title="ctapipe.reco.mock.make_mock_shower_image"><code class="xref py py-obj docutils literal"><span class="pre">make_mock_shower_image</span></code></a>(geom,&nbsp;showerpdf[,&nbsp;...])</td>
-<td>Generates a pedestal-subtracted shower image from a statiscal shower model (as generated by <a class="reference internal" href="../api/ctapipe.reco.mock.shower_model.html#ctapipe.reco.mock.shower_model" title="ctapipe.reco.mock.shower_model"><code class="xref py py-obj docutils literal"><span class="pre">shower_model</span></code></a>).</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.reco.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image" title="ctapipe.reco.make_mock_shower_image"><code class="xref py py-obj docutils literal"><span class="pre">make_mock_shower_image</span></code></a>(geom,&nbsp;showerpdf[,&nbsp;...])</td>
+<td>Generates a pedestal-subtracted shower image from a statistical shower model (as generated by <a class="reference internal" href="../api/ctapipe.reco.shower_model.html#ctapipe.reco.shower_model" title="ctapipe.reco.shower_model"><code class="xref py py-obj docutils literal"><span class="pre">shower_model</span></code></a>).</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.reco.mock.shower_model.html#ctapipe.reco.mock.shower_model" title="ctapipe.reco.mock.shower_model"><code class="xref py py-obj docutils literal"><span class="pre">shower_model</span></code></a>(centroid,&nbsp;width,&nbsp;length,&nbsp;psi)</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.reco.shower_model.html#ctapipe.reco.shower_model" title="ctapipe.reco.shower_model"><code class="xref py py-obj docutils literal"><span class="pre">shower_model</span></code></a>(centroid,&nbsp;width,&nbsp;length,&nbsp;psi)</td>
 <td>Create a stastical model (2D gaussian) for a shower image in a camera.</td>
 </tr>
 </tbody>
@@ -262,7 +245,7 @@ define the columns somehow: in a class? a namedtiple?)</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev131',
+            VERSION:'0.0.dev134',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

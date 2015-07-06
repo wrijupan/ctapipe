@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev131</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev131" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev134" href="../index.html"/>
         <link rel="next" title="get_camera_geometry" href="../api/ctapipe.io.camera.get_camera_geometry.html"/>
         <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
 
@@ -71,6 +71,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -178,13 +184,13 @@ pass-by-value (which could be slow).</li>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.get_camera_geometry.html#ctapipe.io.camera.get_camera_geometry" title="ctapipe.io.camera.get_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">get_camera_geometry</span></code></a>(instrument_name,&nbsp;cam_id)</td>
-<td>Helper function to provide the camera geometry definition for a</td>
+<td>Helper function to provide the camera geometry definition for a camera by name.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.load_camera_geometry_from_file.html#ctapipe.io.camera.load_camera_geometry_from_file" title="ctapipe.io.camera.load_camera_geometry_from_file"><code class="xref py py-obj docutils literal"><span class="pre">load_camera_geometry_from_file</span></code></a>(cam_id[,&nbsp;...])</td>
-<td>Read camera geometry from a  FITS file with a CHERCAM extension.</td>
+<td>Read camera geometry from a  FITS file with a <code class="docutils literal"><span class="pre">CHERCAM</span></code> extension.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry" title="ctapipe.io.camera.make_rectangular_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">make_rectangular_camera_geometry</span></code></a>([npix_x,&nbsp;...])</td>
-<td>generates a simple camera with 2D rectangular geometry, for</td>
+<td>Generate a simple camera with 2D rectangular geometry.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels" title="ctapipe.io.camera.find_neighbor_pixels"><code class="xref py py-obj docutils literal"><span class="pre">find_neighbor_pixels</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;rad)</td>
 <td>use a KD-Tree to quickly find nearest neighbors of the pixels in a</td>
@@ -252,7 +258,7 @@ pass-by-value (which could be slow).</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev131',
+            VERSION:'0.0.dev134',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

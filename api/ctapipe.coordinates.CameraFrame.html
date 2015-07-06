@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>shower_model &mdash; ctapipe v0.0.dev131</title>
+  <title>CameraFrame &mdash; ctapipe v0.0.dev134</title>
   
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev131" href="../index.html"/>
-        <link rel="up" title="Reconstruction" href="../reco/index.html"/>
-        <link rel="next" title="Command line tools" href="../tools/index.html"/>
-        <link rel="prev" title="make_mock_shower_image" href="ctapipe.reco.mock.make_mock_shower_image.html"/> 
+    <link rel="top" title="ctapipe v0.0.dev134" href="../index.html"/>
+        <link rel="up" title="Coordinates" href="../coordinates/index.html"/>
+        <link rel="next" title="GroundFrame" href="ctapipe.coordinates.GroundFrame.html"/>
+        <link rel="prev" title="TiltedTelescopeFrame" href="ctapipe.coordinates.TiltedTelescopeFrame.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -74,6 +74,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
+<li class="toctree-l1 current"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#getting-started">Getting Started</a></li>
@@ -94,10 +100,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#module">Module</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
@@ -135,12 +141,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
+          <li><a href="../coordinates/index.html">Coordinates</a> &raquo;</li>
       
-    <li>shower_model</li>
+    <li>CameraFrame</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.reco.mock.shower_model.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.coordinates.CameraFrame.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -148,41 +154,47 @@
 </div>
           <div role="main">
             
-  <div class="section" id="shower-model">
-<h1>shower_model<a class="headerlink" href="#shower-model" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="ctapipe.reco.mock.shower_model">
-<code class="descclassname">ctapipe.reco.mock.</code><code class="descname">shower_model</code><span class="sig-paren">(</span><em>centroid</em>, <em>width</em>, <em>length</em>, <em>psi</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/reco/mock.html#shower_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.reco.mock.shower_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a stastical model (2D gaussian) for a shower image in a
-camera. The model&#8217;s PDF (<code class="xref py py-obj docutils literal"><span class="pre">model.pdf</span></code>) can be passed to
-<code class="xref py py-obj docutils literal"><span class="pre">make_moc_shower_image</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+  <div class="section" id="cameraframe">
+<h1>CameraFrame<a class="headerlink" href="#cameraframe" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctapipe.coordinates.CameraFrame">
+<em class="property">class </em><code class="descclassname">ctapipe.coordinates.</code><code class="descname">CameraFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/coordinates/frames.html#CameraFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.coordinates.CameraFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.BaseCoordinateFrame.html#astropy.coordinates.BaseCoordinateFrame" title="astropy.coordinates.BaseCoordinateFrame"><code class="docutils literal"><span class="pre">astropy.coordinates.BaseCoordinateFrame</span></code></a></p>
+<p>Camera coordinate frame.</p>
+<p class="rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>centroid: (float,float)</strong></p>
-<blockquote>
-<div><p>position of the centroid of the shower in camera coordinates</p>
-</div></blockquote>
-<p><strong>width: float</strong></p>
-<blockquote>
-<div><p>width of shower (minor axis)</p>
-</div></blockquote>
-<p><strong>length: float</strong></p>
-<blockquote>
-<div><p>length of shower (major axis)</p>
-</div></blockquote>
-<p><strong>psi: float</strong></p>
-<blockquote>
-<div><p>rotation angle in radians about the centroid (0=up)</p>
-</div></blockquote>
-</td>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.coordinates.CameraFrame.default_representation" title="ctapipe.coordinates.CameraFrame.default_representation"><code class="xref py py-obj docutils literal"><span class="pre">default_representation</span></code></a></td>
+<td></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats" title="(in SciPy v0.15.1)"><code class="xref py py-obj docutils literal"><span class="pre">scipy.stats</span></code></a> object</p>
-</td>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.coordinates.CameraFrame.frame_specific_representation_info" title="ctapipe.coordinates.CameraFrame.frame_specific_representation_info"><code class="xref py py-obj docutils literal"><span class="pre">frame_specific_representation_info</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.coordinates.CameraFrame.name" title="ctapipe.coordinates.CameraFrame.name"><code class="xref py py-obj docutils literal"><span class="pre">name</span></code></a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="ctapipe.coordinates.CameraFrame.default_representation">
+<code class="descname">default_representation</code><a class="headerlink" href="#ctapipe.coordinates.CameraFrame.default_representation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.coordinates.CameraFrame.frame_specific_representation_info">
+<code class="descname">frame_specific_representation_info</code><a class="headerlink" href="#ctapipe.coordinates.CameraFrame.frame_specific_representation_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.coordinates.CameraFrame.name">
+<code class="descname">name</code><em class="property"> = 'cameraframe'</em><a class="headerlink" href="#ctapipe.coordinates.CameraFrame.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -193,10 +205,10 @@ camera. The model&#8217;s PDF (<code class="xref py py-obj docutils literal"><sp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tools/index.html" class="btn btn-neutral float-right" title="Command line tools"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.coordinates.GroundFrame.html" class="btn btn-neutral float-right" title="GroundFrame"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.mock.make_mock_shower_image.html" class="btn btn-neutral" title="make_mock_shower_image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.coordinates.TiltedTelescopeFrame.html" class="btn btn-neutral" title="TiltedTelescopeFrame"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -226,7 +238,7 @@ camera. The model&#8217;s PDF (<code class="xref py py-obj docutils literal"><sp
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev131',
+            VERSION:'0.0.dev134',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

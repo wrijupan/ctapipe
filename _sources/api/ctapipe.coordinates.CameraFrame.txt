@@ -1,0 +1,46 @@
+
+
+CameraFrame
+===============================
+
+.. currentmodule:: ctapipe.coordinates
+
+.. autoclass:: CameraFrame
+   :show-inheritance:
+
+   
+
+   
+   
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+   
+      ~CameraFrame.default_representation
+      ~CameraFrame.frame_specific_representation_info
+      ~CameraFrame.name
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Attributes Documentation
+
+   
+   .. autoattribute:: default_representation
+   .. autoattribute:: frame_specific_representation_info
+   .. autoattribute:: name
+
+   
+   
+
+   
+   
+   
