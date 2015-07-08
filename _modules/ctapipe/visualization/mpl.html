@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev150</title>
+  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev154</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev150" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev154" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -167,24 +167,21 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="CameraDisplay"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay">[docs]</a><span class="k">class</span> <span class="nc">CameraDisplay</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;Camera Display using MatPlotLib</span>
+<div class="viewcode-block" id="CameraDisplay"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay">[docs]</a><span class="k">class</span> <span class="nc">CameraDisplay</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Camera Display using matplotlib.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    geometry : `~ctapipe.io.CameraGeometry`</span>
 <span class="sd">        Definition of the Camera/Image</span>
-<span class="sd">    axis : `matplotlib.axes._subplots.AxesSubplot`</span>
-<span class="sd">        a MatPlotLib Axis object to plot on, or None to create a new one</span>
+<span class="sd">    axis : `matplotlib.axes.Axes`</span>
+<span class="sd">        A matplotlib axes object to plot on, or None to create a new one</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-
-<span class="sd">    * *Implementation detail*: Pixels are rendered as a</span>
+<span class="sd">    Implementation detail: Pixels are rendered as a</span>
 <span class="sd">    `matplotlib.collections.RegularPolyCollection`, which is the most</span>
-<span class="sd">    efficient way in MatPlotLib to display complex pixel shapes.</span>
-
+<span class="sd">    efficient way in matplotlib to display complex pixel shapes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Camera&quot;</span><span class="p">):</span>
@@ -348,7 +345,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev150',
+            VERSION:'0.0.dev154',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

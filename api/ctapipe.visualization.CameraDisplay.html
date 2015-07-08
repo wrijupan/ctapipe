@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev150</title>
+  <title>CameraDisplay &mdash; ctapipe v0.0.dev154</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev150" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev154" href="../index.html"/>
         <link rel="up" title="Visualization" href="../visualization/index.html"/>
         <link rel="prev" title="CameraDisplay" href=""/> 
 
@@ -159,7 +159,7 @@
 <dt id="ctapipe.visualization.CameraDisplay">
 <em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>axes=None</em>, <em>title='Camera'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>Camera Display using MatPlotLib</p>
+<p>Camera Display using matplotlib.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -168,20 +168,18 @@
 <blockquote>
 <div><p>Definition of the Camera/Image</p>
 </div></blockquote>
-<p><strong>axis</strong> : <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes._subplots.AxesSubplot</span></code></p>
+<p><strong>axis</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
 <blockquote class="last">
-<div><p>a MatPlotLib Axis object to plot on, or None to create a new one</p>
+<div><p>A matplotlib axes object to plot on, or None to create a new one</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<ul class="simple">
-<li><em>Implementation detail</em>: Pixels are rendered as a</li>
-</ul>
-<p><a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.RegularPolyCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.RegularPolyCollection</span></code></a>, which is the most
-efficient way in MatPlotLib to display complex pixel shapes.</p>
+<p>Implementation detail: Pixels are rendered as a
+<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.RegularPolyCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.RegularPolyCollection</span></code></a>, which is the most
+efficient way in matplotlib to display complex pixel shapes.</p>
 <p class="rubric">Methods Summary</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -317,7 +315,7 @@ efficient way in MatPlotLib to display complex pixel shapes.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev150',
+            VERSION:'0.0.dev154',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

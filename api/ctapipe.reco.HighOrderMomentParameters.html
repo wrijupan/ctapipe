@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SimObsConfig &mdash; ctapipe v0.0.dev154</title>
+  <title>HighOrderMomentParameters &mdash; ctapipe v0.0.dev154</title>
   
 
   
@@ -31,9 +31,9 @@
 
   
     <link rel="top" title="ctapipe v0.0.dev154" href="../index.html"/>
-        <link rel="up" title="Input/Output" href="../io/index.html"/>
-        <link rel="next" title="SubarrayConfig" href="ctapipe.io.obsconfig.SubarrayConfig.html"/>
-        <link rel="prev" title="OpticsConfig" href="ctapipe.io.obsconfig.OpticsConfig.html"/> 
+        <link rel="up" title="Reconstruction" href="../reco/index.html"/>
+        <link rel="next" title="MomentParameters" href="ctapipe.reco.MomentParameters.html"/>
+        <link rel="prev" title="make_mock_shower_image" href="ctapipe.reco.make_mock_shower_image.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -94,16 +94,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../io/index.html">Input/Output</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
@@ -141,12 +141,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../io/index.html">Input/Output</a> &raquo;</li>
+          <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
       
-    <li>SimObsConfig</li>
+    <li>HighOrderMomentParameters</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.io.obsconfig.SimObsConfig.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.reco.HighOrderMomentParameters.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -154,13 +154,17 @@
 </div>
           <div role="main">
             
-  <div class="section" id="simobsconfig">
-<h1>SimObsConfig<a class="headerlink" href="#simobsconfig" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="highordermomentparameters">
+<h1>HighOrderMomentParameters<a class="headerlink" href="#highordermomentparameters" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="ctapipe.io.obsconfig.SimObsConfig">
-<em class="property">class </em><code class="descclassname">ctapipe.io.obsconfig.</code><code class="descname">SimObsConfig</code><span class="sig-paren">(</span><em>mc_run_id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#SimObsConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.SimObsConfig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig" title="ctapipe.io.obsconfig.ObsConfig"><code class="xref py py-class docutils literal"><span class="pre">ctapipe.io.obsconfig.ObsConfig</span></code></a></p>
-<p>ObsConfig from a simulation run</p>
+<dt id="ctapipe.reco.HighOrderMomentParameters">
+<em class="property">class </em><code class="descclassname">ctapipe.reco.</code><code class="descname">HighOrderMomentParameters</code><span class="sig-paren">(</span><em>skewness</em>, <em>kurtosis</em>, <em>asymmetry</em><span class="sig-paren">)</span><a class="headerlink" href="#ctapipe.reco.HighOrderMomentParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<p>Shower moment parameters of third order.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="ctapipe.reco.MomentParameters.html#ctapipe.reco.MomentParameters" title="ctapipe.reco.MomentParameters"><code class="xref py py-obj docutils literal"><span class="pre">MomentParameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters" title="ctapipe.reco.hillas_parameters"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2" title="ctapipe.reco.hillas_parameters_2"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters_2</span></code></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -171,10 +175,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.io.obsconfig.SubarrayConfig.html" class="btn btn-neutral float-right" title="SubarrayConfig"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.reco.MomentParameters.html" class="btn btn-neutral float-right" title="MomentParameters"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.io.obsconfig.OpticsConfig.html" class="btn btn-neutral" title="OpticsConfig"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.reco.make_mock_shower_image.html" class="btn btn-neutral" title="make_mock_shower_image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,27 @@
+
+
+HighOrderMomentParameters
+======================================
+
+.. currentmodule:: ctapipe.reco
+
+.. autoclass:: HighOrderMomentParameters
+   :show-inheritance:
+
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
