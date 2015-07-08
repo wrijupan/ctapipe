@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.reco.hillas &mdash; ctapipe v0.0.dev137</title>
+  <title>ctapipe.reco.hillas &mdash; ctapipe v0.0.dev150</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev137" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev150" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -86,6 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
@@ -95,7 +96,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#reference-api">Reference/API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#module">Module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a><ul>
@@ -166,8 +166,15 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;hillas_parameters&#39;</span><span class="p">,</span><span class="s">&#39;hillas_parameters_2&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;MomentParameters&#39;</span><span class="p">,</span> <span class="s">&#39;hillas_parameters&#39;</span><span class="p">,</span> <span class="s">&#39;hillas_parameters_2&#39;</span><span class="p">]</span>
+
+
+<span class="n">MomentParameters</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&quot;MomentParameters&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;size,cen_x,cen_y,length,width,r,phi,psi,miss&quot;</span><span class="p">)</span>
+<span class="n">HighOrderMomentParameters</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&quot;HighOrderMomentParameters&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;skewness,kurtosis,asymmetry&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="hillas_parameters"><a class="viewcode-back" href="../../../api/ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters">[docs]</a><span class="k">def</span> <span class="nf">hillas_parameters</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
@@ -188,8 +195,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    hillas_parameters : dict</span>
-<span class="sd">        Dictionary of Hillas parameters</span>
+<span class="sd">    hillas_parameters : MomentParameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pix_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
     <span class="n">pix_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">pix_y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -221,6 +227,7 @@
     <span class="n">length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">length_2</span><span class="p">)</span>
     <span class="n">miss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">a</span><span class="p">))</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m_x</span> <span class="o">*</span> <span class="n">m_x</span> <span class="o">+</span> <span class="n">m_y</span> <span class="o">*</span> <span class="n">m_y</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">m_y</span><span class="p">,</span><span class="n">m_x</span><span class="p">)</span>
 
     <span class="c"># Compute azwidth by transforming to (p, q) coordinates</span>
     <span class="n">sin_theta</span> <span class="o">=</span> <span class="n">m_y</span> <span class="o">/</span> <span class="n">r</span>
@@ -231,18 +238,20 @@
     <span class="n">azwidth_2</span> <span class="o">=</span> <span class="n">m_qq</span> <span class="o">-</span> <span class="n">m_q</span> <span class="o">*</span> <span class="n">m_q</span>
     <span class="n">azwidth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">azwidth_2</span><span class="p">)</span>
 
+    <span class="k">return</span> <span class="n">MomentParameters</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">_s</span><span class="p">,</span> <span class="n">cen_x</span><span class="o">=</span><span class="n">m_x</span><span class="p">,</span> <span class="n">cen_y</span><span class="o">=</span><span class="n">m_y</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+                            <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">miss</span><span class="o">=</span><span class="n">miss</span><span class="p">)</span>
     <span class="c"># Return relevant parameters in a dict</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_x</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_y</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;width&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">width</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">length</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;miss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">miss</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
-    <span class="n">p</span><span class="p">[</span><span class="s">&#39;azwidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">azwidth</span>
-    <span class="k">return</span> <span class="n">p</span>
+    <span class="c"># p = dict()</span>
+    <span class="c"># p[&#39;x&#39;] = m_x</span>
+    <span class="c"># p[&#39;y&#39;] = m_y</span>
+    <span class="c"># p[&#39;a&#39;] = a</span>
+    <span class="c"># p[&#39;b&#39;] = b</span>
+    <span class="c"># p[&#39;width&#39;] = width</span>
+    <span class="c"># p[&#39;length&#39;] = length</span>
+    <span class="c"># p[&#39;miss&#39;] = miss</span>
+    <span class="c"># p[&#39;r&#39;] = r</span>
+    <span class="c"># p[&#39;azwidth&#39;] = azwidth</span>
+    <span class="c"># return p</span>
 
 </div>
 <div class="viewcode-block" id="hillas_parameters_2"><a class="viewcode-back" href="../../../api/ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2">[docs]</a><span class="k">def</span> <span class="nf">hillas_parameters_2</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
@@ -275,7 +284,7 @@
     <span class="c"># Compute image moments (done in a bit faster way, but putting all</span>
     <span class="c"># into one 2D array, where each row will be summed to calculate a</span>
     <span class="c"># moment) However, this doesn&#39;t avoid a temporary created for the</span>
-    <span class="c"># 2D array </span>
+    <span class="c"># 2D array</span>
 
     <span class="n">size</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="n">momdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">([</span><span class="n">pix_x</span><span class="p">,</span>
@@ -283,19 +292,19 @@
                             <span class="n">pix_x</span> <span class="o">*</span> <span class="n">pix_x</span><span class="p">,</span>
                             <span class="n">pix_y</span> <span class="o">*</span> <span class="n">pix_y</span><span class="p">,</span>
                             <span class="n">pix_x</span> <span class="o">*</span> <span class="n">pix_y</span><span class="p">])</span> <span class="o">*</span> <span class="n">image</span>
-    
+
     <span class="n">moms</span> <span class="o">=</span> <span class="n">momdata</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span>
 
     <span class="c"># calculate variances</span>
 
-    <span class="n">vx2</span> <span class="o">=</span> <span class="n">moms</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
-    <span class="n">vy2</span> <span class="o">=</span> <span class="n">moms</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">vx2</span> <span class="o">=</span> <span class="n">moms</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">vy2</span> <span class="o">=</span> <span class="n">moms</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
     <span class="n">vxy</span> <span class="o">=</span> <span class="n">moms</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="c"># common factors:</span>
 
     <span class="n">dd</span> <span class="o">=</span> <span class="n">vy2</span> <span class="o">-</span> <span class="n">vx2</span>
-    <span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dd</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">vxy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dd</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">vxy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="c"># miss</span>
 
@@ -314,15 +323,16 @@
 
     <span class="n">tanpsi_numer</span> <span class="o">=</span> <span class="p">(</span><span class="n">dd</span> <span class="o">+</span> <span class="n">zz</span><span class="p">)</span> <span class="o">*</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">vxy</span> <span class="o">*</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">tanpsi_denom</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">vxy</span> <span class="o">*</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">dd</span> <span class="o">-</span> <span class="n">zz</span><span class="p">)</span> <span class="o">*</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">psi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">tanpsi_numer</span><span class="p">,</span> <span class="n">tanpsi_denom</span><span class="p">)</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">tanpsi_numer</span><span class="p">,</span> <span class="n">tanpsi_denom</span><span class="p">)</span>
 
     <span class="c"># polar coordinates of centroid</span>
-    
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">rr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">cx</span><span class="o">=</span><span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cy</span><span class="o">=</span><span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
-                <span class="n">distance</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span> <span class="n">azwidth</span><span class="o">=</span><span class="n">azwidth</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="n">psi</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">MomentParameters</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">cen_x</span><span class="o">=</span><span class="n">moms</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cen_y</span><span class="o">=</span><span class="n">moms</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">length</span><span class="o">=</span><span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">,</span>
+                            <span class="n">psi</span><span class="o">=</span><span class="n">psi</span><span class="p">,</span> <span class="n">miss</span><span class="o">=</span><span class="n">miss</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
@@ -334,7 +344,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Jul 2015.
+      Last updated on 08 Jul 2015.
     </p>
   </div>
 
@@ -354,7 +364,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev137',
+            VERSION:'0.0.dev150',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

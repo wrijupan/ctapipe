@@ -24,6 +24,7 @@ CameraDisplay
    .. autosummary::
    
       ~CameraDisplay.add_ellipse
+      ~CameraDisplay.overlay_moments
       ~CameraDisplay.set_cmap
       ~CameraDisplay.set_image
 
@@ -41,6 +42,7 @@ CameraDisplay
 
    
    .. automethod:: add_ellipse
+   .. automethod:: overlay_moments
    .. automethod:: set_cmap
    .. automethod:: set_image
 

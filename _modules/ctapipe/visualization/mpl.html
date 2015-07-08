@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev137</title>
+  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev150</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev137" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev150" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -86,6 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
@@ -95,7 +96,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#reference-api">Reference/API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#module">Module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a><ul>
@@ -166,7 +166,9 @@
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
+
 <div class="viewcode-block" id="CameraDisplay"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay">[docs]</a><span class="k">class</span> <span class="nc">CameraDisplay</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
     <span class="sd">&quot;&quot;&quot;Camera Display using MatPlotLib</span>
 
 <span class="sd">    Parameters</span>
@@ -178,8 +180,8 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    </span>
-<span class="sd">    Implementation detail: Pixels are rendered as a</span>
+
+<span class="sd">    * *Implementation detail*: Pixels are rendered as a</span>
 <span class="sd">    `matplotlib.collections.RegularPolyCollection`, which is the most</span>
 <span class="sd">    efficient way in MatPlotLib to display complex pixel shapes.</span>
 
@@ -215,8 +217,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="p">))</span>
-            <span class="c">#self.pixels.set_transform(trans)</span>
-            <span class="c">#self.pixels.set_offset_position(&#39;data&#39;)</span>
+            <span class="c"># self.pixels.set_transform(trans)</span>
+            <span class="c"># self.pixels.set_offset_position(&#39;data&#39;)</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;POS:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">get_offset_position</span><span class="p">()))</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;TRN:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">get_offset_transform</span><span class="p">()))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">,</span> <span class="n">autolim</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -248,8 +250,8 @@
 <span class="sd">        transormations are set up correctly</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">radii</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">550</span>  <span class="c"># hard-coded for now until better transform</span>
-        <span class="c">#return np.pi * radii ** 2</span>
+        <span class="k">return</span> <span class="n">radii</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">550</span>  <span class="c"># hard-coded for now until better transform</span>
+        <span class="c"># return np.pi * radii ** 2</span>
 
 <div class="viewcode-block" id="CameraDisplay.set_cmap"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.set_cmap">[docs]</a>    <span class="k">def</span> <span class="nf">set_cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Change the color map &quot;&quot;&quot;</span>
@@ -265,7 +267,7 @@
 <span class="sd">            array of values corresponding to the pixels in the CameraGeometry.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Image has a different shape {} than the&quot;</span> 
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Image has a different shape {} than the&quot;</span>
                              <span class="s">&quot;given CameraGeometry {}&quot;</span>
                              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -296,7 +298,25 @@
                           <span class="n">angle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">ellipse</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">ellipse</span></div></div>
+        <span class="k">return</span> <span class="n">ellipse</span>
+</div>
+<div class="viewcode-block" id="CameraDisplay.overlay_moments"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.overlay_moments">[docs]</a>    <span class="k">def</span> <span class="nf">overlay_moments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">momparams</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; helper to overlay elipse from a `reco.MomentParameters` structure </span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self: type</span>
+<span class="sd">            description</span>
+<span class="sd">        momparams: `reco.MomentParameters`</span>
+<span class="sd">            structuring containing Hillas-style parameterization</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_ellipse</span><span class="p">(</span><span class="n">centroid</span><span class="o">=</span><span class="p">(</span><span class="n">momparams</span><span class="o">.</span><span class="n">cen_x</span><span class="p">,</span> <span class="n">momparams</span><span class="o">.</span><span class="n">cen_y</span><span class="p">),</span>
+                         <span class="n">length</span><span class="o">=</span><span class="n">momparams</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+                         <span class="n">width</span><span class="o">=</span><span class="n">momparams</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="n">momparams</span><span class="o">.</span><span class="n">psi</span><span class="p">,</span>
+                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>
 
           </div>
@@ -308,7 +328,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Jul 2015.
+      Last updated on 08 Jul 2015.
     </p>
   </div>
 
@@ -328,7 +348,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev137',
+            VERSION:'0.0.dev150',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

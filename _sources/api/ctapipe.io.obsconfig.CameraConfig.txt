@@ -1,0 +1,29 @@
+
+
+CameraConfig
+=================================
+
+.. currentmodule:: ctapipe.io.obsconfig
+
+.. autoclass:: CameraConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

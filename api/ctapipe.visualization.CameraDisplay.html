@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev137</title>
+  <title>CameraDisplay &mdash; ctapipe v0.0.dev150</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev137" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev150" href="../index.html"/>
         <link rel="up" title="Visualization" href="../visualization/index.html"/>
         <link rel="prev" title="CameraDisplay" href=""/> 
 
@@ -87,6 +87,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
@@ -96,7 +97,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#module">Module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
@@ -177,8 +177,10 @@
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Implementation detail: Pixels are rendered as a
-<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.RegularPolyCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.RegularPolyCollection</span></code></a>, which is the most
+<ul class="simple">
+<li><em>Implementation detail</em>: Pixels are rendered as a</li>
+</ul>
+<p><a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.RegularPolyCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.RegularPolyCollection</span></code></a>, which is the most
 efficient way in MatPlotLib to display complex pixel shapes.</p>
 <p class="rubric">Methods Summary</p>
 <table border="1" class="longtable docutils">
@@ -221,6 +223,28 @@ efficient way in MatPlotLib to display complex pixel shapes.</p>
 <p><strong>kwargs:</strong></p>
 <blockquote class="last">
 <div><p>any MatPlotLib style arguments to pass to the Ellipse patch</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.overlay_moments">
+<code class="descname">overlay_moments</code><span class="sig-paren">(</span><em>momparams</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.overlay_moments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.overlay_moments" title="Permalink to this definition">¶</a></dt>
+<dd><p>helper to overlay elipse from a <code class="xref py py-obj docutils literal"><span class="pre">reco.MomentParameters</span></code> structure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self: type</strong></p>
+<blockquote>
+<div><p>description</p>
+</div></blockquote>
+<p><strong>momparams: `reco.MomentParameters`</strong></p>
+<blockquote class="last">
+<div><p>structuring containing Hillas-style parameterization</p>
 </div></blockquote>
 </td>
 </tr>
@@ -273,7 +297,7 @@ efficient way in MatPlotLib to display complex pixel shapes.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Jul 2015.
+      Last updated on 08 Jul 2015.
     </p>
   </div>
 
@@ -293,7 +317,7 @@ efficient way in MatPlotLib to display complex pixel shapes.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev137',
+            VERSION:'0.0.dev150',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

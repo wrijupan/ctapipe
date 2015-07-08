@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev137</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev150</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev137" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev150" href="../index.html"/>
         <link rel="next" title="get_camera_geometry" href="../api/ctapipe.io.camera.get_camera_geometry.html"/>
         <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
 
@@ -87,6 +87,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
@@ -96,7 +97,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module">Module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
@@ -213,9 +213,109 @@ pass-by-value (which could be slow).</li>
 </table>
 </div>
 </div>
+<div class="section" id="module-ctapipe.io.obsconfig">
+<span id="ctapipe-io-obsconfig-module"></span><h3>ctapipe.io.obsconfig Module<a class="headerlink" href="#module-ctapipe.io.obsconfig" title="Permalink to this headline">¶</a></h3>
+<p>Defintion of Observation Configurations.</p>
+<p>The ObsConfig class defines a hierarchy of classes that contain the
+configuration information related to an observation. Each sub-config
+should additionally be loadable on its own</p>
+<p>This may be extended later to make a SimObsConfig that also includes extra
+Monte-Carlo information</p>
+<p>When possible, items inside each class should be loaded dynamically
+(e.g. on first access)</p>
+<div class="section" id="id1">
+<h4>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_array_id_for_run.html#ctapipe.io.obsconfig.get_array_id_for_run" title="ctapipe.io.obsconfig.get_array_id_for_run"><code class="xref py py-obj docutils literal"><span class="pre">get_array_id_for_run</span></code></a>(run_id)</td>
+<td>lookup which array and version was used for a given run</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_array_id_for_time.html#ctapipe.io.obsconfig.get_array_id_for_time" title="ctapipe.io.obsconfig.get_array_id_for_time"><code class="xref py py-obj docutils literal"><span class="pre">get_array_id_for_time</span></code></a>(obstime)</td>
+<td>lookup which array and version was used for a given obstime</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="module">
-<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h4>Classes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig" title="ctapipe.io.obsconfig.ArrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">ArrayConfig</span></code></a>(array_id,&nbsp;array_version)</td>
+<td>Overall description of an array (including all telescope that are built or forseen.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig" title="ctapipe.io.obsconfig.BaseConfig"><code class="xref py py-obj docutils literal"><span class="pre">BaseConfig</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig" title="ctapipe.io.obsconfig.CameraConfig"><code class="xref py py-obj docutils literal"><span class="pre">CameraConfig</span></code></a>(array_id,&nbsp;array_version,&nbsp;tel_id)</td>
+<td>Definition of a Camera, including its pixel geometry and other</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig" title="ctapipe.io.obsconfig.ObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">ObsConfig</span></code></a>(run_id)</td>
+<td>All configuration information related to an observarion run</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.OpticsConfig.html#ctapipe.io.obsconfig.OpticsConfig" title="ctapipe.io.obsconfig.OpticsConfig"><code class="xref py py-obj docutils literal"><span class="pre">OpticsConfig</span></code></a>(array_id,&nbsp;array_version,&nbsp;tel_id)</td>
+<td>Definition of Telescope Optics, including information on the</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SimObsConfig.html#ctapipe.io.obsconfig.SimObsConfig" title="ctapipe.io.obsconfig.SimObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">SimObsConfig</span></code></a>(mc_run_id)</td>
+<td>ObsConfig from a simulation run</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SubarrayConfig.html#ctapipe.io.obsconfig.SubarrayConfig" title="ctapipe.io.obsconfig.SubarrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">SubarrayConfig</span></code></a>(run_id)</td>
+<td>Description of a particular Subarray used during an observation or</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TelescopeConfig.html#ctapipe.io.obsconfig.TelescopeConfig" title="ctapipe.io.obsconfig.TelescopeConfig"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeConfig</span></code></a>(array_id,&nbsp;array_version,&nbsp;...)</td>
+<td>Configuration of a single Telescope, including it&#8217;s optics and</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TriggerConfig.html#ctapipe.io.obsconfig.TriggerConfig" title="ctapipe.io.obsconfig.TriggerConfig"><code class="xref py py-obj docutils literal"><span class="pre">TriggerConfig</span></code></a></td>
+<td>Contains trigger info for a given run_id</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="class-inheritance-diagram">
+<h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
+<p class="graphviz">
+<img src="../_images/inheritance-3b7ccf7c757f7da9020f21d47d9f00566c54f426.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SimObsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.TriggerConfig" class="inheritance"/>
+</p>
+<p>Relationship between different configuration objects.  The arrows show
+what information is needed to look up the next level of configuration.
+In <strong>blue</strong> are items that change for every <em>run</em>, in <strong>green</strong> for every
+<em>run-type</em>, and in <strong>white</strong> for every <em>array version</em> (which is updated
+when there are changes to the array, telescope, or camera
+configurations associated with a site)</p>
+<p class="graphviz">
+<img src="../_images/graphviz-d05980c191cc5d32e36a5ad04065208478677077.svg" alt="digraph config {
+
+        node [shape=record fontsize=12 fontname=&quot;Arial&quot;];
+        edge [fontname = &quot;Arial&quot; fontsize = 10 dir=back]
+
+
+        ObsConfig [fillcolor=dodgerblue3, fontcolor=white, style=filled]
+        SubarrayConfig [fillcolor=dodgerblue3, fontcolor=white, style=filled] 
+        ArrayTriggerConfig [fillcolor=goldenrod4,
+                            fontcolor=white, style=filled]
+        TelescopeTriggerConfig [fillcolor=goldenrod4,
+                                fontcolor=white, style=filled]
+
+        ObsConfig -&gt; SubarrayConfig [label=&quot;run_id&quot;];
+        ObsConfig -&gt; ArrayTriggerConfig [label=&quot;run_type&quot;];
+        ArrayTriggerConfig -&gt; TelescopeTriggerConfig [label=&quot;run_type,\ntel_id&quot;];       
+        SubarrayConfig -&gt; ArrayConfig [label=&quot;site_id,\nversion&quot;]      
+        ArrayConfig -&gt; TelescopeConfig [label=&quot;tel_id&quot;];
+        TelescopeConfig -&gt; CameraConfig [label=&quot;tel_id&quot;];
+        TelescopeConfig -&gt; OpticsConfig [label=&quot;tel_id&quot;];
+
+
+}" />
+</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -238,7 +338,7 @@ pass-by-value (which could be slow).</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Jul 2015.
+      Last updated on 08 Jul 2015.
     </p>
   </div>
 
@@ -258,7 +358,7 @@ pass-by-value (which could be slow).</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev137',
+            VERSION:'0.0.dev150',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

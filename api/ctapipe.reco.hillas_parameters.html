@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>hillas_parameters &mdash; ctapipe v0.0.dev137</title>
+  <title>hillas_parameters &mdash; ctapipe v0.0.dev150</title>
   
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev137" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev150" href="../index.html"/>
         <link rel="up" title="Reconstruction" href="../reco/index.html"/>
         <link rel="next" title="hillas_parameters_2" href="ctapipe.reco.hillas_parameters_2.html"/>
-        <link rel="prev" title="shower_model" href="ctapipe.reco.shower_model.html"/> 
+        <link rel="prev" title="generate_2d_shower_model" href="ctapipe.reco.generate_2d_shower_model.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -88,6 +88,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
@@ -97,7 +98,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#module">Module</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul class="current">
@@ -181,10 +181,7 @@
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hillas_parameters</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary of Hillas parameters</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>hillas_parameters</strong> : MomentParameters</p>
 </td>
 </tr>
 </tbody>
@@ -202,7 +199,7 @@
         <a href="ctapipe.reco.hillas_parameters_2.html" class="btn btn-neutral float-right" title="hillas_parameters_2"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.shower_model.html" class="btn btn-neutral" title="shower_model"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.reco.generate_2d_shower_model.html" class="btn btn-neutral" title="generate_2d_shower_model"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -212,7 +209,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Jul 2015.
+      Last updated on 08 Jul 2015.
     </p>
   </div>
 
@@ -232,7 +229,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev137',
+            VERSION:'0.0.dev150',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

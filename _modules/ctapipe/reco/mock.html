@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.reco.mock &mdash; ctapipe v0.0.dev137</title>
+  <title>ctapipe.reco.mock &mdash; ctapipe v0.0.dev150</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev137" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev150" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -86,6 +86,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/code-guidelines.html">Code Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
@@ -95,7 +96,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#reference-api">Reference/API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#module">Module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a><ul>
@@ -158,23 +158,25 @@
 
 <span class="sd">.. code-block:: python</span>
 
-<span class="sd">    from ctapipe.io import camera</span>
-<span class="sd">    geom = camera.make_rectangular_camera_geometry()</span>
-<span class="sd">    showermodel = shower_model(centroid=[0.25, 0.0], </span>
-<span class="sd">                               length=0.1,width=0.02, psi=np.radians(40))</span>
-<span class="sd">    image, signal, noise = make_mock_shower_image(geom, showermodel.pdf)</span>
-<span class="sd">                                            </span>
+<span class="sd">    &gt;&gt;&gt; from ctapipe.io import camera</span>
+<span class="sd">    &gt;&gt;&gt; geom = camera.make_rectangular_camera_geometry(20,20)</span>
+<span class="sd">    &gt;&gt;&gt; showermodel = generate_2d_shower_model(centroid=[0.25, 0.0], length=0.1,width=0.02, psi=np.radians(40))</span>
+<span class="sd">    &gt;&gt;&gt; image, signal, noise = make_mock_shower_image(geom, showermodel.pdf)</span>
+<span class="sd">    &gt;&gt;&gt; print(image.shape)</span>
+<span class="sd">    (400,)</span>
+<span class="sd">                                           </span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;shower_model&#39;</span><span class="p">,</span>
+    <span class="s">&#39;generate_2d_shower_model&#39;</span><span class="p">,</span>
     <span class="s">&#39;make_mock_shower_image&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 
-<div class="viewcode-block" id="shower_model"><a class="viewcode-back" href="../../../api/ctapipe.reco.shower_model.html#ctapipe.reco.shower_model">[docs]</a><span class="k">def</span> <span class="nf">shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">psi</span><span class="p">):</span>
+
+<div class="viewcode-block" id="generate_2d_shower_model"><a class="viewcode-back" href="../../../api/ctapipe.reco.mock.generate_2d_shower_model.html#ctapipe.reco.generate_2d_shower_model">[docs]</a><span class="k">def</span> <span class="nf">generate_2d_shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">psi</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create a stastical model (2D gaussian) for a shower image in a</span>
 <span class="sd">    camera. The model&#39;s PDF (`model.pdf`) can be passed to</span>
 <span class="sd">    `make_mock_shower_image`.</span>
@@ -204,10 +206,11 @@
     <span class="k">return</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">centroid</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">rotated_covariance</span><span class="p">)</span>
 
 </div>
-<div class="viewcode-block" id="make_mock_shower_image"><a class="viewcode-back" href="../../../api/ctapipe.reco.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image">[docs]</a><span class="k">def</span> <span class="nf">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">showerpdf</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">nsb_level_pe</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<div class="viewcode-block" id="make_mock_shower_image"><a class="viewcode-back" href="../../../api/ctapipe.reco.mock.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image">[docs]</a><span class="k">def</span> <span class="nf">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">showerpdf</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">nsb_level_pe</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Generates a pedestal-subtracted shower image from a statistical</span>
 <span class="sd">    shower model (as generated by `shower_model`). The resulting image</span>
-<span class="sd">    will be in the same format as the given `~ctapipe.io.camera.CameraGeometry`.</span>
+<span class="sd">    will be in the same format as the given</span>
+<span class="sd">    `~ctapipe.io.camera.CameraGeometry`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -247,7 +250,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Jul 2015.
+      Last updated on 08 Jul 2015.
     </p>
   </div>
 
@@ -267,7 +270,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev137',
+            VERSION:'0.0.dev150',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

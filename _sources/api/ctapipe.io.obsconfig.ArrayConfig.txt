@@ -1,0 +1,44 @@
+
+
+ArrayConfig
+================================
+
+.. currentmodule:: ctapipe.io.obsconfig
+
+.. autoclass:: ArrayConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+   
+      ~ArrayConfig.num_tels
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Attributes Documentation
+
+   
+   .. autoattribute:: num_tels
+
+   
+   
+
+   
+   
+   

@@ -1,0 +1,29 @@
+
+
+TelescopeConfig
+====================================
+
+.. currentmodule:: ctapipe.io.obsconfig
+
+.. autoclass:: TelescopeConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

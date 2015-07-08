@@ -1,0 +1,29 @@
+
+
+SimObsConfig
+=================================
+
+.. currentmodule:: ctapipe.io.obsconfig
+
+.. autoclass:: SimObsConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
