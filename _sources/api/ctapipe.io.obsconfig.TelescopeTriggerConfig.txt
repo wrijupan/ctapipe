@@ -1,11 +1,11 @@
 
 
-TriggerConfig
-==================================
+TelescopeTriggerConfig
+===========================================
 
 .. currentmodule:: ctapipe.io.obsconfig
 
-.. autoclass:: TriggerConfig
+.. autoclass:: TelescopeTriggerConfig
    :show-inheritance:
 
    

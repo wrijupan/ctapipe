@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.reco.mock &mdash; ctapipe v0.0.dev154</title>
+  <title>ctapipe.reco.mock &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev154" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev175" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -151,8 +151,9 @@
           <div role="main">
             
   <h1>Source code for ctapipe.reco.mock</h1><div class="highlight"><pre>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">utilities to generate mock (fake) reconstruction inputs for testing purposes.</span>
+<span class="sd">Utilities to generate mock (fake) reconstruction inputs for testing purposes.</span>
 
 <span class="sd">Example:</span>
 
@@ -177,7 +178,7 @@
 
 
 <div class="viewcode-block" id="generate_2d_shower_model"><a class="viewcode-back" href="../../../api/ctapipe.reco.mock.generate_2d_shower_model.html#ctapipe.reco.generate_2d_shower_model">[docs]</a><span class="k">def</span> <span class="nf">generate_2d_shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">psi</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a stastical model (2D gaussian) for a shower image in a</span>
+    <span class="sd">&quot;&quot;&quot;Create a statistical model (2D gaussian) for a shower image in a</span>
 <span class="sd">    camera. The model&#39;s PDF (`model.pdf`) can be passed to</span>
 <span class="sd">    `make_mock_shower_image`.</span>
 
@@ -250,7 +251,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 08 Jul 2015.
+      Last updated on 10 Jul 2015.
     </p>
   </div>
 
@@ -270,7 +271,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev154',
+            VERSION:'0.0.dev175',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

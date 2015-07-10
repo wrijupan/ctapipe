@@ -26,6 +26,14 @@ ArrayConfig
 
    
    
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+   
+      ~ArrayConfig.tel
+
+   
    
 
    
@@ -40,5 +48,12 @@ ArrayConfig
    
 
    
+   
+
+   .. rubric:: Methods Documentation
+
+   
+   .. automethod:: tel
+
    
    

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.obsconfig &mdash; ctapipe v0.0.dev154</title>
+  <title>ctapipe.io.obsconfig &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev154" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev175" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -151,7 +151,8 @@
           <div role="main">
             
   <h1>Source code for ctapipe.io.obsconfig</h1><div class="highlight"><pre>
-<span class="sd">&quot;&quot;&quot;Defintion of Observation Configurations. </span>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+<span class="sd">&quot;&quot;&quot;Definition of Observation Configurations.</span>
 
 <span class="sd">The ObsConfig class defines a hierarchy of classes that contain the</span>
 <span class="sd">configuration information related to an observation. Each sub-config</span>
@@ -165,21 +166,40 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<div class="viewcode-block" id="get_array_id_for_run"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.get_array_id_for_run.html#ctapipe.io.obsconfig.get_array_id_for_run">[docs]</a><span class="k">def</span> <span class="nf">get_array_id_for_run</span><span class="p">(</span> <span class="n">run_id</span> <span class="p">):</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;get_site_id_for_run&#39;</span><span class="p">,</span>
+    <span class="s">&#39;get_site_id_for_time&#39;</span><span class="p">,</span>
+    <span class="s">&#39;BaseConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;CameraConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;ArrayTriggerConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TelescopeTriggerConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;TelescopeConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;ArrayConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;OpticsConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SubarrayConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;ObsConfig&#39;</span><span class="p">,</span>
+    <span class="s">&#39;SimObsConfig&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="get_site_id_for_run"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.get_site_id_for_run.html#ctapipe.io.obsconfig.get_site_id_for_run">[docs]</a><span class="k">def</span> <span class="nf">get_site_id_for_run</span><span class="p">(</span><span class="n">run_id</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; lookup which array and version was used for a given run &quot;&quot;&quot;</span>
     
-    <span class="k">return</span> <span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span>
+    <span class="k">return</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span>
 </div>
-<div class="viewcode-block" id="get_array_id_for_time"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.get_array_id_for_time.html#ctapipe.io.obsconfig.get_array_id_for_time">[docs]</a><span class="k">def</span> <span class="nf">get_array_id_for_time</span><span class="p">(</span> <span class="n">obstime</span> <span class="p">):</span>
+<div class="viewcode-block" id="get_site_id_for_time"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.get_site_id_for_time.html#ctapipe.io.obsconfig.get_site_id_for_time">[docs]</a><span class="k">def</span> <span class="nf">get_site_id_for_time</span><span class="p">(</span><span class="n">obstime</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;lookup which array and version was used for a given obstime</span>
 <span class="sd">    (astropy.time.Time)</span>
 
 <span class="sd">    Example::</span>
-<span class="sd">        aid,aver = get_array_id_for_time( Time(&quot;2015-01-01&quot;, scale=&#39;utc&#39;) ) </span>
+<span class="sd">        aid,aver = get_site_id_for_time( Time(&quot;2015-01-01&quot;, scale=&#39;utc&#39;) ) </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="k">return</span> <span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span>
+    <span class="k">return</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span>
 
 </div>
 <div class="viewcode-block" id="BaseConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig">[docs]</a><span class="k">class</span> <span class="nc">BaseConfig</span><span class="p">:</span>
@@ -190,22 +210,32 @@
     <span class="sd">&quot;&quot;&quot;Definition of a Camera, including its pixel geometry and other</span>
 <span class="sd">    characteristics</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">array_id</span> <span class="o">=</span> <span class="n">array_id</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">array_version</span> <span class="o">=</span> <span class="n">array_version</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">site_id</span> <span class="o">=</span> <span class="n">site_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tel_id</span> <span class="o">=</span> <span class="n">tel_id</span>
         
         <span class="c"># the following are to be loaded:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">version_id</span> <span class="o">=</span><span class="n">version_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pixel_type</span> <span class="o">=</span> <span class="s">&quot;hexagonal&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pix_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pix_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pix_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_x</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_y</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_z</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pix_area</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">focal_plane_offset</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c"># offset from focal_length</span>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="CameraConfig.load_from_file"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig.load_from_file">[docs]</a>    <span class="k">def</span> <span class="nf">load_from_file</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+</div></div>
+<div class="viewcode-block" id="ArrayTriggerConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.ArrayTriggerConfig.html#ctapipe.io.obsconfig.ArrayTriggerConfig">[docs]</a><span class="k">class</span> <span class="nc">ArrayTriggerConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Contains trigger info for a given run_type &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
 </div>
-<div class="viewcode-block" id="TriggerConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.TriggerConfig.html#ctapipe.io.obsconfig.TriggerConfig">[docs]</a><span class="k">class</span> <span class="nc">TriggerConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Contains trigger info for a given run_id &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TelescopeTriggerConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.TelescopeTriggerConfig.html#ctapipe.io.obsconfig.TelescopeTriggerConfig">[docs]</a><span class="k">class</span> <span class="nc">TelescopeTriggerConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Contains trigger info for a given run_type &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
         </div>
@@ -215,33 +245,48 @@
 <span class="sd">    camera</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">,</span> <span class="n">tel_version</span><span class="p">):</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_array_id</span> <span class="o">=</span> <span class="n">array_id</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tel_id</span> <span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_site_id</span> <span class="o">=</span> <span class="n">site_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tel_id</span> <span class="o">=</span> <span class="n">tel_id</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tel_version</span> <span class="o">=</span> <span class="n">tel_version</span>
 
         <span class="c"># the following are to be loaded:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_optics</span> <span class="o">=</span> <span class="n">OpticsConfig</span><span class="p">(</span><span class="n">array_id</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">,</span> <span class="n">tel_version</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_camera</span> <span class="o">=</span> <span class="n">CameraConfig</span><span class="p">(</span><span class="n">array_id</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">,</span> <span class="n">tel_version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_optics</span> <span class="o">=</span> <span class="n">OpticsConfig</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_camera</span> <span class="o">=</span> <span class="n">CameraConfig</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="ArrayConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig">[docs]</a><span class="k">class</span> <span class="nc">ArrayConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Overall description of an array (including all telescope that are</span>
 <span class="sd">    built or forseen. This is not a subarray&quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_site_id</span> <span class="o">=</span> <span class="n">site_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="c"># make a defaultdict of TelescopeConfigs, with everything but</span>
         <span class="c"># tel_id as frozen parameters. Then it will load</span>
-        <span class="c"># &quot;on-the-fly&quot;... Should this go inside ArrayConfig?</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_telconfig</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">TelescopeConfig</span><span class="p">)</span>
+        <span class="c"># &quot;on-the-fly&quot;</span>
+        <span class="n">TelescopeConfigPartial</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">TelescopeConfig</span><span class="p">,</span> <span class="n">site_id</span><span class="o">=</span><span class="n">site_id</span><span class="p">,</span>
+                                         <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_telconfig</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">TelescopeConfigPartial</span><span class="p">)</span>
         
         <span class="c"># the telescope positions and ids indexed by index (0-N)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tel_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tel_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tel_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tel_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tel_x</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tel_y</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tel_z</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tel_ids</span> <span class="o">=</span> <span class="p">[]</span>
 
+<div class="viewcode-block" id="ArrayConfig.tel"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig.tel">[docs]</a>    <span class="k">def</span> <span class="nf">tel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tel_id</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tel_ids</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;tel_id out of range&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_telconfig</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_telconfig</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">TelescopeConfig</span><span class="p">(</span><span class="n">tel_id</span><span class="p">,</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">_site_id</span><span class="p">,</span>
+                                                      <span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_telconfig</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span>
+</div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">num_tels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tel_id</span><span class="p">)</span>
@@ -252,10 +297,10 @@
 <span class="sd">    overall mirror characteristics and the fascets</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">tel_id</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">OpticsConfig</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">array_id</span> <span class="o">=</span> <span class="n">array_id</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">array_version</span> <span class="o">=</span> <span class="n">array_version</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">site_id</span> <span class="o">=</span> <span class="n">site_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">version</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tel_id</span> <span class="o">=</span> <span class="n">tel_id</span>
 
         <span class="c"># must load the following</span>
@@ -266,6 +311,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">facet_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">facet_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">facet_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()</span>
+
 </div>
 <div class="viewcode-block" id="SubarrayConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.SubarrayConfig.html#ctapipe.io.obsconfig.SubarrayConfig">[docs]</a><span class="k">class</span> <span class="nc">SubarrayConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Description of a particular Subarray used during an observation or</span>
@@ -274,10 +320,10 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">run_id</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SubarrayConfig</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">run_id</span> <span class="o">=</span> <span class="n">run_id</span>
+
 </div>
 <div class="viewcode-block" id="ObsConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig">[docs]</a><span class="k">class</span> <span class="nc">ObsConfig</span><span class="p">(</span><span class="n">BaseConfig</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;All configuration information related to an observarion run</span>
+    <span class="sd">&quot;&quot;&quot;All configuration information related to an observation run.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">run_id</span><span class="p">):</span>
@@ -285,7 +331,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_run_id</span> <span class="o">=</span> <span class="n">run_id</span>
 
         <span class="c"># the overall array information (not just the subarray)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">ArrayConfig</span><span class="p">(</span><span class="n">array_id</span><span class="p">,</span> <span class="n">array_version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_array</span> <span class="o">=</span> <span class="n">ArrayConfig</span><span class="p">(</span><span class="n">site_id</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
 
         <span class="c"># the subarray information (e.g. a list of active telescopes, etc)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_subarray</span> <span class="o">=</span> <span class="n">SubarrayConfig</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span>
@@ -295,13 +341,11 @@
 
         </div>
 <div class="viewcode-block" id="SimObsConfig"><a class="viewcode-back" href="../../../api/ctapipe.io.obsconfig.SimObsConfig.html#ctapipe.io.obsconfig.SimObsConfig">[docs]</a><span class="k">class</span> <span class="nc">SimObsConfig</span><span class="p">(</span><span class="n">ObsConfig</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; ObsConfig from a simulation run &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;ObsConfig from a simulation run.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mc_run_id</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_mc_run_id</span> <span class="o">=</span> <span class="n">mc_run_id</span>
-
-    
-        </div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mc_run_id</span> <span class="o">=</span> <span class="n">mc_run_id</span></div>
 </pre></div>
 
           </div>
@@ -313,7 +357,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 08 Jul 2015.
+      Last updated on 10 Jul 2015.
     </p>
   </div>
 
@@ -333,7 +377,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev154',
+            VERSION:'0.0.dev175',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

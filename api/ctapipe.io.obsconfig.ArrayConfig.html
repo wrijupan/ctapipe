@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ArrayConfig &mdash; ctapipe v0.0.dev154</title>
+  <title>ArrayConfig &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev154" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev175" href="../index.html"/>
         <link rel="up" title="Input/Output" href="../io/index.html"/>
-        <link rel="next" title="BaseConfig" href="ctapipe.io.obsconfig.BaseConfig.html"/>
-        <link rel="prev" title="get_array_id_for_time" href="ctapipe.io.obsconfig.get_array_id_for_time.html"/> 
+        <link rel="next" title="OpticsConfig" href="ctapipe.io.obsconfig.OpticsConfig.html"/>
+        <link rel="prev" title="TelescopeConfig" href="ctapipe.io.obsconfig.TelescopeConfig.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -158,7 +158,7 @@
 <h1>ArrayConfig<a class="headerlink" href="#arrayconfig" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.io.obsconfig.ArrayConfig">
-<em class="property">class </em><code class="descclassname">ctapipe.io.obsconfig.</code><code class="descname">ArrayConfig</code><span class="sig-paren">(</span><em>array_id</em>, <em>array_version</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#ArrayConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.ArrayConfig" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.io.obsconfig.</code><code class="descname">ArrayConfig</code><span class="sig-paren">(</span><em>site_id</em>, <em>version</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#ArrayConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.ArrayConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig" title="ctapipe.io.obsconfig.BaseConfig"><code class="xref py py-class docutils literal"><span class="pre">ctapipe.io.obsconfig.BaseConfig</span></code></a></p>
 <p>Overall description of an array (including all telescope that are
 built or forseen. This is not a subarray</p>
@@ -174,10 +174,28 @@ built or forseen. This is not a subarray</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Methods Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.io.obsconfig.ArrayConfig.tel" title="ctapipe.io.obsconfig.ArrayConfig.tel"><code class="xref py py-obj docutils literal"><span class="pre">tel</span></code></a>(tel_id)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Attributes Documentation</p>
 <dl class="attribute">
 <dt id="ctapipe.io.obsconfig.ArrayConfig.num_tels">
 <code class="descname">num_tels</code><a class="headerlink" href="#ctapipe.io.obsconfig.ArrayConfig.num_tels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="ctapipe.io.obsconfig.ArrayConfig.tel">
+<code class="descname">tel</code><span class="sig-paren">(</span><em>tel_id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#ArrayConfig.tel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.ArrayConfig.tel" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -190,10 +208,10 @@ built or forseen. This is not a subarray</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.io.obsconfig.BaseConfig.html" class="btn btn-neutral float-right" title="BaseConfig"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.io.obsconfig.OpticsConfig.html" class="btn btn-neutral float-right" title="OpticsConfig"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.io.obsconfig.get_array_id_for_time.html" class="btn btn-neutral" title="get_array_id_for_time"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.io.obsconfig.TelescopeConfig.html" class="btn btn-neutral" title="TelescopeConfig"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -203,7 +221,7 @@ built or forseen. This is not a subarray</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 08 Jul 2015.
+      Last updated on 10 Jul 2015.
     </p>
   </div>
 
@@ -223,7 +241,7 @@ built or forseen. This is not a subarray</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev154',
+            VERSION:'0.0.dev175',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

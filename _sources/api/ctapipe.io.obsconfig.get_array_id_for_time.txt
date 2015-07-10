@@ -1,8 +1,0 @@
-
-
-get_array_id_for_time
-==========================================
-
-.. currentmodule:: ctapipe.io.obsconfig
-
-.. autofunction:: get_array_id_for_time

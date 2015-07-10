@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>get_array_id_for_time &mdash; ctapipe v0.0.dev154</title>
+  <title>get_site_id_for_time &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -30,10 +30,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev154" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev175" href="../index.html"/>
         <link rel="up" title="Input/Output" href="../io/index.html"/>
-        <link rel="next" title="ArrayConfig" href="ctapipe.io.obsconfig.ArrayConfig.html"/>
-        <link rel="prev" title="get_array_id_for_run" href="ctapipe.io.obsconfig.get_array_id_for_run.html"/> 
+        <link rel="next" title="BaseConfig" href="ctapipe.io.obsconfig.BaseConfig.html"/>
+        <link rel="prev" title="get_site_id_for_run" href="ctapipe.io.obsconfig.get_site_id_for_run.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -143,10 +143,10 @@
       
           <li><a href="../io/index.html">Input/Output</a> &raquo;</li>
       
-    <li>get_array_id_for_time</li>
+    <li>get_site_id_for_time</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.io.obsconfig.get_array_id_for_time.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.io.obsconfig.get_site_id_for_time.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -154,16 +154,16 @@
 </div>
           <div role="main">
             
-  <div class="section" id="get-array-id-for-time">
-<h1>get_array_id_for_time<a class="headerlink" href="#get-array-id-for-time" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="get-site-id-for-time">
+<h1>get_site_id_for_time<a class="headerlink" href="#get-site-id-for-time" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="ctapipe.io.obsconfig.get_array_id_for_time">
-<code class="descclassname">ctapipe.io.obsconfig.</code><code class="descname">get_array_id_for_time</code><span class="sig-paren">(</span><em>obstime</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#get_array_id_for_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.get_array_id_for_time" title="Permalink to this definition">¶</a></dt>
+<dt id="ctapipe.io.obsconfig.get_site_id_for_time">
+<code class="descclassname">ctapipe.io.obsconfig.</code><code class="descname">get_site_id_for_time</code><span class="sig-paren">(</span><em>obstime</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#get_site_id_for_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.get_site_id_for_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>lookup which array and version was used for a given obstime
 (astropy.time.Time)</p>
 <dl class="docutils">
 <dt>Example::</dt>
-<dd>aid,aver = get_array_id_for_time( Time(&#8220;2015-01-01&#8221;, scale=&#8217;utc&#8217;) )</dd>
+<dd>aid,aver = get_site_id_for_time( Time(&#8220;2015-01-01&#8221;, scale=&#8217;utc&#8217;) )</dd>
 </dl>
 </dd></dl>
 
@@ -175,10 +175,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.io.obsconfig.ArrayConfig.html" class="btn btn-neutral float-right" title="ArrayConfig"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.io.obsconfig.BaseConfig.html" class="btn btn-neutral float-right" title="BaseConfig"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.io.obsconfig.get_array_id_for_run.html" class="btn btn-neutral" title="get_array_id_for_run"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.io.obsconfig.get_site_id_for_run.html" class="btn btn-neutral" title="get_site_id_for_run"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -188,7 +188,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 08 Jul 2015.
+      Last updated on 10 Jul 2015.
     </p>
   </div>
 
@@ -208,7 +208,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev154',
+            VERSION:'0.0.dev175',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>HighOrderMomentParameters &mdash; ctapipe v0.0.dev175</title>
+  <title>get_site_id_for_run &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -31,9 +31,9 @@
 
   
     <link rel="top" title="ctapipe v0.0.dev175" href="../index.html"/>
-        <link rel="up" title="Reconstruction" href="../reco/index.html"/>
-        <link rel="next" title="MomentParameters" href="ctapipe.reco.MomentParameters.html"/>
-        <link rel="prev" title="make_mock_shower_image" href="ctapipe.reco.make_mock_shower_image.html"/> 
+        <link rel="up" title="Input/Output" href="../io/index.html"/>
+        <link rel="next" title="get_site_id_for_time" href="ctapipe.io.obsconfig.get_site_id_for_time.html"/>
+        <link rel="prev" title="CameraGeometry" href="ctapipe.io.camera.CameraGeometry.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -94,16 +94,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../io/index.html">Input/Output</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
@@ -141,12 +141,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
+          <li><a href="../io/index.html">Input/Output</a> &raquo;</li>
       
-    <li>HighOrderMomentParameters</li>
+    <li>get_site_id_for_run</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.reco.HighOrderMomentParameters.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.io.obsconfig.get_site_id_for_run.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -154,17 +154,12 @@
 </div>
           <div role="main">
             
-  <div class="section" id="highordermomentparameters">
-<h1>HighOrderMomentParameters<a class="headerlink" href="#highordermomentparameters" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="ctapipe.reco.HighOrderMomentParameters">
-<em class="property">class </em><code class="descclassname">ctapipe.reco.</code><code class="descname">HighOrderMomentParameters</code><span class="sig-paren">(</span><em>skewness</em>, <em>kurtosis</em>, <em>asymmetry</em><span class="sig-paren">)</span><a class="headerlink" href="#ctapipe.reco.HighOrderMomentParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
-<p>Shower moment parameters of third order.</p>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="ctapipe.reco.MomentParameters.html#ctapipe.reco.MomentParameters" title="ctapipe.reco.MomentParameters"><code class="xref py py-obj docutils literal"><span class="pre">MomentParameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters" title="ctapipe.reco.hillas_parameters"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2" title="ctapipe.reco.hillas_parameters_2"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters_2</span></code></a></p>
-</div>
+  <div class="section" id="get-site-id-for-run">
+<h1>get_site_id_for_run<a class="headerlink" href="#get-site-id-for-run" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctapipe.io.obsconfig.get_site_id_for_run">
+<code class="descclassname">ctapipe.io.obsconfig.</code><code class="descname">get_site_id_for_run</code><span class="sig-paren">(</span><em>run_id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/obsconfig.html#get_site_id_for_run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.obsconfig.get_site_id_for_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>lookup which array and version was used for a given run</p>
 </dd></dl>
 
 </div>
@@ -175,10 +170,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.reco.MomentParameters.html" class="btn btn-neutral float-right" title="MomentParameters"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.io.obsconfig.get_site_id_for_time.html" class="btn btn-neutral float-right" title="get_site_id_for_time"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.make_mock_shower_image.html" class="btn btn-neutral" title="make_mock_shower_image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.io.camera.CameraGeometry.html" class="btn btn-neutral" title="CameraGeometry"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

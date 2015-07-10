@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev154</title>
+  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev154" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev175" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -151,6 +151,7 @@
           <div role="main">
             
   <h1>Source code for ctapipe.io.camera</h1><div class="highlight"><pre>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
 <span class="sd">&quot;&quot;&quot;Utilities for reading or working with Camera geometry files</span>
 
 <span class="sd">TODO:</span>
@@ -181,6 +182,10 @@
                              <span class="s">&#39;pix_area&#39;</span><span class="p">,</span>
                              <span class="s">&#39;neighbors&#39;</span><span class="p">,</span>
                              <span class="s">&#39;pix_type&#39;</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;Camera geometry.</span>
+
+<span class="sd">TODO: describe a bit what this is ...</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="find_neighbor_pixels"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels">[docs]</a><span class="k">def</span> <span class="nf">find_neighbor_pixels</span><span class="p">(</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">,</span> <span class="n">rad</span><span class="p">):</span>
@@ -230,13 +235,11 @@
 <span class="sd">    -------</span>
 <span class="sd">    a `CameraGeometry` object</span>
 
-
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
 <span class="sd">    &gt;&gt;&gt; geom_ct1 = get_camera_geometry( &quot;hess&quot;, 1 )</span>
 <span class="sd">    &gt;&gt;&gt; neighbors_pix_1 = geom_ct1.pix_id[geom_ct1.neighbors[1]]</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c"># let&#39;s assume the instrument name is encoded in the</span>
@@ -339,7 +342,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 08 Jul 2015.
+      Last updated on 10 Jul 2015.
     </p>
   </div>
 
@@ -359,7 +362,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev154',
+            VERSION:'0.0.dev175',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

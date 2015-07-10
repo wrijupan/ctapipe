@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev154</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev175</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev154" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev175" href="../index.html"/>
         <link rel="next" title="get_camera_geometry" href="../api/ctapipe.io.camera.get_camera_geometry.html"/>
         <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
 
@@ -207,7 +207,7 @@ pass-by-value (which could be slow).</li>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a>(cam_id,&nbsp;pix_id,&nbsp;pix_x,&nbsp;pix_y,&nbsp;...)</td>
-<td></td>
+<td>Camera geometry.</td>
 </tr>
 </tbody>
 </table>
@@ -215,7 +215,7 @@ pass-by-value (which could be slow).</li>
 </div>
 <div class="section" id="module-ctapipe.io.obsconfig">
 <span id="ctapipe-io-obsconfig-module"></span><h3>ctapipe.io.obsconfig Module<a class="headerlink" href="#module-ctapipe.io.obsconfig" title="Permalink to this headline">¶</a></h3>
-<p>Defintion of Observation Configurations.</p>
+<p>Definition of Observation Configurations.</p>
 <p>The ObsConfig class defines a hierarchy of classes that contain the
 configuration information related to an observation. Each sub-config
 should additionally be loadable on its own</p>
@@ -231,10 +231,10 @@ Monte-Carlo information</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_array_id_for_run.html#ctapipe.io.obsconfig.get_array_id_for_run" title="ctapipe.io.obsconfig.get_array_id_for_run"><code class="xref py py-obj docutils literal"><span class="pre">get_array_id_for_run</span></code></a>(run_id)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_site_id_for_run.html#ctapipe.io.obsconfig.get_site_id_for_run" title="ctapipe.io.obsconfig.get_site_id_for_run"><code class="xref py py-obj docutils literal"><span class="pre">get_site_id_for_run</span></code></a>(run_id)</td>
 <td>lookup which array and version was used for a given run</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_array_id_for_time.html#ctapipe.io.obsconfig.get_array_id_for_time" title="ctapipe.io.obsconfig.get_array_id_for_time"><code class="xref py py-obj docutils literal"><span class="pre">get_array_id_for_time</span></code></a>(obstime)</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_site_id_for_time.html#ctapipe.io.obsconfig.get_site_id_for_time" title="ctapipe.io.obsconfig.get_site_id_for_time"><code class="xref py py-obj docutils literal"><span class="pre">get_site_id_for_time</span></code></a>(obstime)</td>
 <td>lookup which array and version was used for a given obstime</td>
 </tr>
 </tbody>
@@ -248,32 +248,35 @@ Monte-Carlo information</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig" title="ctapipe.io.obsconfig.ArrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">ArrayConfig</span></code></a>(array_id,&nbsp;array_version)</td>
-<td>Overall description of an array (including all telescope that are built or forseen.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig" title="ctapipe.io.obsconfig.BaseConfig"><code class="xref py py-obj docutils literal"><span class="pre">BaseConfig</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig" title="ctapipe.io.obsconfig.BaseConfig"><code class="xref py py-obj docutils literal"><span class="pre">BaseConfig</span></code></a></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig" title="ctapipe.io.obsconfig.CameraConfig"><code class="xref py py-obj docutils literal"><span class="pre">CameraConfig</span></code></a>(array_id,&nbsp;array_version,&nbsp;tel_id)</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig" title="ctapipe.io.obsconfig.CameraConfig"><code class="xref py py-obj docutils literal"><span class="pre">CameraConfig</span></code></a>(site_id,&nbsp;version,&nbsp;tel_id)</td>
 <td>Definition of a Camera, including its pixel geometry and other</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig" title="ctapipe.io.obsconfig.ObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">ObsConfig</span></code></a>(run_id)</td>
-<td>All configuration information related to an observarion run</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ArrayTriggerConfig.html#ctapipe.io.obsconfig.ArrayTriggerConfig" title="ctapipe.io.obsconfig.ArrayTriggerConfig"><code class="xref py py-obj docutils literal"><span class="pre">ArrayTriggerConfig</span></code></a></td>
+<td>Contains trigger info for a given run_type</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.OpticsConfig.html#ctapipe.io.obsconfig.OpticsConfig" title="ctapipe.io.obsconfig.OpticsConfig"><code class="xref py py-obj docutils literal"><span class="pre">OpticsConfig</span></code></a>(array_id,&nbsp;array_version,&nbsp;tel_id)</td>
-<td>Definition of Telescope Optics, including information on the</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TelescopeTriggerConfig.html#ctapipe.io.obsconfig.TelescopeTriggerConfig" title="ctapipe.io.obsconfig.TelescopeTriggerConfig"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeTriggerConfig</span></code></a></td>
+<td>Contains trigger info for a given run_type</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SimObsConfig.html#ctapipe.io.obsconfig.SimObsConfig" title="ctapipe.io.obsconfig.SimObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">SimObsConfig</span></code></a>(mc_run_id)</td>
-<td>ObsConfig from a simulation run</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SubarrayConfig.html#ctapipe.io.obsconfig.SubarrayConfig" title="ctapipe.io.obsconfig.SubarrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">SubarrayConfig</span></code></a>(run_id)</td>
-<td>Description of a particular Subarray used during an observation or</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TelescopeConfig.html#ctapipe.io.obsconfig.TelescopeConfig" title="ctapipe.io.obsconfig.TelescopeConfig"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeConfig</span></code></a>(array_id,&nbsp;array_version,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TelescopeConfig.html#ctapipe.io.obsconfig.TelescopeConfig" title="ctapipe.io.obsconfig.TelescopeConfig"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeConfig</span></code></a>(tel_id,&nbsp;site_id,&nbsp;version)</td>
 <td>Configuration of a single Telescope, including it&#8217;s optics and</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TriggerConfig.html#ctapipe.io.obsconfig.TriggerConfig" title="ctapipe.io.obsconfig.TriggerConfig"><code class="xref py py-obj docutils literal"><span class="pre">TriggerConfig</span></code></a></td>
-<td>Contains trigger info for a given run_id</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig" title="ctapipe.io.obsconfig.ArrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">ArrayConfig</span></code></a>(site_id,&nbsp;version)</td>
+<td>Overall description of an array (including all telescope that are built or forseen.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.OpticsConfig.html#ctapipe.io.obsconfig.OpticsConfig" title="ctapipe.io.obsconfig.OpticsConfig"><code class="xref py py-obj docutils literal"><span class="pre">OpticsConfig</span></code></a>(site_id,&nbsp;version,&nbsp;tel_id)</td>
+<td>Definition of Telescope Optics, including information on the</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SubarrayConfig.html#ctapipe.io.obsconfig.SubarrayConfig" title="ctapipe.io.obsconfig.SubarrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">SubarrayConfig</span></code></a>(run_id)</td>
+<td>Description of a particular Subarray used during an observation or</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig" title="ctapipe.io.obsconfig.ObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">ObsConfig</span></code></a>(run_id)</td>
+<td>All configuration information related to an observation run.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SimObsConfig.html#ctapipe.io.obsconfig.SimObsConfig" title="ctapipe.io.obsconfig.SimObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">SimObsConfig</span></code></a>(mc_run_id)</td>
+<td>ObsConfig from a simulation run.</td>
 </tr>
 </tbody>
 </table>
@@ -281,7 +284,7 @@ Monte-Carlo information</p>
 <div class="section" id="class-inheritance-diagram">
 <h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
 <p class="graphviz">
-<img src="../_images/inheritance-3bfdc44bd3046cfd2a63cfd6ad24160db1937376.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SimObsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.TriggerConfig" class="inheritance"/>
+<img src="../_images/inheritance-d46540f95cbe0afd5209d80d7612c4d9863b55b9.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
 </p>
 <p>Relationship between different configuration objects.  The arrows show
 what information is needed to look up the next level of configuration.
@@ -338,7 +341,7 @@ configurations associated with a site)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 08 Jul 2015.
+      Last updated on 10 Jul 2015.
     </p>
   </div>
 
@@ -358,7 +361,7 @@ configurations associated with a site)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev154',
+            VERSION:'0.0.dev175',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
