@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev175</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev241</title>
   
 
   
@@ -16,7 +16,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -30,8 +30,10 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev175" href="../index.html"/>
-        <link rel="next" title="get_camera_geometry" href="../api/ctapipe.io.camera.get_camera_geometry.html"/>
+
+  
+    <link rel="top" title="ctapipe v0.0.dev241" href="../index.html"/>
+        <link rel="next" title="RawData" href="../api/ctapipe.io.containers.RawData.html"/>
         <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
 
   
@@ -46,9 +48,12 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="../index.html" class="fa fa-home"> ctapipe</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        
+          <a href="../index.html" class="fa fa-home"> ctapipe</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -58,8 +63,9 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
-        
-            <ul class="current">
+          
+          
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
@@ -73,10 +79,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -119,6 +136,7 @@
 </li>
 </ul>
 
+          
         
       </div>
       &nbsp;
@@ -149,7 +167,7 @@
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document">
             
   <div class="section" id="input-output">
 <span id="io"></span><h1>Input/Output<a class="headerlink" href="#input-output" title="Permalink to this headline">¶</a></h1>
@@ -163,6 +181,26 @@ support for some data structures like <a class="reference internal" href="../api
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ctapipe.io.containers">
+<span id="ctapipe-io-containers-module"></span><h3>ctapipe.io.containers Module<a class="headerlink" href="#module-ctapipe.io.containers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="classes">
+<h4>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.containers.RawData.html#ctapipe.io.containers.RawData" title="ctapipe.io.containers.RawData"><code class="xref py py-obj docutils literal"><span class="pre">RawData</span></code></a>([name])</td>
+<td>Storage of a Merged Raw Data Event</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.containers.RawCameraData.html#ctapipe.io.containers.RawCameraData" title="ctapipe.io.containers.RawCameraData"><code class="xref py py-obj docutils literal"><span class="pre">RawCameraData</span></code></a>(tel_id)</td>
+<td>Storage of raw data from a single telescope</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="section" id="module-ctapipe.io.camera">
 <span id="ctapipe-io-camera-module"></span><h3>ctapipe.io.camera Module<a class="headerlink" href="#module-ctapipe.io.camera" title="Permalink to this headline">¶</a></h3>
 <p>Utilities for reading or working with Camera geometry files</p>
@@ -195,11 +233,14 @@ pass-by-value (which could be slow).</li>
 <tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels" title="ctapipe.io.camera.find_neighbor_pixels"><code class="xref py py-obj docutils literal"><span class="pre">find_neighbor_pixels</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;rad)</td>
 <td>use a KD-Tree to quickly find nearest neighbors of the pixels in a</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.guess_camera_geometry.html#ctapipe.io.camera.guess_camera_geometry" title="ctapipe.io.camera.guess_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">guess_camera_geometry</span></code></a>(pix_x:&nbsp;Unit(&#8220;m&#8221;),&nbsp;...)</td>
+<td>returns a CameraGeometry filled in from just the x,y positions</td>
+</tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="classes">
-<h4>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id1">
+<h4>Classes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -223,8 +264,8 @@ should additionally be loadable on its own</p>
 Monte-Carlo information</p>
 <p>When possible, items inside each class should be loaded dynamically
 (e.g. on first access)</p>
-<div class="section" id="id1">
-<h4>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h4>Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -240,8 +281,8 @@ Monte-Carlo information</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="id2">
-<h4>Classes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h4>Classes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -284,7 +325,7 @@ Monte-Carlo information</p>
 <div class="section" id="class-inheritance-diagram">
 <h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
 <p class="graphviz">
-<img src="../_images/inheritance-d46540f95cbe0afd5209d80d7612c4d9863b55b9.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
+<img src="../_images/inheritance-1cba85babe73cb3158bae1be785adf335f3999a2.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
 </p>
 <p>Relationship between different configuration objects.  The arrows show
 what information is needed to look up the next level of configuration.
@@ -328,7 +369,7 @@ configurations associated with a site)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/ctapipe.io.camera.get_camera_geometry.html" class="btn btn-neutral float-right" title="get_camera_geometry"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../api/ctapipe.io.containers.RawData.html" class="btn btn-neutral float-right" title="RawData">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../development/maintainer-info.html" class="btn btn-neutral" title="Maintainer info"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -341,11 +382,12 @@ configurations associated with a site)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 10 Jul 2015.
+      Last updated on 09 Sep 2015.
     </p>
   </div>
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
         </div>
       </div>
@@ -361,7 +403,7 @@ configurations associated with a site)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev175',
+            VERSION:'0.0.dev241',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

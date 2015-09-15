@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; ctapipe v0.0.dev241</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/astropy_logo.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctapipe v0.0.dev241" href="../index.html"/>
+        <link rel="up" title="Configuration" href="../configuration/index.html"/>
+        <link rel="next" title="ConfigurationException" href="ctapipe.configuration.ConfigurationException.html"/>
+        <link rel="prev" title="ConfigurationException" href="ctapipe.configuration.ConfigurationException.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> ctapipe</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../configuration/index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../configuration/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../configuration/index.html">Configuration</a> &raquo;</li>
+      
+    <li>Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/api/ctapipe.configuration.Configuration.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctapipe.configuration.Configuration">
+<em class="property">class </em><code class="descclassname">ctapipe.configuration.</code><code class="descname">Configuration</code><span class="sig-paren">(</span><em>other=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/argparse.html#argparse.ArgumentParser" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">argparse.ArgumentParser</span></code></a></p>
+<p>Configuration initialization if other is not None and its type is
+Configuration, its _entries dictionary content is copy to this
+Configuration class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>other</strong> : Configuration object, optional Copies other._entries dictionary&#8217;s</p>
+<blockquote class="last">
+<div><p>item in self._entries</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.COMMENT_INDEX" title="ctapipe.configuration.Configuration.COMMENT_INDEX"><code class="xref py py-obj docutils literal"><span class="pre">COMMENT_INDEX</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.DATAIMPL" title="ctapipe.configuration.Configuration.DATAIMPL"><code class="xref py py-obj docutils literal"><span class="pre">DATAIMPL</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.DEFAULT" title="ctapipe.configuration.Configuration.DEFAULT"><code class="xref py py-obj docutils literal"><span class="pre">DEFAULT</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.FITS" title="ctapipe.configuration.Configuration.FITS"><code class="xref py py-obj docutils literal"><span class="pre">FITS</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.HEADERIMPL" title="ctapipe.configuration.Configuration.HEADERIMPL"><code class="xref py py-obj docutils literal"><span class="pre">HEADERIMPL</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.INI" title="ctapipe.configuration.Configuration.INI"><code class="xref py py-obj docutils literal"><span class="pre">INI</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.configuration.Configuration.VALUE_INDEX" title="ctapipe.configuration.Configuration.VALUE_INDEX"><code class="xref py py-obj docutils literal"><span class="pre">VALUE_INDEX</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.COMMENT_INDEX">
+<code class="descname">COMMENT_INDEX</code><em class="property"> = 1</em><a class="headerlink" href="#ctapipe.configuration.Configuration.COMMENT_INDEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.DATAIMPL">
+<code class="descname">DATAIMPL</code><em class="property"> = 'DATAIMPL'</em><a class="headerlink" href="#ctapipe.configuration.Configuration.DATAIMPL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.DEFAULT">
+<code class="descname">DEFAULT</code><em class="property"> = 'DEFAULT'</em><a class="headerlink" href="#ctapipe.configuration.Configuration.DEFAULT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.FITS">
+<code class="descname">FITS</code><em class="property"> = 'FITS'</em><a class="headerlink" href="#ctapipe.configuration.Configuration.FITS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.HEADERIMPL">
+<code class="descname">HEADERIMPL</code><em class="property"> = 'HEADERIMPL'</em><a class="headerlink" href="#ctapipe.configuration.Configuration.HEADERIMPL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.INI">
+<code class="descname">INI</code><em class="property"> = 'INI'</em><a class="headerlink" href="#ctapipe.configuration.Configuration.INI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.configuration.Configuration.VALUE_INDEX">
+<code class="descname">VALUE_INDEX</code><em class="property"> = 0</em><a class="headerlink" href="#ctapipe.configuration.Configuration.VALUE_INDEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>comment=''</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create section if not already exist in self._entries 
+Add configuration variable for corresponding section/key
+Into &#8216;DEFAULT&#8217; section by default</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a configuration entry value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.get_comment">
+<code class="descname">get_comment</code><span class="sig-paren">(</span><em>key</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.get_comment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.get_comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a configuration entry comment</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">comment for corresponding section/key pair</p>
+<p class="last">None is no suitable value exits for section/key</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.has_key">
+<code class="descname">has_key</code><span class="sig-paren">(</span><em>key</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.has_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.has_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a configuration entry exist</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>file=&lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</em>, <em>flush=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>print all options (DEFAULT included)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.parse_args">
+<code class="descname">parse_args</code><span class="sig-paren">(</span><em>args=None</em>, <em>namespace=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.parse_args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert argument strings to objects and assign them as an entry in
+self.__dict__[&#8216;DEFAULT&#8217;] Previous calls to add_argument()
+determine exactly what objects are created and how they are
+assigned.  See the documentation for add_argument() for
+details.  By default, the argument strings are taken from
+sys.argv</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>args</strong> : object , optional</p>
+<p><strong>The argument strings are taken from args instead of sys.args</strong></p>
+<p><strong>Warning: args must contains only arguments(flag/value) no program name</strong></p>
+<p><strong>namespace: object , optional</strong></p>
+<p><strong>Populates special attribute __dict__ containing</strong></p>
+<p class="last"><strong>the namespace’s symbol table</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>filenames</em>, <em>impl='FITS'</em>, <em>implementation='DATAIMPL'</em>, <em>encoding=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read filename or a list of filenames and parse configuration entries.</p>
+<p>Files that cannot be opened are silently ignored; this is
+designed so that you can specify a list of potential
+configuration file locations (e.g. current directory, user&#8217;s
+home directory, system wide directory), and all existing
+configuration files in the list will be read.  A single
+filename may also be given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.configuration.Configuration.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>filename</em>, <em>impl='FITS'</em>, <em>implementation='DATAIMPL'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>write configuration entries to a file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ctapipe.configuration.ConfigurationException.html" class="btn btn-neutral float-right" title="ConfigurationException">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ctapipe.configuration.ConfigurationException.html" class="btn btn-neutral" title="ConfigurationException"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ctapipe developers.
+      Last updated on 09 Sep 2015.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.dev241',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

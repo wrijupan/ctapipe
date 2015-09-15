@@ -1,0 +1,8 @@
+
+
+guess_camera_geometry
+=======================================
+
+.. currentmodule:: ctapipe.io.camera
+
+.. autofunction:: guess_camera_geometry

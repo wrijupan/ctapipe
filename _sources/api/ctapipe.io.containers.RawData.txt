@@ -1,0 +1,29 @@
+
+
+RawData
+=============================
+
+.. currentmodule:: ctapipe.io.containers
+
+.. autoclass:: RawData
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev175</title>
+  <title>ctapipe.io.camera &mdash; ctapipe v0.0.dev241</title>
   
 
   
@@ -16,7 +16,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev175" href="../../../index.html"/>
+
+  
+    <link rel="top" title="ctapipe v0.0.dev241" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -45,9 +47,12 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="../../../index.html" class="fa fa-home"> ctapipe</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+        
+          <a href="../../../index.html" class="fa fa-home"> ctapipe</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -57,8 +62,9 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
-        
-            <ul>
+          
+          
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#introduction">Introduction</a></li>
@@ -72,10 +78,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Data Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../core/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../core/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a><ul>
@@ -118,6 +135,7 @@
 </li>
 </ul>
 
+          
         
       </div>
       &nbsp;
@@ -148,7 +166,7 @@
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document">
             
   <h1>Source code for ctapipe.io.camera</h1><div class="highlight"><pre>
 <span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
@@ -158,7 +176,7 @@
 <span class="sd">-----</span>
 
 <span class="sd"> - don&#39;t use `namedtuple` for CameraGeometry, since it&#39;s immutable and thus is</span>
-<span class="sd">   pass-by-value (which could be slow). </span>
+<span class="sd">   pass-by-value (which could be slow).</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -172,13 +190,22 @@
            <span class="s">&#39;get_camera_geometry&#39;</span><span class="p">,</span>
            <span class="s">&#39;load_camera_geometry_from_file&#39;</span><span class="p">,</span>
            <span class="s">&#39;make_rectangular_camera_geometry&#39;</span><span class="p">,</span>
-           <span class="s">&#39;find_neighbor_pixels&#39;</span>
+           <span class="s">&#39;find_neighbor_pixels&#39;</span><span class="p">,</span> <span class="s">&#39;guess_camera_geometry&#39;</span><span class="p">,</span>
            <span class="p">]</span>
+
+
+<span class="c"># dictionary to convert number of pixels to camera type for use in</span>
+<span class="c"># guess_camera_geometry</span>
+<span class="n">_npix_to_type</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2048</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;SST&#39;</span><span class="p">,</span> <span class="s">&#39;rectangular&#39;</span><span class="p">),</span>
+                 <span class="mi">1141</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;MST&#39;</span><span class="p">,</span> <span class="s">&#39;hexagonal&#39;</span><span class="p">),</span>
+                 <span class="mi">1855</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;LST&#39;</span><span class="p">,</span> <span class="s">&#39;hexagonal&#39;</span><span class="p">),</span>
+                 <span class="mi">11328</span><span class="p">:</span> <span class="p">(</span><span class="s">&#39;SST&#39;</span><span class="p">,</span> <span class="s">&#39;rectangular&#39;</span><span class="p">)}</span>
+
 
 <span class="c">#__doctest_skip__ = [&#39;load_camera_geometry_from_file&#39;  ]</span>
 <span class="n">CameraGeometry</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">&quot;CameraGeometry&quot;</span><span class="p">,</span>
                             <span class="p">[</span><span class="s">&#39;cam_id&#39;</span><span class="p">,</span> <span class="s">&#39;pix_id&#39;</span><span class="p">,</span>
-                             <span class="s">&#39;pix_x&#39;</span><span class="p">,</span> <span class="s">&#39;pix_y&#39;</span><span class="p">,</span> <span class="s">&#39;pix_r&#39;</span><span class="p">,</span>
+                             <span class="s">&#39;pix_x&#39;</span><span class="p">,</span> <span class="s">&#39;pix_y&#39;</span><span class="p">,</span>
                              <span class="s">&#39;pix_area&#39;</span><span class="p">,</span>
                              <span class="s">&#39;neighbors&#39;</span><span class="p">,</span>
                              <span class="s">&#39;pix_type&#39;</span><span class="p">])</span>
@@ -208,13 +235,38 @@
 <span class="sd">    array of neighbor indices in a list for each pixel</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">pix_x</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">])</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">))</span>
+    
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pix_x</span><span class="p">,</span><span class="n">pix_y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">))</span>
     <span class="n">kdtree</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
     <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">kdtree</span><span class="o">.</span><span class="n">query_ball_point</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">rad</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">nn</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>  <span class="c"># get rid of the pixel itself</span>
     <span class="k">return</span> <span class="n">neighbors</span>
+
+</div>
+<span class="k">def</span> <span class="nf">guess_camera_type</span><span class="p">(</span><span class="n">npix</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_npix_to_type</span>
+    <span class="k">return</span> <span class="n">_npix_to_type</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">npix</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;unknown&#39;</span><span class="p">,</span> <span class="s">&#39;hexagonal&#39;</span><span class="p">))</span>
+
+
+<span class="nd">@u.quantity_input</span>
+<div class="viewcode-block" id="guess_camera_geometry"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.guess_camera_geometry.html#ctapipe.io.camera.guess_camera_geometry">[docs]</a><span class="k">def</span> <span class="nf">guess_camera_geometry</span><span class="p">(</span><span class="n">pix_x</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">pix_y</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; returns a CameraGeometry filled in from just the x,y positions &quot;&quot;&quot;</span>
+
+    <span class="n">rad</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> \
+        <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">pix_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pix_x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">pix_y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pix_y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">cam_id</span><span class="p">,</span> <span class="n">pix_type</span> <span class="o">=</span> <span class="n">guess_camera_type</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">CameraGeometry</span><span class="p">(</span><span class="n">cam_id</span><span class="o">=</span><span class="n">cam_id</span><span class="p">,</span>
+                          <span class="n">pix_id</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pix_x</span><span class="p">)),</span>
+                          <span class="n">pix_x</span><span class="o">=</span><span class="n">pix_x</span><span class="p">,</span>
+                          <span class="n">pix_y</span><span class="o">=</span><span class="n">pix_y</span><span class="p">,</span>
+                          <span class="n">pix_area</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">pix_x</span><span class="p">)</span> <span class="o">*</span> <span class="n">rad</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+                          <span class="n">neighbors</span><span class="o">=</span><span class="n">find_neighbor_pixels</span><span class="p">(</span><span class="n">pix_x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">pix_y</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                                         <span class="n">rad</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">),</span>
+                          <span class="n">pix_type</span><span class="o">=</span><span class="n">pix_type</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="get_camera_geometry"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.get_camera_geometry.html#ctapipe.io.camera.get_camera_geometry">[docs]</a><span class="k">def</span> <span class="nf">get_camera_geometry</span><span class="p">(</span><span class="n">instrument_name</span><span class="p">,</span> <span class="n">cam_id</span><span class="p">,</span> <span class="n">recalc_neighbors</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
@@ -251,20 +303,25 @@
     <span class="n">neigh_list</span> <span class="o">=</span> <span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_NEIG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
     <span class="n">neigh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">neigh_list</span><span class="p">,</span> <span class="n">neigh_list</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">),</span>
 
+    <span class="c"># put them all in units of M (conversions are automatic)</span>
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSX&#39;</span><span class="p">],</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSY&#39;</span><span class="p">],</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_DIAM&#39;</span><span class="p">],</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">aa</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_AREA&#39;</span><span class="p">],</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">recalc_neighbors</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">neigh</span> <span class="o">=</span> <span class="n">find_neighbor_pixels</span><span class="p">(</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                                     <span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                                     <span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_DIAM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">)</span>
-                                     
+        <span class="n">neigh</span> <span class="o">=</span> <span class="n">find_neighbor_pixels</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">yy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                     <span class="p">(</span><span class="n">dd</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">CameraGeometry</span><span class="p">(</span>
         <span class="n">cam_id</span><span class="o">=</span><span class="n">cam_id</span><span class="p">,</span>
-        <span class="n">pix_id</span><span class="o">=</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-        <span class="n">pix_x</span><span class="o">=</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
-        <span class="n">pix_y</span><span class="o">=</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_POSY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
-        <span class="n">pix_r</span><span class="o">=</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_DIAM&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
-        <span class="n">pix_area</span><span class="o">=</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_AREA&#39;</span><span class="p">],</span>
+        <span class="n">pix_id</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geom</span><span class="p">[</span><span class="s">&#39;PIX_ID&#39;</span><span class="p">]),</span>
+        <span class="n">pix_x</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span>
+        <span class="n">pix_y</span><span class="o">=</span><span class="n">yy</span><span class="p">,</span>
+        <span class="n">pix_area</span><span class="o">=</span><span class="n">aa</span><span class="p">,</span>
         <span class="n">neighbors</span><span class="o">=</span><span class="n">neigh</span><span class="p">,</span>
-        <span class="n">pix_type</span><span class="o">=</span><span class="s">&#39;hexagonal&#39;</span><span class="p">)</span>
+        <span class="n">pix_type</span><span class="o">=</span><span class="s">&#39;hexagonal&#39;</span>
+    <span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="load_camera_geometry_from_file"><a class="viewcode-back" href="../../../api/ctapipe.io.camera.load_camera_geometry_from_file.html#ctapipe.io.camera.load_camera_geometry_from_file">[docs]</a><span class="k">def</span> <span class="nf">load_camera_geometry_from_file</span><span class="p">(</span><span class="n">cam_id</span><span class="p">,</span> <span class="n">geomfile</span><span class="o">=</span><span class="s">&#39;chercam.fits.gz&#39;</span><span class="p">):</span>
@@ -315,20 +372,19 @@
     <span class="n">bx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">range_x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">range_x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npix_x</span><span class="p">)</span>
     <span class="n">by</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">range_y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">range_y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npix_y</span><span class="p">)</span>
     <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">bx</span><span class="p">,</span> <span class="n">by</span><span class="p">)</span>
-    <span class="n">xx</span> <span class="o">=</span> <span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
 
     <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">npix_x</span> <span class="o">*</span> <span class="n">npix_y</span><span class="p">)</span>
-    <span class="n">rr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
-    <span class="n">nn</span> <span class="o">=</span> <span class="n">find_neighbor_pixels</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="n">rr</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mf">2.001</span><span class="p">)</span>
+    <span class="n">rr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">nn</span> <span class="o">=</span> <span class="n">find_neighbor_pixels</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">yy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                              <span class="n">rad</span><span class="o">=</span><span class="p">(</span><span class="n">rr</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mf">2.001</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">CameraGeometry</span><span class="p">(</span>
         <span class="n">cam_id</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">pix_id</span><span class="o">=</span><span class="n">ids</span><span class="p">,</span>
         <span class="n">pix_x</span><span class="o">=</span><span class="n">xx</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span>
         <span class="n">pix_y</span><span class="o">=</span><span class="n">yy</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span>
-        <span class="n">pix_r</span><span class="o">=</span><span class="n">rr</span><span class="p">,</span>
-        <span class="n">pix_area</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xx</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-                  <span class="o">*</span> <span class="p">(</span><span class="n">yy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">yy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">pix_area</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">rr</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
         <span class="n">neighbors</span><span class="o">=</span><span class="n">nn</span><span class="p">,</span>
         <span class="n">pix_type</span><span class="o">=</span><span class="s">&#39;rectangular&#39;</span><span class="p">)</span></div>
 </pre></div>
@@ -342,11 +398,12 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 10 Jul 2015.
+      Last updated on 09 Sep 2015.
     </p>
   </div>
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
         </div>
       </div>
@@ -362,7 +419,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev175',
+            VERSION:'0.0.dev241',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

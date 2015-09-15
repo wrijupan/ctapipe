@@ -23,10 +23,14 @@ CameraDisplay
 
    .. autosummary::
    
+      ~CameraDisplay.add_colorbar
       ~CameraDisplay.add_ellipse
+      ~CameraDisplay.enable_pixel_picker
+      ~CameraDisplay.on_pixel_clicked
       ~CameraDisplay.overlay_moments
       ~CameraDisplay.set_cmap
       ~CameraDisplay.set_image
+      ~CameraDisplay.update
 
    
    
@@ -41,10 +45,14 @@ CameraDisplay
    .. rubric:: Methods Documentation
 
    
+   .. automethod:: add_colorbar
    .. automethod:: add_ellipse
+   .. automethod:: enable_pixel_picker
+   .. automethod:: on_pixel_clicked
    .. automethod:: overlay_moments
    .. automethod:: set_cmap
    .. automethod:: set_image
+   .. automethod:: update
 
    
    

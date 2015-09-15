@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev175</title>
+  <title>CameraDisplay &mdash; ctapipe v0.0.dev241</title>
   
 
   
@@ -16,7 +16,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev175" href="../index.html"/>
+
+  
+    <link rel="top" title="ctapipe v0.0.dev241" href="../index.html"/>
         <link rel="up" title="Visualization" href="../visualization/index.html"/>
         <link rel="prev" title="CameraDisplay" href=""/> 
 
@@ -46,9 +48,12 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="../index.html" class="fa fa-home"> ctapipe</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        
+          <a href="../index.html" class="fa fa-home"> ctapipe</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -58,8 +63,9 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
-        
-            <ul class="current">
+          
+          
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
@@ -73,10 +79,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../coordinates/index.html">Coordinates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
@@ -119,6 +136,7 @@
 </li>
 </ul>
 
+          
         
       </div>
       &nbsp;
@@ -151,13 +169,13 @@
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document">
             
   <div class="section" id="cameradisplay">
 <h1>CameraDisplay<a class="headerlink" href="#cameradisplay" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.visualization.CameraDisplay">
-<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>axes=None</em>, <em>title='Camera'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>axes=None</em>, <em>title='Camera'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Camera Display using matplotlib.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -169,17 +187,51 @@
 <div><p>Definition of the Camera/Image</p>
 </div></blockquote>
 <p><strong>axis</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
-<blockquote class="last">
+<blockquote>
 <div><p>A matplotlib axes object to plot on, or None to create a new one</p>
+</div></blockquote>
+<p><strong>title</strong> : str</p>
+<blockquote>
+<div><p>Title to put on camera plot</p>
+</div></blockquote>
+<p><strong>allow_pick</strong> : bool (default False)</p>
+<blockquote>
+<div><p>if True, allow user to click and select a pixel</p>
+</div></blockquote>
+<p><strong>autoupdate</strong> : bool (default True)</p>
+<blockquote>
+<div><p>redraw automatically (otherwise need to call plt.draw())</p>
+</div></blockquote>
+<p><strong>antialiased</strong> : bool  (default True)</p>
+<blockquote class="last">
+<div><p>whether to draw in antialiased mode or not.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Implementation detail: Pixels are rendered as a
-<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.RegularPolyCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.RegularPolyCollection</span></code></a>, which is the most
-efficient way in matplotlib to display complex pixel shapes.</p>
+<dl class="docutils">
+<dt>Speed: </dt>
+<dd>CameraDisplay is not intended to be very fast (matplotlib
+is not a very speed performant graphics library, it is
+intended for nice output plots). However, most of the
+slowness of CameraDisplay is in the constructor.  Once one is
+displayed, changing the image that is displayed is relatively
+fast and efficient. Therefore it is best to initialize an
+instance, and change the data, rather than generating new
+CameraDisplays.</dd>
+<dt>Pixel Implementation: </dt>
+<dd>Pixels are rendered as a
+<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
+or 4 sided).  You can access the PatchCollection directly (to
+e.g. change low-level style parameters) via
+<code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay.pixels</span></code></dd>
+<dt>Output: </dt>
+<dd>Since CameraDisplay uses matplotlib, any display can be
+saved to any output file supported via
+plt.savefig(filename). This includes <code class="xref py py-obj docutils literal"><span class="pre">pdf</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">png</span></code>.</dd>
+</dl>
 <p class="rubric">Methods Summary</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -190,6 +242,12 @@ efficient way in matplotlib to display complex pixel shapes.</p>
 </tbody>
 </table>
 <p class="rubric">Methods Documentation</p>
+<dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.add_colorbar">
+<code class="descname">add_colorbar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.add_colorbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.add_colorbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a colobar to the camera plot</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.add_ellipse">
 <code class="descname">add_ellipse</code><span class="sig-paren">(</span><em>centroid</em>, <em>length</em>, <em>width</em>, <em>angle</em>, <em>asymmetry=0.0</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.add_ellipse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.add_ellipse" title="Permalink to this definition">¶</a></dt>
@@ -229,20 +287,34 @@ efficient way in matplotlib to display complex pixel shapes.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.enable_pixel_picker">
+<code class="descname">enable_pixel_picker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.enable_pixel_picker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.enable_pixel_picker" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable ability to click on pixels</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.on_pixel_clicked">
+<code class="descname">on_pixel_clicked</code><span class="sig-paren">(</span><em>pix_id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.on_pixel_clicked"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.on_pixel_clicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>virtual function to overide in sub-classes to do something special
+when a pixel is clicked</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.overlay_moments">
 <code class="descname">overlay_moments</code><span class="sig-paren">(</span><em>momparams</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.overlay_moments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.overlay_moments" title="Permalink to this definition">¶</a></dt>
-<dd><p>helper to overlay elipse from a <code class="xref py py-obj docutils literal"><span class="pre">reco.MomentParameters</span></code> structure</p>
+<dd><p>helper to overlay ellipse from a <code class="xref py py-obj docutils literal"><span class="pre">reco.MomentParameters</span></code> structure</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self: type</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>momparams: `reco.MomentParameters`</strong></p>
 <blockquote>
-<div><p>description</p>
-</div></blockquote>
-<p><strong>momparams: `reco.MomentParameters`</strong></p>
-<blockquote class="last">
 <div><p>structuring containing Hillas-style parameterization</p>
+</div></blockquote>
+<p><strong>kwargs: key=value</strong></p>
+<blockquote class="last">
+<div><p>any style keywords to pass to matplotlib (e.g. color=&#8217;red&#8217;
+or linewidth=6)</p>
 </div></blockquote>
 </td>
 </tr>
@@ -254,6 +326,22 @@ efficient way in matplotlib to display complex pixel shapes.</p>
 <dt id="ctapipe.visualization.CameraDisplay.set_cmap">
 <code class="descname">set_cmap</code><span class="sig-paren">(</span><em>cmap</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.set_cmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.set_cmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the color map</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self: type</strong></p>
+<blockquote>
+<div><p>description</p>
+</div></blockquote>
+<p><strong>cmap: `matplotlib.colors.ColorMap`</strong></p>
+<blockquote class="last">
+<div><p>a color map, e.g. from <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.cm.*</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -272,6 +360,12 @@ efficient way in matplotlib to display complex pixel shapes.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>signal a redraw if necessary</p>
 </dd></dl>
 
 </dd></dl>
@@ -295,11 +389,12 @@ efficient way in matplotlib to display complex pixel shapes.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 10 Jul 2015.
+      Last updated on 09 Sep 2015.
     </p>
   </div>
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
         </div>
       </div>
@@ -315,7 +410,7 @@ efficient way in matplotlib to display complex pixel shapes.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev175',
+            VERSION:'0.0.dev241',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

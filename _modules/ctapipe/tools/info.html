@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.tools.info &mdash; ctapipe v0.0.dev175</title>
+  <title>ctapipe.tools.info &mdash; ctapipe v0.0.dev241</title>
   
 
   
@@ -16,7 +16,7 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev175" href="../../../index.html"/>
+
+  
+    <link rel="top" title="ctapipe v0.0.dev241" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -45,9 +47,12 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
-        <a href="../../../index.html" class="fa fa-home"> ctapipe</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+        
+          <a href="../../../index.html" class="fa fa-home"> ctapipe</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -57,8 +62,9 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
         
-        
-            <ul>
+          
+          
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#introduction">Introduction</a></li>
@@ -72,10 +78,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Data Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../core/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../core/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a><ul>
@@ -118,6 +135,7 @@
 </li>
 </ul>
 
+          
         
       </div>
       &nbsp;
@@ -148,10 +166,11 @@
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document">
             
   <h1>Source code for ctapipe.tools.info</h1><div class="highlight"><pre>
 <span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+<span class="sd">&quot;&quot;&quot; print information about ctapipe and its command-line tools. &quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">importlib</span>
@@ -182,7 +201,8 @@
 
 <span class="sd">    TODO: explain.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s"> - </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+                        <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(levelname)s</span><span class="s"> - </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
         <span class="n">_info_version</span><span class="p">()</span>
@@ -207,17 +227,23 @@
 <span class="k">def</span> <span class="nf">_info_tools</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Print info about command line tools.&quot;&quot;&quot;</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">*** ctapipe tools ***</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;the following can be executed by typing ctapipe-&lt;toolname&gt;:&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
 
     <span class="c"># TODO: how to get a one-line description or</span>
     <span class="c"># full help text from the docstring or ArgumentParser?</span>
     <span class="c"># This is the function names, we want the command-line names</span>
     <span class="c"># that are defined in setup.py !???</span>
-    <span class="kn">from</span> <span class="nn">ctapipe.tools.utils</span> <span class="kn">import</span> <span class="n">get_all_main_functions</span>
-    <span class="n">scripts</span> <span class="o">=</span> <span class="n">get_all_main_functions</span><span class="p">()</span>
-    <span class="n">names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scripts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
+    <span class="kn">from</span> <span class="nn">ctapipe.tools.utils</span> <span class="kn">import</span> <span class="n">get_all_descriptions</span>
+    <span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">TextWrapper</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">TextWrapper</span><span class="p">(</span><span class="n">initial_indent</span><span class="o">=</span><span class="s">&quot;- &quot;</span><span class="p">,</span>
+                          <span class="n">subsequent_indent</span><span class="o">=</span><span class="s">&quot;                         &quot;</span><span class="p">,</span>
+                          <span class="n">width</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span> <span class="o">-</span> <span class="mi">23</span><span class="p">))</span>
+                          
+    <span class="n">scripts</span> <span class="o">=</span> <span class="n">get_all_descriptions</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scripts</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;{:&lt;20s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">wrapper</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">desc</span><span class="p">))</span>
     <span class="k">print</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
 
 
@@ -245,11 +271,12 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 10 Jul 2015.
+      Last updated on 09 Sep 2015.
     </p>
   </div>
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
 </footer>
         </div>
       </div>
@@ -265,7 +292,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev175',
+            VERSION:'0.0.dev241',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
