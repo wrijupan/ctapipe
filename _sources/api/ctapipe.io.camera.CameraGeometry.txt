@@ -9,9 +9,7 @@ CameraGeometry
    :show-inheritance:
 
    
-
-   
-   
+     
    
 
    
@@ -20,8 +18,33 @@ CameraGeometry
 
    
    
+
+   .. rubric:: Methods Summary
+
+   .. autosummary::
+   
+      ~CameraGeometry.from_file
+      ~CameraGeometry.from_name
+      ~CameraGeometry.guess
+      ~CameraGeometry.rotate
+
+   
    
 
    
+   
+   
+
+   
+   
+
+   .. rubric:: Methods Documentation
+
+   
+   .. automethod:: from_file
+   .. automethod:: from_name
+   .. automethod:: guess
+   .. automethod:: rotate
+
    
    

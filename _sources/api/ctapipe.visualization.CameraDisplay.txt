@@ -30,6 +30,8 @@ CameraDisplay
       ~CameraDisplay.overlay_moments
       ~CameraDisplay.set_cmap
       ~CameraDisplay.set_image
+      ~CameraDisplay.set_limits_minmax
+      ~CameraDisplay.set_limits_percent
       ~CameraDisplay.update
 
    
@@ -52,6 +54,8 @@ CameraDisplay
    .. automethod:: overlay_moments
    .. automethod:: set_cmap
    .. automethod:: set_image
+   .. automethod:: set_limits_minmax
+   .. automethod:: set_limits_percent
    .. automethod:: update
 
    

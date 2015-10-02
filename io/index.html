@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev241</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev253</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev241" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev253" href="../index.html"/>
         <link rel="next" title="RawData" href="../api/ctapipe.io.containers.RawData.html"/>
         <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
 
@@ -224,16 +224,13 @@ pass-by-value (which could be slow).</li>
 <tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.get_camera_geometry.html#ctapipe.io.camera.get_camera_geometry" title="ctapipe.io.camera.get_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">get_camera_geometry</span></code></a>(instrument_name,&nbsp;cam_id)</td>
 <td>Helper function to provide the camera geometry definition for a camera by name.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.load_camera_geometry_from_file.html#ctapipe.io.camera.load_camera_geometry_from_file" title="ctapipe.io.camera.load_camera_geometry_from_file"><code class="xref py py-obj docutils literal"><span class="pre">load_camera_geometry_from_file</span></code></a>(cam_id[,&nbsp;...])</td>
-<td>Read camera geometry from a  FITS file with a <code class="docutils literal"><span class="pre">CHERCAM</span></code> extension.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry" title="ctapipe.io.camera.make_rectangular_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">make_rectangular_camera_geometry</span></code></a>([npix_x,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry" title="ctapipe.io.camera.make_rectangular_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">make_rectangular_camera_geometry</span></code></a>([npix_x,&nbsp;...])</td>
 <td>Generate a simple camera with 2D rectangular geometry.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels" title="ctapipe.io.camera.find_neighbor_pixels"><code class="xref py py-obj docutils literal"><span class="pre">find_neighbor_pixels</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;rad)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels" title="ctapipe.io.camera.find_neighbor_pixels"><code class="xref py py-obj docutils literal"><span class="pre">find_neighbor_pixels</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;rad)</td>
 <td>use a KD-Tree to quickly find nearest neighbors of the pixels in a</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.guess_camera_geometry.html#ctapipe.io.camera.guess_camera_geometry" title="ctapipe.io.camera.guess_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">guess_camera_geometry</span></code></a>(pix_x:&nbsp;Unit(&#8220;m&#8221;),&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.guess_camera_geometry.html#ctapipe.io.camera.guess_camera_geometry" title="ctapipe.io.camera.guess_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">guess_camera_geometry</span></code></a>(pix_x:&nbsp;Unit(&#8220;m&#8221;),&nbsp;...)</td>
 <td>returns a CameraGeometry filled in from just the x,y positions</td>
 </tr>
 </tbody>
@@ -248,7 +245,7 @@ pass-by-value (which could be slow).</li>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a>(cam_id,&nbsp;pix_id,&nbsp;pix_x,&nbsp;pix_y,&nbsp;...)</td>
-<td>Camera geometry.</td>
+<td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a> is a class that stores information about a</td>
 </tr>
 </tbody>
 </table>
@@ -325,7 +322,7 @@ Monte-Carlo information</p>
 <div class="section" id="class-inheritance-diagram">
 <h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
 <p class="graphviz">
-<img src="../_images/inheritance-1cba85babe73cb3158bae1be785adf335f3999a2.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
+<img src="../_images/inheritance-86a955192071bd87591ec6ae915fcb4498d809b0.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
 </p>
 <p>Relationship between different configuration objects.  The arrows show
 what information is needed to look up the next level of configuration.
@@ -382,7 +379,7 @@ configurations associated with a site)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 09 Sep 2015.
+      Last updated on 02 Oct 2015.
     </p>
   </div>
 
@@ -403,7 +400,7 @@ configurations associated with a site)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev241',
+            VERSION:'0.0.dev253',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
