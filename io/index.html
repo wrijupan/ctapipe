@@ -204,15 +204,6 @@ support for some data structures like <a class="reference internal" href="../api
 <div class="section" id="module-ctapipe.io.camera">
 <span id="ctapipe-io-camera-module"></span><h3>ctapipe.io.camera Module<a class="headerlink" href="#module-ctapipe.io.camera" title="Permalink to this headline">¶</a></h3>
 <p>Utilities for reading or working with Camera geometry files</p>
-<div class="section" id="todo">
-<h4>TODO:<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li>don&#8217;t use <code class="xref py py-obj docutils literal"><span class="pre">namedtuple</span></code> for CameraGeometry, since it&#8217;s immutable and thus is
-pass-by-value (which could be slow).</li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="functions">
 <h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
@@ -322,7 +313,7 @@ Monte-Carlo information</p>
 <div class="section" id="class-inheritance-diagram">
 <h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
 <p class="graphviz">
-<img src="../_images/inheritance-86a955192071bd87591ec6ae915fcb4498d809b0.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
+<img src="../_images/inheritance-1258eb33497fc4d36b284971c5f577ffeebebb97.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
 </p>
 <p>Relationship between different configuration objects.  The arrows show
 what information is needed to look up the next level of configuration.
@@ -379,7 +370,7 @@ configurations associated with a site)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 02 Oct 2015.
+      Last updated on 05 Oct 2015.
     </p>
   </div>
 
