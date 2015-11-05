@@ -1,0 +1,44 @@
+
+
+ArrayDisplay
+==================================
+
+.. currentmodule:: ctapipe.visualization
+
+.. autoclass:: ArrayDisplay
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+   
+      ~ArrayDisplay.intensities
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+   .. rubric:: Attributes Documentation
+
+   
+   .. autoattribute:: intensities
+
+   
+   
+
+   
+   
+   

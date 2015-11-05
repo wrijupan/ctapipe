@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Visualization &mdash; ctapipe v0.0.dev253</title>
+  <title>Visualization &mdash; ctapipe v0.0.dev301</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev253" href="../index.html"/>
-        <link rel="next" title="CameraDisplay" href="../api/ctapipe.visualization.CameraDisplay.html"/>
+    <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
+        <link rel="next" title="ArrayDisplay" href="../api/ctapipe.visualization.ArrayDisplay.html"/>
         <link rel="prev" title="info" href="../api/ctapipe.tools.info.html"/> 
 
   
@@ -180,6 +180,7 @@ to render displays, but in the future more rendering methods may be supported.</
 <p>The main classes are:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay" title="ctapipe.visualization.CameraDisplay"><code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay</span></code></a></li>
+<li><a class="reference internal" href="../api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay" title="ctapipe.visualization.ArrayDisplay"><code class="xref py py-obj docutils literal"><span class="pre">ArrayDisplay</span></code></a></li>
 </ul>
 </div>
 <div class="section" id="getting-started">
@@ -192,7 +193,6 @@ to render displays, but in the future more rendering methods may be supported.</
 <span class="kn">from</span> <span class="nn">ctapipe</span> <span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">visualization</span>
 <span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">mock</span>
 <span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">hillas_parameters_2</span> <span class="k">as</span> <span class="n">hillas_parameters</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 
 <span class="k">def</span> <span class="nf">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">pixel_index</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -208,6 +208,8 @@ to render displays, but in the future more rendering methods may be supported.</
     <span class="c"># load the camera</span>
     <span class="n">geom</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">CameraGeometry</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s">&quot;hess&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">disp</span> <span class="o">=</span> <span class="n">visualization</span><span class="o">.</span><span class="n">CameraDisplay</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">set_limits_minmax</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">()</span>
 
     <span class="c"># create a fake camera image to display:</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">generate_2d_shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
@@ -215,7 +217,8 @@ to render displays, but in the future more rendering methods may be supported.</
                                           <span class="n">length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
                                           <span class="n">psi</span><span class="o">=</span><span class="s">&#39;35d&#39;</span><span class="p">)</span>
 
-    <span class="n">image</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">pdf</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">image</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">pdf</span><span class="p">,</span>
+                                                 <span class="n">intensity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                                                  <span class="n">nsb_level_pe</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
     <span class="c"># apply really stupid image cleaning (single threshold):</span>
@@ -227,18 +230,52 @@ to render displays, but in the future more rendering methods may be supported.</
     <span class="k">print</span><span class="p">(</span><span class="n">hillas</span><span class="p">)</span>
 
     <span class="c"># show the camera image and overlay Hillas ellipse</span>
-    <span class="n">disp</span><span class="o">.</span><span class="n">set_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="n">disp</span><span class="o">.</span><span class="n">overlay_moments</span><span class="p">(</span><span class="n">hillas</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">overlay_moments</span><span class="p">(</span><span class="n">hillas</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;seagreen&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
     <span class="c"># draw the neighbors of pixel 100 in red, and the</span>
     <span class="c"># neighbor-neighbors in green</span>
     <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">geom</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="mi">130</span><span class="p">]:</span>
         <span class="n">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
 
-    <span class="n">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/camera_display.py">Source code</a>, <a class="reference external" href="../../examples/camera_display.png">png</a>, <a class="reference external" href="../../examples/camera_display.hires.png">hires.png</a>, <a class="reference external" href="../../examples/camera_display.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/camera_display.png" src="../_images/camera_display.png" />
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">ctapipe</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">ctapipe.visualization</span> <span class="kn">import</span> <span class="n">ArrayDisplay</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&quot;ggplot&quot;</span><span class="p">)</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">get_array_layout</span><span class="p">(</span><span class="s">&quot;hess&quot;</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s">&#39;POSX&#39;</span><span class="p">]</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s">&#39;POSY&#39;</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s">&#39;MIRAREA&#39;</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">132</span>
+
+    <span class="n">ad</span> <span class="o">=</span> <span class="n">ArrayDisplay</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;HESS&quot;</span><span class="p">)</span>
+
+    <span class="c"># label them</span>
+    <span class="k">for</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">layout</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;CT{tid}:{tclass}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tid</span><span class="o">=</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;TELID&#39;</span><span class="p">],</span>
+                                         <span class="n">tclass</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">tel_class_name</span><span class="p">(</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;CLASS&#39;</span><span class="p">]))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;POSX&#39;</span><span class="p">],</span> <span class="n">tel</span><span class="p">[</span><span class="s">&#39;POSY&#39;</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="n">ad</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">ad</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../../examples/array_layout.py">Source code</a>, <a class="reference external" href="../../examples/array_layout.png">png</a>, <a class="reference external" href="../../examples/array_layout.hires.png">hires.png</a>, <a class="reference external" href="../../examples/array_layout.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/array_layout.png" src="../_images/array_layout.png" />
 </div>
 </div>
 <div class="section" id="reference-api">
@@ -254,7 +291,10 @@ to render displays, but in the future more rendering methods may be supported.</
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay" title="ctapipe.visualization.CameraDisplay"><code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay</span></code></a>(geometry[,&nbsp;axes,&nbsp;title,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay" title="ctapipe.visualization.ArrayDisplay"><code class="xref py py-obj docutils literal"><span class="pre">ArrayDisplay</span></code></a>(telx,&nbsp;tely,&nbsp;mirrorarea[,&nbsp;axes,&nbsp;...])</td>
+<td>Display a top-town view of a telescope array</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay" title="ctapipe.visualization.CameraDisplay"><code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay</span></code></a>(geometry[,&nbsp;image,&nbsp;ax,&nbsp;title,&nbsp;...])</td>
 <td>Camera Display using matplotlib.</td>
 </tr>
 </tbody>
@@ -270,7 +310,7 @@ to render displays, but in the future more rendering methods may be supported.</
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/ctapipe.visualization.CameraDisplay.html" class="btn btn-neutral float-right" title="CameraDisplay">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../api/ctapipe.visualization.ArrayDisplay.html" class="btn btn-neutral float-right" title="ArrayDisplay">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../api/ctapipe.tools.info.html" class="btn btn-neutral" title="info"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -283,7 +323,7 @@ to render displays, but in the future more rendering methods may be supported.</
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 05 Oct 2015.
+      Last updated on 05 Nov 2015.
     </p>
   </div>
 
@@ -304,7 +344,7 @@ to render displays, but in the future more rendering methods may be supported.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev253',
+            VERSION:'0.0.dev301',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

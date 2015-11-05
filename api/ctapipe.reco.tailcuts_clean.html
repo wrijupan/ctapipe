@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MomentParameters &mdash; ctapipe v0.0.dev301</title>
+  <title>tailcuts_clean &mdash; ctapipe v0.0.dev301</title>
   
 
   
@@ -34,8 +34,8 @@
   
     <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
         <link rel="up" title="Reconstruction" href="../reco/index.html"/>
-        <link rel="next" title="generate_2d_shower_model" href="ctapipe.reco.mock.generate_2d_shower_model.html"/>
-        <link rel="prev" title="HighOrderMomentParameters" href="ctapipe.reco.HighOrderMomentParameters.html"/> 
+        <link rel="next" title="HighOrderMomentParameters" href="ctapipe.reco.HighOrderMomentParameters.html"/>
+        <link rel="prev" title="make_mock_shower_image" href="ctapipe.reco.make_mock_shower_image.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -161,10 +161,10 @@
       
           <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
       
-    <li>MomentParameters</li>
+    <li>tailcuts_clean</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.reco.MomentParameters.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.reco.tailcuts_clean.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -172,17 +172,54 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="momentparameters">
-<h1>MomentParameters<a class="headerlink" href="#momentparameters" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="ctapipe.reco.MomentParameters">
-<em class="property">class </em><code class="descclassname">ctapipe.reco.</code><code class="descname">MomentParameters</code><span class="sig-paren">(</span><em>size</em>, <em>cen_x</em>, <em>cen_y</em>, <em>length</em>, <em>width</em>, <em>r</em>, <em>phi</em>, <em>psi</em>, <em>miss</em><span class="sig-paren">)</span><a class="headerlink" href="#ctapipe.reco.MomentParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
-<p>Shower moment parameters up to second order.</p>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="ctapipe.reco.HighOrderMomentParameters.html#ctapipe.reco.HighOrderMomentParameters" title="ctapipe.reco.HighOrderMomentParameters"><code class="xref py py-obj docutils literal"><span class="pre">HighOrderMomentParameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters" title="ctapipe.reco.hillas_parameters"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2" title="ctapipe.reco.hillas_parameters_2"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters_2</span></code></a></p>
-</div>
+  <div class="section" id="tailcuts-clean">
+<h1>tailcuts_clean<a class="headerlink" href="#tailcuts-clean" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctapipe.reco.tailcuts_clean">
+<code class="descclassname">ctapipe.reco.</code><code class="descname">tailcuts_clean</code><span class="sig-paren">(</span><em>geom</em>, <em>image</em>, <em>pedvars</em>, <em>picture_thresh=4.25</em>, <em>boundary_thresh=2.25</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/reco/cleaning.html#tailcuts_clean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.reco.tailcuts_clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean an image by selection pixels that pass a two-threshold
+tail-cuts procedure.  The picture and boundary thresholds are
+defined with respect to the pedestal dispersion. All pixels that
+have a signal higher than the picture threshold will be retained,
+along with all those above the boundary threshold that are
+neighbors of a picture pixel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>geom: `ctapipe.io.CameraGeometry`</strong></p>
+<blockquote>
+<div><p>Camera geometry information</p>
+</div></blockquote>
+<p><strong>image: array</strong></p>
+<blockquote>
+<div><p>pedestal-subtracted, flat-fielded pixel values</p>
+</div></blockquote>
+<p><strong>pedvars: array or scalar</strong></p>
+<blockquote>
+<div><p>pedestal dispersion of all pixels, or any other
+multiplicative factor that one wants to use to normalize the
+thresholds (e.g. if your image is already in PE units, this could
+simply be set to 1, and the thresholds defined in PE)</p>
+</div></blockquote>
+<p><strong>picture_thresh: float</strong></p>
+<blockquote>
+<div><p>high threshold as multiple of the pedvar</p>
+</div></blockquote>
+<p><strong>boundary_thresh: float</strong></p>
+<blockquote>
+<div><p>low-threshold as mutiple of pedvar (+ nearest neighbor)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A boolean mask of <em>clean</em> pixels.  To get a zero-suppressed image and pixel</p>
+<p>list, use <code class="xref py py-obj docutils literal"><span class="pre">image[mask],</span> <span class="pre">geom.pix_id[mask]</span></code>, or to keep the same</p>
+<p>image size and just set unclean pixels to 0 or similar, use</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">image[mask]</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -193,10 +230,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.reco.mock.generate_2d_shower_model.html" class="btn btn-neutral float-right" title="generate_2d_shower_model">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.reco.HighOrderMomentParameters.html" class="btn btn-neutral float-right" title="HighOrderMomentParameters">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.HighOrderMomentParameters.html" class="btn btn-neutral" title="HighOrderMomentParameters"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.reco.make_mock_shower_image.html" class="btn btn-neutral" title="make_mock_shower_image"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

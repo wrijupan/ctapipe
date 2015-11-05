@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev253</title>
+  <title>CameraDisplay &mdash; ctapipe v0.0.dev301</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev253" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
         <link rel="up" title="Visualization" href="../visualization/index.html"/>
-        <link rel="prev" title="CameraDisplay" href=""/> 
+        <link rel="prev" title="ArrayDisplay" href="ctapipe.visualization.ArrayDisplay.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -175,7 +175,7 @@
 <h1>CameraDisplay<a class="headerlink" href="#cameradisplay" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.visualization.CameraDisplay">
-<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>axes=None</em>, <em>title='Camera'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>image=None</em>, <em>ax=None</em>, <em>title='Camera'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Camera Display using matplotlib.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -186,7 +186,11 @@
 <blockquote>
 <div><p>Definition of the Camera/Image</p>
 </div></blockquote>
-<p><strong>axis</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
+<p><strong>image: array_like</strong></p>
+<blockquote>
+<div><p>array of values corresponding to the pixels in the CameraGeometry.</p>
+</div></blockquote>
+<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
 <blockquote>
 <div><p>A matplotlib axes object to plot on, or None to create a new one</p>
 </div></blockquote>
@@ -212,7 +216,7 @@
 </table>
 <p class="rubric">Notes</p>
 <dl class="docutils">
-<dt>Speed: </dt>
+<dt>Speed:</dt>
 <dd>CameraDisplay is not intended to be very fast (matplotlib
 is not a very speed performant graphics library, it is
 intended for nice output plots). However, most of the
@@ -221,17 +225,32 @@ displayed, changing the image that is displayed is relatively
 fast and efficient. Therefore it is best to initialize an
 instance, and change the data, rather than generating new
 CameraDisplays.</dd>
-<dt>Pixel Implementation: </dt>
+<dt>Pixel Implementation:</dt>
 <dd>Pixels are rendered as a
-<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.4.3)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
+<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.5.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
 or 4 sided).  You can access the PatchCollection directly (to
 e.g. change low-level style parameters) via
 <code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay.pixels</span></code></dd>
-<dt>Output: </dt>
+<dt>Output:</dt>
 <dd>Since CameraDisplay uses matplotlib, any display can be
 saved to any output file supported via
 plt.savefig(filename). This includes <code class="xref py py-obj docutils literal"><span class="pre">pdf</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">png</span></code>.</dd>
 </dl>
+<p class="rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.cmap" title="ctapipe.visualization.CameraDisplay.cmap"><code class="xref py py-obj docutils literal"><span class="pre">cmap</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.image" title="ctapipe.visualization.CameraDisplay.image"><code class="xref py py-obj docutils literal"><span class="pre">image</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods Summary</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -241,6 +260,17 @@ plt.savefig(filename). This includes <code class="xref py py-obj docutils litera
 <tbody valign="top">
 </tbody>
 </table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="ctapipe.visualization.CameraDisplay.cmap">
+<code class="descname">cmap</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.cmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.visualization.CameraDisplay.image">
+<code class="descname">image</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.add_colorbar">
@@ -323,44 +353,9 @@ or linewidth=6)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctapipe.visualization.CameraDisplay.set_cmap">
-<code class="descname">set_cmap</code><span class="sig-paren">(</span><em>cmap</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.set_cmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.set_cmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change the color map</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self: type</strong></p>
-<blockquote>
-<div><p>description</p>
-</div></blockquote>
-<p><strong>cmap: `matplotlib.colors.ColorMap`</strong></p>
-<blockquote class="last">
-<div><p>a color map, e.g. from <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.cm.*</span></code></p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.set_image">
 <code class="descname">set_image</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.set_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.set_image" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change the image displayed on the Camera.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image: array_like</strong></p>
-<blockquote class="last">
-<div><p>array of values corresponding to the pixels in the CameraGeometry.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.set_limits_minmax">
@@ -391,7 +386,7 @@ or linewidth=6)</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="" class="btn btn-neutral" title="CameraDisplay"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.visualization.ArrayDisplay.html" class="btn btn-neutral" title="ArrayDisplay"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -401,7 +396,7 @@ or linewidth=6)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 05 Oct 2015.
+      Last updated on 05 Nov 2015.
     </p>
   </div>
 
@@ -422,7 +417,7 @@ or linewidth=6)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev253',
+            VERSION:'0.0.dev301',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

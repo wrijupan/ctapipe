@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.reco.mock &mdash; ctapipe v0.0.dev301</title>
+  <title>ctapipe.reco.cleaning &mdash; ctapipe v0.0.dev301</title>
   
 
   
@@ -159,7 +159,7 @@
       
           <li><a href="../../index.html">Module code</a> &raquo;</li>
       
-    <li>ctapipe.reco.mock</li>
+    <li>ctapipe.reco.cleaning</li>
       <li class="wy-breadcrumbs-aside">
         
       </li>
@@ -168,96 +168,55 @@
 </div>
           <div role="main" class="document">
             
-  <h1>Source code for ctapipe.reco.mock</h1><div class="highlight"><pre>
-<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+  <h1>Source code for ctapipe.reco.cleaning</h1><div class="highlight"><pre>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Utilities to generate mock (fake) reconstruction inputs for testing purposes.</span>
-
-<span class="sd">Example:</span>
-
-<span class="sd">.. code-block:: python</span>
-
-<span class="sd">    &gt;&gt;&gt; from ctapipe.io import camera</span>
-<span class="sd">    &gt;&gt;&gt; geom = camera.make_rectangular_camera_geometry(20,20)</span>
-<span class="sd">    &gt;&gt;&gt; showermodel = generate_2d_shower_model(centroid=[0.25, 0.0], length=0.1,width=0.02, psi=&#39;40d&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; image, signal, noise = make_mock_shower_image(geom, showermodel.pdf)</span>
-<span class="sd">    &gt;&gt;&gt; print(image.shape)</span>
-<span class="sd">    (400,)</span>
-<span class="sd">                                           </span>
-
+<span class="sd">Image Cleaning Algorithms (identification of noisy pixels)</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
-<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">linalg</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;generate_2d_shower_model&#39;</span><span class="p">,</span>
-    <span class="s">&#39;make_mock_shower_image&#39;</span><span class="p">,</span>
-<span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tailcuts_clean&#39;</span><span class="p">]</span>
 
-
-<div class="viewcode-block" id="generate_2d_shower_model"><a class="viewcode-back" href="../../../api/ctapipe.reco.mock.generate_2d_shower_model.html#ctapipe.reco.generate_2d_shower_model">[docs]</a><span class="k">def</span> <span class="nf">generate_2d_shower_model</span><span class="p">(</span><span class="n">centroid</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">psi</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a statistical model (2D gaussian) for a shower image in a</span>
-<span class="sd">    camera. The model&#39;s PDF (`model.pdf`) can be passed to</span>
-<span class="sd">    `make_mock_shower_image`.</span>
+<div class="viewcode-block" id="tailcuts_clean"><a class="viewcode-back" href="../../../api/ctapipe.reco.tailcuts_clean.html#ctapipe.reco.tailcuts_clean">[docs]</a><span class="k">def</span> <span class="nf">tailcuts_clean</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">pedvars</span><span class="p">,</span> <span class="n">picture_thresh</span><span class="o">=</span><span class="mf">4.25</span><span class="p">,</span>
+                   <span class="n">boundary_thresh</span><span class="o">=</span><span class="mf">2.25</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean an image by selection pixels that pass a two-threshold</span>
+<span class="sd">    tail-cuts procedure.  The picture and boundary thresholds are</span>
+<span class="sd">    defined with respect to the pedestal dispersion. All pixels that</span>
+<span class="sd">    have a signal higher than the picture threshold will be retained,</span>
+<span class="sd">    along with all those above the boundary threshold that are</span>
+<span class="sd">    neighbors of a picture pixel.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    centroid : (float,float)</span>
-<span class="sd">        position of the centroid of the shower in camera coordinates</span>
-<span class="sd">    width : float</span>
-<span class="sd">        width of shower (minor axis)</span>
-<span class="sd">    length : float</span>
-<span class="sd">        length of shower (major axis)</span>
-<span class="sd">    psi : convertable to `astropy.coordinates.Angle`</span>
-<span class="sd">        rotation angle about the centroid (0=up)</span>
+<span class="sd">    geom: `CameraGeometry`</span>
+<span class="sd">        Camera geometry information</span>
+<span class="sd">    image: array</span>
+<span class="sd">        pedestal-subtracted, flat-fielded pixel values</span>
+<span class="sd">    pedvars: array</span>
+<span class="sd">        pedestal dispersion corresponding to image</span>
+<span class="sd">    picture_thresh: float</span>
+<span class="sd">        high threshold as multiple of the pedvar</span>
+<span class="sd">    boundary_thresh: float</span>
+<span class="sd">        low-threshold as mutiple of pedvar (+ nearest neighbor)</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
 
-<span class="sd">    a `scipy.stats` object</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">aligned_covariance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">]])</span>
-    <span class="c"># rotate by psi angle: C&#39; = R C R+</span>
-    <span class="n">rotation</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">rotation_matrix_2d</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
-    <span class="n">rotated_covariance</span> <span class="o">=</span> <span class="n">rotation</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">aligned_covariance</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotation</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">centroid</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">rotated_covariance</span><span class="p">)</span>
-
-</div>
-<div class="viewcode-block" id="make_mock_shower_image"><a class="viewcode-back" href="../../../api/ctapipe.reco.mock.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image">[docs]</a><span class="k">def</span> <span class="nf">make_mock_shower_image</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">showerpdf</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">nsb_level_pe</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Generates a pedestal-subtracted shower image from a statistical</span>
-<span class="sd">    shower model (as generated by `shower_model`). The resulting image</span>
-<span class="sd">    will be in the same format as the given</span>
-<span class="sd">    `~ctapipe.io.camera.CameraGeometry`.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    geom : `~ctapipe.io.camera.CameraGeometry`</span>
-<span class="sd">        camera geometry object </span>
-<span class="sd">    showerpdf : func</span>
-<span class="sd">        PDF function for the shower to generate in the camera, e.g. from a </span>
-<span class="sd">    intensity : int</span>
-<span class="sd">        factor to multiply the model by to get photo-electrons</span>
-<span class="sd">    nsb_level_pe : type</span>
-<span class="sd">        level of NSB/pedestal in photo-electrons</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-
-<span class="sd">    an array of image intensities corresponding to the given `CameraGeometry`</span>
+<span class="sd">    A boolean mask of &quot;clean&quot; pixels (to get a clean image and pixel</span>
+<span class="sd">    list, use `image[mask], geom.pix_id[mask]`, or to keep the same</span>
+<span class="sd">    image size, just set unclean pixels to 0 or similar, do</span>
+<span class="sd">    `image[mask] = 0`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
-    <span class="n">pos</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_x</span><span class="o">.</span><span class="n">value</span>
-    <span class="n">pos</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_y</span><span class="o">.</span><span class="n">value</span>
 
-    <span class="n">model_counts</span> <span class="o">=</span> <span class="p">(</span><span class="n">showerpdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span> <span class="o">*</span> <span class="n">intensity</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">model_counts</span><span class="p">)</span>
-    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">nsb_level_pe</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">signal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">signal</span> <span class="o">+</span> <span class="n">noise</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">noise</span><span class="p">)</span>
+    <span class="n">clean_mask</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&gt;=</span> <span class="n">picture_thresh</span> <span class="o">*</span> <span class="n">pedvars</span>  <span class="c"># starts as picture pixels</span>
 
-    <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">noise</span></div>
+    <span class="c"># good boundary pixels are those that have any picture pixel as a</span>
+    <span class="c"># neighbor</span>
+    <span class="n">boundary_mask</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&gt;=</span> <span class="n">boundary_thresh</span> <span class="o">*</span> <span class="n">pedvars</span>
+    <span class="n">boundary_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">pix_id</span> <span class="k">for</span> <span class="n">pix_id</span> <span class="ow">in</span> <span class="n">geom</span><span class="o">.</span><span class="n">pix_id</span><span class="p">[</span><span class="n">boundary_mask</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">clean_mask</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">pix_id</span><span class="p">]]</span><span class="o">.</span><span class="n">any</span><span class="p">()]</span>
+
+    <span class="n">clean_mask</span><span class="p">[</span><span class="n">boundary_ids</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">clean_mask</span></div>
 </pre></div>
 
           </div>

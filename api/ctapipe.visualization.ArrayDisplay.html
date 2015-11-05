@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MomentParameters &mdash; ctapipe v0.0.dev301</title>
+  <title>ArrayDisplay &mdash; ctapipe v0.0.dev301</title>
   
 
   
@@ -33,9 +33,9 @@
 
   
     <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
-        <link rel="up" title="Reconstruction" href="../reco/index.html"/>
-        <link rel="next" title="generate_2d_shower_model" href="ctapipe.reco.mock.generate_2d_shower_model.html"/>
-        <link rel="prev" title="HighOrderMomentParameters" href="ctapipe.reco.HighOrderMomentParameters.html"/> 
+        <link rel="up" title="Visualization" href="../visualization/index.html"/>
+        <link rel="next" title="CameraDisplay" href="ctapipe.visualization.CameraDisplay.html"/>
+        <link rel="prev" title="CameraDisplay" href="ctapipe.visualization.CameraDisplay.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -117,10 +117,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
@@ -129,10 +129,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../tools/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../visualization/index.html">Visualization</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#reference-api">Reference/API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../visualization/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 </ul>
@@ -159,12 +159,12 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../reco/index.html">Reconstruction</a> &raquo;</li>
+          <li><a href="../visualization/index.html">Visualization</a> &raquo;</li>
       
-    <li>MomentParameters</li>
+    <li>ArrayDisplay</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/api/ctapipe.reco.MomentParameters.txt" rel="nofollow"> View page source</a>
+          <a href="../_sources/api/ctapipe.visualization.ArrayDisplay.txt" rel="nofollow"> View page source</a>
         
       </li>
   </ul>
@@ -172,17 +172,31 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="momentparameters">
-<h1>MomentParameters<a class="headerlink" href="#momentparameters" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="arraydisplay">
+<h1>ArrayDisplay<a class="headerlink" href="#arraydisplay" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="ctapipe.reco.MomentParameters">
-<em class="property">class </em><code class="descclassname">ctapipe.reco.</code><code class="descname">MomentParameters</code><span class="sig-paren">(</span><em>size</em>, <em>cen_x</em>, <em>cen_y</em>, <em>length</em>, <em>width</em>, <em>r</em>, <em>phi</em>, <em>psi</em>, <em>miss</em><span class="sig-paren">)</span><a class="headerlink" href="#ctapipe.reco.MomentParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
-<p>Shower moment parameters up to second order.</p>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="ctapipe.reco.HighOrderMomentParameters.html#ctapipe.reco.HighOrderMomentParameters" title="ctapipe.reco.HighOrderMomentParameters"><code class="xref py py-obj docutils literal"><span class="pre">HighOrderMomentParameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters" title="ctapipe.reco.hillas_parameters"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters</span></code></a>, <a class="reference internal" href="ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2" title="ctapipe.reco.hillas_parameters_2"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters_2</span></code></a></p>
-</div>
+<dt id="ctapipe.visualization.ArrayDisplay">
+<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">ArrayDisplay</code><span class="sig-paren">(</span><em>telx</em>, <em>tely</em>, <em>mirrorarea</em>, <em>axes=None</em>, <em>title='Array'</em>, <em>autoupdate=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#ArrayDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.ArrayDisplay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Display a top-town view of a telescope array</p>
+<p class="rubric">Attributes Summary</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.ArrayDisplay.intensities" title="ctapipe.visualization.ArrayDisplay.intensities"><code class="xref py py-obj docutils literal"><span class="pre">intensities</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes Documentation</p>
+<dl class="attribute">
+<dt id="ctapipe.visualization.ArrayDisplay.intensities">
+<code class="descname">intensities</code><a class="headerlink" href="#ctapipe.visualization.ArrayDisplay.intensities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -193,10 +207,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ctapipe.reco.mock.generate_2d_shower_model.html" class="btn btn-neutral float-right" title="generate_2d_shower_model">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ctapipe.visualization.CameraDisplay.html" class="btn btn-neutral float-right" title="CameraDisplay">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctapipe.reco.HighOrderMomentParameters.html" class="btn btn-neutral" title="HighOrderMomentParameters"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ctapipe.visualization.CameraDisplay.html" class="btn btn-neutral" title="CameraDisplay"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

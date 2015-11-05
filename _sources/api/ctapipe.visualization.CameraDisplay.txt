@@ -14,6 +14,15 @@ CameraDisplay
 
    
    
+
+   .. rubric:: Attributes Summary
+
+   .. autosummary::
+   
+      ~CameraDisplay.cmap
+      ~CameraDisplay.image
+
+   
    
 
    
@@ -28,7 +37,6 @@ CameraDisplay
       ~CameraDisplay.enable_pixel_picker
       ~CameraDisplay.on_pixel_clicked
       ~CameraDisplay.overlay_moments
-      ~CameraDisplay.set_cmap
       ~CameraDisplay.set_image
       ~CameraDisplay.set_limits_minmax
       ~CameraDisplay.set_limits_percent
@@ -38,6 +46,14 @@ CameraDisplay
    
 
    
+   
+
+   .. rubric:: Attributes Documentation
+
+   
+   .. autoattribute:: cmap
+   .. autoattribute:: image
+
    
    
 
@@ -52,7 +68,6 @@ CameraDisplay
    .. automethod:: enable_pixel_picker
    .. automethod:: on_pixel_clicked
    .. automethod:: overlay_moments
-   .. automethod:: set_cmap
    .. automethod:: set_image
    .. automethod:: set_limits_minmax
    .. automethod:: set_limits_percent
