@@ -19,7 +19,7 @@ ArrayDisplay
 
    .. autosummary::
    
-      ~ArrayDisplay.intensities
+      ~ArrayDisplay.values
 
    
    
@@ -34,7 +34,7 @@ ArrayDisplay
    .. rubric:: Attributes Documentation
 
    
-   .. autoattribute:: intensities
+   .. autoattribute:: values
 
    
    

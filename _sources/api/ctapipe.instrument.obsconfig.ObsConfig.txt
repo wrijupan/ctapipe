@@ -1,0 +1,29 @@
+
+
+ObsConfig
+======================================
+
+.. currentmodule:: ctapipe.instrument.obsconfig
+
+.. autoclass:: ObsConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

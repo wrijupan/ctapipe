@@ -1,0 +1,27 @@
+
+
+ArrayTriggerConfig
+===============================================
+
+.. currentmodule:: ctapipe.instrument.obsconfig
+
+.. autoclass:: ArrayTriggerConfig
+   :show-inheritance:
+
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

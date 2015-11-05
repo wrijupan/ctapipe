@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.reco.cleaning &mdash; ctapipe v0.0.dev301</title>
+  <title>ctapipe.reco.cleaning &mdash; ctapipe v0.0.dev308</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev301" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev308" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -109,6 +109,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
@@ -175,6 +181,7 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;tailcuts_clean&#39;</span><span class="p">]</span>
 
+
 <div class="viewcode-block" id="tailcuts_clean"><a class="viewcode-back" href="../../../api/ctapipe.reco.tailcuts_clean.html#ctapipe.reco.tailcuts_clean">[docs]</a><span class="k">def</span> <span class="nf">tailcuts_clean</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">pedvars</span><span class="p">,</span> <span class="n">picture_thresh</span><span class="o">=</span><span class="mf">4.25</span><span class="p">,</span>
                    <span class="n">boundary_thresh</span><span class="o">=</span><span class="mf">2.25</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Clean an image by selection pixels that pass a two-threshold</span>
@@ -186,23 +193,26 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    geom: `CameraGeometry`</span>
+<span class="sd">    geom: `ctapipe.io.CameraGeometry`</span>
 <span class="sd">        Camera geometry information</span>
 <span class="sd">    image: array</span>
 <span class="sd">        pedestal-subtracted, flat-fielded pixel values</span>
-<span class="sd">    pedvars: array</span>
-<span class="sd">        pedestal dispersion corresponding to image</span>
+<span class="sd">    pedvars: array or scalar</span>
+<span class="sd">        pedestal dispersion of all pixels, or any other</span>
+<span class="sd">        multiplicative factor that one wants to use to normalize the</span>
+<span class="sd">        thresholds (e.g. if your image is already in PE units, this could</span>
+<span class="sd">        simply be set to 1, and the thresholds defined in PE)</span>
 <span class="sd">    picture_thresh: float</span>
 <span class="sd">        high threshold as multiple of the pedvar</span>
 <span class="sd">    boundary_thresh: float</span>
 <span class="sd">        low-threshold as mutiple of pedvar (+ nearest neighbor)</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">    --------</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
 
-<span class="sd">    A boolean mask of &quot;clean&quot; pixels (to get a clean image and pixel</span>
+<span class="sd">    A boolean mask of *clean* pixels.  To get a zero-suppressed image and pixel</span>
 <span class="sd">    list, use `image[mask], geom.pix_id[mask]`, or to keep the same</span>
-<span class="sd">    image size, just set unclean pixels to 0 or similar, do</span>
+<span class="sd">    image size and just set unclean pixels to 0 or similar, use</span>
 <span class="sd">    `image[mask] = 0`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -249,7 +259,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev301',
+            VERSION:'0.0.dev308',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

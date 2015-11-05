@@ -1,0 +1,29 @@
+
+
+SubarrayConfig
+===========================================
+
+.. currentmodule:: ctapipe.instrument.obsconfig
+
+.. autoclass:: SubarrayConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

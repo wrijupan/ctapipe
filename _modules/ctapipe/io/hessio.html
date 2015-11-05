@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ctapipe.io.hessio &mdash; ctapipe v0.0.dev308</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/astropy_logo.ico"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctapipe v0.0.dev308" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../../../index.html" class="fa fa-home"> ctapipe</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../calib/index.html">Calibration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../calib/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../coordinates/index.html">Coordinates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../coordinates/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core Data Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../core/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../core/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/index.html">Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reco/index.html">Reconstruction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reco/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reco/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reco/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Command line tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tools/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tools/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tools/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization/index.html">Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">ctapipe</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>ctapipe.io.hessio</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for ctapipe.io.hessio</h1><div class="highlight"><pre>
+<span class="c"># Licensed under a 3-clause BSD style license - see LICENSE.rst</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Components to read HESSIO data.  </span>
+
+<span class="sd">This requires the hessio python library to be installed</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">.containers</span> <span class="kn">import</span> <span class="n">RawData</span><span class="p">,</span> <span class="n">RawCameraData</span>
+<span class="kn">from</span> <span class="nn">ctapipe.core</span> <span class="kn">import</span> <span class="n">Container</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">hessio</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="s">&quot;the `hessio` python module is required to access MC data: {}&quot;</span>
+                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+    <span class="k">raise</span> <span class="n">err</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;hessio_event_source&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="hessio_event_source"><a class="viewcode-back" href="../../../api/ctapipe.io.hessio.hessio_event_source.html#ctapipe.io.hessio.hessio_event_source">[docs]</a><span class="k">def</span> <span class="nf">hessio_event_source</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">max_events</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">single_tel</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A generator that streams data from an EventIO/HESSIO MC data file</span>
+<span class="sd">    (e.g. a standard CTA data file.)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    url : str</span>
+<span class="sd">        path to file to open</span>
+<span class="sd">    max_events : int, optional</span>
+<span class="sd">        maximum number of events to read</span>
+<span class="sd">    single_tel : int</span>
+<span class="sd">        select only a single telescope, if None, all are read. This is</span>
+<span class="sd">        to emulate the final CTA data format, where there would be 1</span>
+<span class="sd">        telescope per file (whereas in current monte-carlo, they are</span>
+<span class="sd">        all interleaved into one file)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">file_open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ret</span> <span class="ow">is</span> <span class="ow">not</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s">&quot;hessio_event_source failed to open &#39;{}&#39;&quot;</span>
+                           <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">eventstream</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">move_to_next_event</span><span class="p">()</span>
+    <span class="n">container</span> <span class="o">=</span> <span class="n">Container</span><span class="p">(</span><span class="s">&quot;hessio_container&quot;</span><span class="p">)</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">&#39;hessio__input&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">&#39;hessio__max_events&#39;</span><span class="p">,</span> <span class="n">max_events</span><span class="p">)</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">&#39;pixel_pos&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">&quot;dl0&quot;</span><span class="p">,</span> <span class="n">RawData</span><span class="p">())</span>
+    <span class="n">container</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="s">&quot;count&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">run_id</span><span class="p">,</span> <span class="n">event_id</span> <span class="ow">in</span> <span class="n">eventstream</span><span class="p">:</span>
+
+        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">run_id</span> <span class="o">=</span> <span class="n">run_id</span>
+        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">event_id</span>
+        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_teldata_list</span><span class="p">()</span>
+        <span class="n">container</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">counter</span>
+        
+        <span class="c"># handle single-telescope case (ignore others:</span>
+        <span class="k">if</span> <span class="n">single_tel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">single_tel</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">single_tel</span><span class="p">,</span> <span class="p">]</span>
+
+        <span class="c"># this should be done in a nicer way to not re-allocate the</span>
+        <span class="c"># data each time (right now it&#39;s just deleted and garbage</span>
+        <span class="c"># collected)</span>
+
+        <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>  <span class="c"># clear the previous telescopes</span>
+
+        <span class="k">for</span> <span class="n">tel_id</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tels_with_data</span><span class="p">:</span>
+
+            <span class="c"># fill pixel position dictionary, if not already done:</span>
+            <span class="k">if</span> <span class="n">tel_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">pixel_pos</span><span class="p">:</span>
+                <span class="n">container</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">pixel_pos</span><span class="p">[</span>
+                    <span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_pixel_position</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+
+            <span class="n">nchans</span> <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_num_channel</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">RawCameraData</span><span class="p">(</span><span class="n">tel_id</span><span class="p">)</span>
+            <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">num_channels</span> <span class="o">=</span> <span class="n">nchans</span>
+
+            <span class="c"># load the data per telescope/chan</span>
+            <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nchans</span><span class="p">):</span>
+                <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">adc_samples</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> \
+                    <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_adc_sample</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">chan</span><span class="p">,</span>
+                                            <span class="n">telescope_id</span><span class="o">=</span><span class="n">tel_id</span><span class="p">)</span>
+                <span class="n">container</span><span class="o">.</span><span class="n">dl0</span><span class="o">.</span><span class="n">tel</span><span class="p">[</span><span class="n">tel_id</span><span class="p">]</span><span class="o">.</span><span class="n">adc_sums</span><span class="p">[</span><span class="n">chan</span><span class="p">]</span> \
+                    <span class="o">=</span> <span class="n">hessio</span><span class="o">.</span><span class="n">get_adc_sum</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">chan</span><span class="p">,</span>
+                                         <span class="n">telescope_id</span><span class="o">=</span><span class="n">tel_id</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">container</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">max_events</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="n">max_events</span><span class="p">:</span>
+            <span class="k">return</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, ctapipe developers.
+      Last updated on 05 Nov 2015.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.0.dev308',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

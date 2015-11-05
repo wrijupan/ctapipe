@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev301</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev308</title>
   
 
   
@@ -32,9 +32,9 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
-        <link rel="next" title="RawData" href="../api/ctapipe.io.containers.RawData.html"/>
-        <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
+    <link rel="top" title="ctapipe v0.0.dev308" href="../index.html"/>
+        <link rel="next" title="make_rectangular_camera_geometry" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html"/>
+        <link rel="prev" title="SimObsConfig" href="../api/ctapipe.instrument.obsconfig.SimObsConfig.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -110,6 +110,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
@@ -173,18 +179,82 @@
 <span id="io"></span><h1>Input/Output<a class="headerlink" href="#input-output" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.io</span></code> contains functions and classes for loading data and
-support for some data structures like <a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-class docutils literal"><span class="pre">CameraGeometry</span></code></a></p>
+<p><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.io</span></code> contains functions and classes related to reading data,
+like <code class="xref py py-obj docutils literal"><span class="pre">hessio_event_source</span></code>.  It currently contains some
+data structures related to the observatory layout, like
+<a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-class docutils literal"><span class="pre">CameraGeometry</span></code></a>, but those will likely move
+soon to an instrument package.</p>
 </div>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#module-ctapipe.io.hessio" title="ctapipe.io.hessio"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.io.hessio</span></code></a> package provides a convenient wrapper to
+reading <em>simtelarray</em> data files, like those used in CTA monte-carlo
+productions. It requires the <code class="xref py py-obj docutils literal"><span class="pre">hessio</span></code> (<em>pyhessioxxx</em>) package to be
+installed.</p>
+<div class="figure" id="id3">
+<img alt="../_images/shower.png" src="../_images/shower.png" />
+<p class="caption"><span class="caption-text">an image read from a <em>simtelarray</em> data file.</span></p>
+</div>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="module-ctapipe.io.containers">
-<span id="ctapipe-io-containers-module"></span><h3>ctapipe.io.containers Module<a class="headerlink" href="#module-ctapipe.io.containers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-ctapipe.io.camera">
+<span id="ctapipe-io-camera-module"></span><h3>ctapipe.io.camera Module<a class="headerlink" href="#module-ctapipe.io.camera" title="Permalink to this headline">¶</a></h3>
+<p>Utilities for reading or working with Camera geometry files</p>
+<div class="section" id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry" title="ctapipe.io.camera.make_rectangular_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">make_rectangular_camera_geometry</span></code></a>([npix_x,&nbsp;...])</td>
+<td>Generate a simple camera with 2D rectangular geometry.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="classes">
 <h4>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a>(cam_id,&nbsp;pix_id,&nbsp;pix_x,&nbsp;pix_y,&nbsp;...)</td>
+<td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a> is a class that stores information about a</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="module-ctapipe.io.hessio">
+<span id="ctapipe-io-hessio-module"></span><h3>ctapipe.io.hessio Module<a class="headerlink" href="#module-ctapipe.io.hessio" title="Permalink to this headline">¶</a></h3>
+<p>Components to read HESSIO data.</p>
+<p>This requires the hessio python library to be installed</p>
+<div class="section" id="id1">
+<h4>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.hessio.hessio_event_source.html#ctapipe.io.hessio.hessio_event_source" title="ctapipe.io.hessio.hessio_event_source"><code class="xref py py-obj docutils literal"><span class="pre">hessio_event_source</span></code></a>(url[,&nbsp;max_events,&nbsp;...])</td>
+<td>A generator that streams data from an EventIO/HESSIO MC data file (e.g.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="module-ctapipe.io.containers">
+<span id="ctapipe-io-containers-module"></span><h3>ctapipe.io.containers Module<a class="headerlink" href="#module-ctapipe.io.containers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>Classes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -201,153 +271,6 @@ support for some data structures like <a class="reference internal" href="../api
 </table>
 </div>
 </div>
-<div class="section" id="module-ctapipe.io.camera">
-<span id="ctapipe-io-camera-module"></span><h3>ctapipe.io.camera Module<a class="headerlink" href="#module-ctapipe.io.camera" title="Permalink to this headline">¶</a></h3>
-<p>Utilities for reading or working with Camera geometry files</p>
-<div class="section" id="functions">
-<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.get_camera_geometry.html#ctapipe.io.camera.get_camera_geometry" title="ctapipe.io.camera.get_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">get_camera_geometry</span></code></a>(instrument_name,&nbsp;cam_id)</td>
-<td>Helper function to provide the camera geometry definition for a camera by name.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html#ctapipe.io.camera.make_rectangular_camera_geometry" title="ctapipe.io.camera.make_rectangular_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">make_rectangular_camera_geometry</span></code></a>([npix_x,&nbsp;...])</td>
-<td>Generate a simple camera with 2D rectangular geometry.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels" title="ctapipe.io.camera.find_neighbor_pixels"><code class="xref py py-obj docutils literal"><span class="pre">find_neighbor_pixels</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;rad)</td>
-<td>use a KD-Tree to quickly find nearest neighbors of the pixels in a</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.camera.guess_camera_geometry.html#ctapipe.io.camera.guess_camera_geometry" title="ctapipe.io.camera.guess_camera_geometry"><code class="xref py py-obj docutils literal"><span class="pre">guess_camera_geometry</span></code></a>(pix_x:&nbsp;Unit(&#8220;m&#8221;),&nbsp;...)</td>
-<td>returns a CameraGeometry filled in from just the x,y positions</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id1">
-<h4>Classes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a>(cam_id,&nbsp;pix_id,&nbsp;pix_x,&nbsp;pix_y,&nbsp;...)</td>
-<td><a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-obj docutils literal"><span class="pre">CameraGeometry</span></code></a> is a class that stores information about a</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="module-ctapipe.io.obsconfig">
-<span id="ctapipe-io-obsconfig-module"></span><h3>ctapipe.io.obsconfig Module<a class="headerlink" href="#module-ctapipe.io.obsconfig" title="Permalink to this headline">¶</a></h3>
-<p>Definition of Observation Configurations.</p>
-<p>The ObsConfig class defines a hierarchy of classes that contain the
-configuration information related to an observation. Each sub-config
-should additionally be loadable on its own</p>
-<p>This may be extended later to make a SimObsConfig that also includes extra
-Monte-Carlo information</p>
-<p>When possible, items inside each class should be loaded dynamically
-(e.g. on first access)</p>
-<div class="section" id="id2">
-<h4>Functions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_site_id_for_run.html#ctapipe.io.obsconfig.get_site_id_for_run" title="ctapipe.io.obsconfig.get_site_id_for_run"><code class="xref py py-obj docutils literal"><span class="pre">get_site_id_for_run</span></code></a>(run_id)</td>
-<td>lookup which array and version was used for a given run</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.get_site_id_for_time.html#ctapipe.io.obsconfig.get_site_id_for_time" title="ctapipe.io.obsconfig.get_site_id_for_time"><code class="xref py py-obj docutils literal"><span class="pre">get_site_id_for_time</span></code></a>(obstime)</td>
-<td>lookup which array and version was used for a given obstime</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id3">
-<h4>Classes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<table border="1" class="longtable docutils">
-<colgroup>
-<col width="10%" />
-<col width="90%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig" title="ctapipe.io.obsconfig.BaseConfig"><code class="xref py py-obj docutils literal"><span class="pre">BaseConfig</span></code></a></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig" title="ctapipe.io.obsconfig.CameraConfig"><code class="xref py py-obj docutils literal"><span class="pre">CameraConfig</span></code></a>(site_id,&nbsp;version,&nbsp;tel_id)</td>
-<td>Definition of a Camera, including its pixel geometry and other</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ArrayTriggerConfig.html#ctapipe.io.obsconfig.ArrayTriggerConfig" title="ctapipe.io.obsconfig.ArrayTriggerConfig"><code class="xref py py-obj docutils literal"><span class="pre">ArrayTriggerConfig</span></code></a></td>
-<td>Contains trigger info for a given run_type</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TelescopeTriggerConfig.html#ctapipe.io.obsconfig.TelescopeTriggerConfig" title="ctapipe.io.obsconfig.TelescopeTriggerConfig"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeTriggerConfig</span></code></a></td>
-<td>Contains trigger info for a given run_type</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.TelescopeConfig.html#ctapipe.io.obsconfig.TelescopeConfig" title="ctapipe.io.obsconfig.TelescopeConfig"><code class="xref py py-obj docutils literal"><span class="pre">TelescopeConfig</span></code></a>(tel_id,&nbsp;site_id,&nbsp;version)</td>
-<td>Configuration of a single Telescope, including it&#8217;s optics and</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig" title="ctapipe.io.obsconfig.ArrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">ArrayConfig</span></code></a>(site_id,&nbsp;version)</td>
-<td>Overall description of an array (including all telescope that are built or forseen.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.OpticsConfig.html#ctapipe.io.obsconfig.OpticsConfig" title="ctapipe.io.obsconfig.OpticsConfig"><code class="xref py py-obj docutils literal"><span class="pre">OpticsConfig</span></code></a>(site_id,&nbsp;version,&nbsp;tel_id)</td>
-<td>Definition of Telescope Optics, including information on the</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SubarrayConfig.html#ctapipe.io.obsconfig.SubarrayConfig" title="ctapipe.io.obsconfig.SubarrayConfig"><code class="xref py py-obj docutils literal"><span class="pre">SubarrayConfig</span></code></a>(run_id)</td>
-<td>Description of a particular Subarray used during an observation or</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig" title="ctapipe.io.obsconfig.ObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">ObsConfig</span></code></a>(run_id)</td>
-<td>All configuration information related to an observation run.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.io.obsconfig.SimObsConfig.html#ctapipe.io.obsconfig.SimObsConfig" title="ctapipe.io.obsconfig.SimObsConfig"><code class="xref py py-obj docutils literal"><span class="pre">SimObsConfig</span></code></a>(mc_run_id)</td>
-<td>ObsConfig from a simulation run.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="class-inheritance-diagram">
-<h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
-<p class="graphviz">
-<img src="../_images/inheritance-d4b08621056120b80182923c55e0ea39cf01ab08.svg" alt="Inheritance diagram of ctapipe.io.obsconfig.BaseConfig, ctapipe.io.obsconfig.CameraConfig, ctapipe.io.obsconfig.ArrayTriggerConfig, ctapipe.io.obsconfig.TelescopeTriggerConfig, ctapipe.io.obsconfig.TelescopeConfig, ctapipe.io.obsconfig.ArrayConfig, ctapipe.io.obsconfig.OpticsConfig, ctapipe.io.obsconfig.SubarrayConfig, ctapipe.io.obsconfig.ObsConfig, ctapipe.io.obsconfig.SimObsConfig" class="inheritance"/>
-</p>
-<p>Relationship between different configuration objects.  The arrows show
-what information is needed to look up the next level of configuration.
-In <strong>blue</strong> are items that change for every <em>run</em>, in <strong>green</strong> for every
-<em>run-type</em>, and in <strong>white</strong> for every <em>array version</em> (which is updated
-when there are changes to the array, telescope, or camera
-configurations associated with a site)</p>
-<p class="graphviz">
-<img src="../_images/graphviz-269f04ffaddef22307b3a454c50b5b9d1e58a5c5.svg" alt="digraph config {
-
-        node [shape=record fontsize=12 fontname=&quot;Arial&quot;];
-        edge [fontname = &quot;Arial&quot; fontsize = 10 dir=back]
-
-
-        ObsConfig [fillcolor=dodgerblue3, fontcolor=white, style=filled]
-        SubarrayConfig [fillcolor=dodgerblue3, fontcolor=white, style=filled] 
-        ArrayTriggerConfig [fillcolor=goldenrod4,
-                            fontcolor=white, style=filled]
-        TelescopeTriggerConfig [fillcolor=goldenrod4,
-                                fontcolor=white, style=filled]
-
-        ObsConfig -&gt; SubarrayConfig [label=&quot;run_id&quot;];
-        ObsConfig -&gt; ArrayTriggerConfig [label=&quot;run_type&quot;];
-        ArrayTriggerConfig -&gt; TelescopeTriggerConfig [label=&quot;run_type,\ntel_id&quot;];       
-        SubarrayConfig -&gt; ArrayConfig [label=&quot;site_id,\nversion&quot;]      
-        ArrayConfig -&gt; TelescopeConfig [label=&quot;tel_id&quot;];
-        TelescopeConfig -&gt; CameraConfig [label=&quot;tel_id&quot;];
-        TelescopeConfig -&gt; OpticsConfig [label=&quot;tel_id&quot;];
-
-
-}" />
-</p>
-</div>
-</div>
 </div>
 </div>
 
@@ -357,10 +280,10 @@ configurations associated with a site)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/ctapipe.io.containers.RawData.html" class="btn btn-neutral float-right" title="RawData">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html" class="btn btn-neutral float-right" title="make_rectangular_camera_geometry">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../development/maintainer-info.html" class="btn btn-neutral" title="Maintainer info"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../api/ctapipe.instrument.obsconfig.SimObsConfig.html" class="btn btn-neutral" title="SimObsConfig"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -391,7 +314,7 @@ configurations associated with a site)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev301',
+            VERSION:'0.0.dev308',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Configuration &mdash; ctapipe v0.0.dev301</title>
+  <title>Configuration &mdash; ctapipe v0.0.dev308</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev308" href="../index.html"/>
         <link rel="up" title="Configuration" href="../configuration/index.html"/>
         <link rel="next" title="ConfigurationException" href="ctapipe.configuration.ConfigurationException.html"/>
         <link rel="prev" title="ConfigurationException" href="ctapipe.configuration.ConfigurationException.html"/> 
@@ -111,6 +111,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#reference-api">Reference/API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
@@ -185,9 +191,9 @@ Configuration class</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>other</strong> : Configuration object, optional Copies other._entries dictionary&#8217;s</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>other</strong> : Configuration object, optional</p>
 <blockquote class="last">
-<div><p>item in self._entries</p>
+<div><p>Copies other._entries dictionary&#8217;s  item in self._entries</p>
 </div></blockquote>
 </td>
 </tr>
@@ -272,15 +278,45 @@ Configuration class</p>
 <dl class="method">
 <dt id="ctapipe.configuration.Configuration.add">
 <code class="descname">add</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>comment=''</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create section if not already exist in self._entries 
+<dd><p>Create section if not already exist in self._entries
 Add configuration variable for corresponding section/key
 Into &#8216;DEFAULT&#8217; section by default</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True is option is added,</p>
+<p class="last">False is option already exist</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="ctapipe.configuration.Configuration.get">
 <code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a configuration entry value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key: str</strong></p>
+<blockquote>
+<div><p>key to search in section</p>
+</div></blockquote>
+<p><strong>section: str , optional</strong></p>
+<blockquote>
+<div><p>section to search key (&#8216;DEFAULT&#8217; section is used by default)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">value for corresponding section/key pair</p>
+<p class="last">None is no suitable value exists for section/key</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -303,6 +339,25 @@ Into &#8216;DEFAULT&#8217; section by default</p>
 <dt id="ctapipe.configuration.Configuration.has_key">
 <code class="descname">has_key</code><span class="sig-paren">(</span><em>key</em>, <em>section='DEFAULT'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/configuration/core.html#Configuration.has_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.configuration.Configuration.has_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if a configuration entry exist</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>key: str</strong></p>
+<blockquote>
+<div><p>key to search in section</p>
+</div></blockquote>
+<p><strong>section: str , optional</strong></p>
+<blockquote>
+<div><p>section to search key (&#8216;DEFAULT&#8217; section is used by default)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">whether the given option exists in the given section or not.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -325,11 +380,19 @@ sys.argv</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>args</strong> : object , optional</p>
-<p><strong>The argument strings are taken from args instead of sys.args</strong></p>
-<p><strong>Warning: args must contains only arguments(flag/value) no program name</strong></p>
-<p><strong>namespace: object , optional</strong></p>
-<p><strong>Populates special attribute __dict__ containing</strong></p>
-<p class="last"><strong>the namespace’s symbol table</strong></p>
+<blockquote>
+<div><p>The argument strings are taken from args instead of
+sys.args Warning: args must contains only
+arguments(flag/value) no program name</p>
+</div></blockquote>
+<p><strong>namespace</strong> : object , optional</p>
+<blockquote>
+<div><p>Populates special attribute __dict__ containing
+the namespace’s symbol table</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Dictionary containing configuration entries for &#8216;DEFAULT&#8217; section</p>
 </td>
 </tr>
 </tbody>
@@ -346,6 +409,14 @@ configuration file locations (e.g. current directory, user&#8217;s
 home directory, system wide directory), and all existing
 configuration files in the list will be read.  A single
 filename may also be given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of successfully read files.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -398,7 +469,7 @@ filename may also be given.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev301',
+            VERSION:'0.0.dev308',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

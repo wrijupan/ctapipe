@@ -1,0 +1,29 @@
+
+
+OpticsConfig
+=========================================
+
+.. currentmodule:: ctapipe.instrument.obsconfig
+
+.. autoclass:: OpticsConfig
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

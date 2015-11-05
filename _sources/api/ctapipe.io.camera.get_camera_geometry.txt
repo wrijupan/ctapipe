@@ -1,8 +1,0 @@
-
-
-get_camera_geometry
-=====================================
-
-.. currentmodule:: ctapipe.io.camera
-
-.. autofunction:: get_camera_geometry

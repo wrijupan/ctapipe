@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; ctapipe v0.0.dev301</title>
+  <title>Index &mdash; ctapipe v0.0.dev308</title>
   
 
   
@@ -33,7 +33,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev301" href="index.html"/> 
+    <link rel="top" title="ctapipe v0.0.dev308" href="index.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -107,6 +107,12 @@
 <li class="toctree-l2"><a class="reference internal" href="development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instrument/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io/index.html">Input/Output</a><ul>
@@ -214,7 +220,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig">ArrayConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig">ArrayConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
@@ -222,7 +228,7 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.obsconfig.ArrayTriggerConfig.html#ctapipe.io.obsconfig.ArrayTriggerConfig">ArrayTriggerConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.ArrayTriggerConfig.html#ctapipe.instrument.obsconfig.ArrayTriggerConfig">ArrayTriggerConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
   </dl></td>
@@ -232,7 +238,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.BaseConfig.html#ctapipe.io.obsconfig.BaseConfig">BaseConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.BaseConfig.html#ctapipe.instrument.obsconfig.BaseConfig">BaseConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
   </dl></td>
@@ -242,7 +248,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig">CameraConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.CameraConfig.html#ctapipe.instrument.obsconfig.CameraConfig">CameraConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
@@ -285,12 +291,12 @@
   <dt><a href="analysis/index.html#module-ctapipe.analysis">ctapipe.analysis (module)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="calib/index.html#module-ctapipe.calib">ctapipe.calib (module)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="configuration/index.html#module-ctapipe.configuration">ctapipe.configuration (module)</a>
   </dt>
@@ -304,6 +310,10 @@
   </dt>
 
       
+  <dt><a href="instrument/index.html#module-ctapipe.instrument.obsconfig">ctapipe.instrument.obsconfig (module)</a>
+  </dt>
+
+      
   <dt><a href="io/index.html#module-ctapipe.io.camera">ctapipe.io.camera (module)</a>
   </dt>
 
@@ -312,7 +322,7 @@
   </dt>
 
       
-  <dt><a href="io/index.html#module-ctapipe.io.obsconfig">ctapipe.io.obsconfig (module)</a>
+  <dt><a href="io/index.html#module-ctapipe.io.hessio">ctapipe.io.hessio (module)</a>
   </dt>
 
       
@@ -382,10 +392,6 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.camera.find_neighbor_pixels.html#ctapipe.io.camera.find_neighbor_pixels">find_neighbor_pixels() (in module ctapipe.io.camera)</a>
-  </dt>
-
-      
   <dt><a href="api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration.FITS">FITS (ctapipe.configuration.Configuration attribute)</a>
   </dt>
 
@@ -393,8 +399,6 @@
   <dt><a href="api/ctapipe.coordinates.TelescopeFrame.html#ctapipe.coordinates.TelescopeFrame.focal_length">focal_length (ctapipe.coordinates.TelescopeFrame attribute)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.coordinates.CameraFrame.html#ctapipe.coordinates.CameraFrame.frame_specific_representation_info">frame_specific_representation_info (ctapipe.coordinates.CameraFrame attribute)</a>
   </dt>
@@ -413,6 +417,8 @@
   </dt>
 
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.from_file">from_file() (ctapipe.io.camera.CameraGeometry class method)</a>
   </dt>
@@ -442,21 +448,17 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.camera.get_camera_geometry.html#ctapipe.io.camera.get_camera_geometry">get_camera_geometry() (in module ctapipe.io.camera)</a>
-  </dt>
-
-      
   <dt><a href="api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration.get_comment">get_comment() (ctapipe.configuration.Configuration method)</a>
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.obsconfig.get_site_id_for_run.html#ctapipe.io.obsconfig.get_site_id_for_run">get_site_id_for_run() (in module ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.get_site_id_for_run.html#ctapipe.instrument.obsconfig.get_site_id_for_run">get_site_id_for_run() (in module ctapipe.instrument.obsconfig)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.get_site_id_for_time.html#ctapipe.io.obsconfig.get_site_id_for_time">get_site_id_for_time() (in module ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.get_site_id_for_time.html#ctapipe.instrument.obsconfig.get_site_id_for_time">get_site_id_for_time() (in module ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
@@ -465,10 +467,6 @@
 
       
   <dt><a href="api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry.guess">guess() (ctapipe.io.camera.CameraGeometry class method)</a>
-  </dt>
-
-      
-  <dt><a href="api/ctapipe.io.camera.guess_camera_geometry.html#ctapipe.io.camera.guess_camera_geometry">guess_camera_geometry() (in module ctapipe.io.camera)</a>
   </dt>
 
   </dl></td>
@@ -486,11 +484,15 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.reco.HighOrderMomentParameters.html#ctapipe.reco.HighOrderMomentParameters">HighOrderMomentParameters (class in ctapipe.reco)</a>
+  <dt><a href="api/ctapipe.io.hessio.hessio_event_source.html#ctapipe.io.hessio.hessio_event_source">hessio_event_source() (in module ctapipe.io.hessio)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.reco.HighOrderMomentParameters.html#ctapipe.reco.HighOrderMomentParameters">HighOrderMomentParameters (class in ctapipe.reco)</a>
+  </dt>
+
       
   <dt><a href="api/ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters">hillas_parameters() (in module ctapipe.reco)</a>
   </dt>
@@ -519,10 +521,6 @@
   <dt><a href="api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration.INI">INI (ctapipe.configuration.Configuration attribute)</a>
   </dt>
 
-      
-  <dt><a href="api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay.intensities">intensities (ctapipe.visualization.ArrayDisplay attribute)</a>
-  </dt>
-
   </dl></td>
 </tr></table>
 
@@ -536,7 +534,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.CameraConfig.html#ctapipe.io.obsconfig.CameraConfig.load_from_file">load_from_file() (ctapipe.io.obsconfig.CameraConfig static method)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.CameraConfig.html#ctapipe.instrument.obsconfig.CameraConfig.load_from_file">load_from_file() (ctapipe.instrument.obsconfig.CameraConfig static method)</a>
   </dt>
 
   </dl></td>
@@ -596,7 +594,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig.num_tels">num_tels (ctapipe.io.obsconfig.ArrayConfig attribute)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig.num_tels">num_tels (ctapipe.instrument.obsconfig.ArrayConfig attribute)</a>
   </dt>
 
   </dl></td>
@@ -606,7 +604,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.ObsConfig.html#ctapipe.io.obsconfig.ObsConfig">ObsConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.ObsConfig.html#ctapipe.instrument.obsconfig.ObsConfig">ObsConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
@@ -620,7 +618,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.OpticsConfig.html#ctapipe.io.obsconfig.OpticsConfig">OpticsConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.OpticsConfig.html#ctapipe.instrument.obsconfig.OpticsConfig">OpticsConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
@@ -688,11 +686,11 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/ctapipe.io.obsconfig.SimObsConfig.html#ctapipe.io.obsconfig.SimObsConfig">SimObsConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.SimObsConfig.html#ctapipe.instrument.obsconfig.SimObsConfig">SimObsConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.obsconfig.SubarrayConfig.html#ctapipe.io.obsconfig.SubarrayConfig">SubarrayConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.SubarrayConfig.html#ctapipe.instrument.obsconfig.SubarrayConfig">SubarrayConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
   </dl></td>
@@ -706,7 +704,7 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.obsconfig.ArrayConfig.html#ctapipe.io.obsconfig.ArrayConfig.tel">tel() (ctapipe.io.obsconfig.ArrayConfig method)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.ArrayConfig.html#ctapipe.instrument.obsconfig.ArrayConfig.tel">tel() (ctapipe.instrument.obsconfig.ArrayConfig method)</a>
   </dt>
 
       
@@ -714,7 +712,7 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.obsconfig.TelescopeConfig.html#ctapipe.io.obsconfig.TelescopeConfig">TelescopeConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.TelescopeConfig.html#ctapipe.instrument.obsconfig.TelescopeConfig">TelescopeConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
   </dl></td>
@@ -724,7 +722,7 @@
   </dt>
 
       
-  <dt><a href="api/ctapipe.io.obsconfig.TelescopeTriggerConfig.html#ctapipe.io.obsconfig.TelescopeTriggerConfig">TelescopeTriggerConfig (class in ctapipe.io.obsconfig)</a>
+  <dt><a href="api/ctapipe.instrument.obsconfig.TelescopeTriggerConfig.html#ctapipe.instrument.obsconfig.TelescopeTriggerConfig">TelescopeTriggerConfig (class in ctapipe.instrument.obsconfig)</a>
   </dt>
 
       
@@ -749,6 +747,12 @@
   <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration.VALUE_INDEX">VALUE_INDEX (ctapipe.configuration.Configuration attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay.values">values (ctapipe.visualization.ArrayDisplay attribute)</a>
   </dt>
 
   </dl></td>
@@ -796,7 +800,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.dev301',
+            VERSION:'0.0.dev308',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

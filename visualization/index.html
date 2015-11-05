@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Visualization &mdash; ctapipe v0.0.dev301</title>
+  <title>Visualization &mdash; ctapipe v0.0.dev308</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev301" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev308" href="../index.html"/>
         <link rel="next" title="ArrayDisplay" href="../api/ctapipe.visualization.ArrayDisplay.html"/>
         <link rel="prev" title="info" href="../api/ctapipe.tools.info.html"/> 
 
@@ -108,6 +108,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
@@ -247,29 +253,39 @@ to render displays, but in the future more rendering methods may be supported.</
 <div class="figure">
 <img alt="../_images/camera_display.png" src="../_images/camera_display.png" />
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">ctapipe</span> <span class="kn">import</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">ctapipe.visualization</span> <span class="kn">import</span> <span class="n">ArrayDisplay</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">ctapipe.visualization</span> <span class="kn">import</span> <span class="n">ArrayDisplay</span>
+<span class="kn">from</span> <span class="nn">ctapipe.utils</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ones_like</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&quot;ggplot&quot;</span><span class="p">)</span>
-    <span class="n">layout</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">get_array_layout</span><span class="p">(</span><span class="s">&quot;hess&quot;</span><span class="p">)</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s">&#39;POSX&#39;</span><span class="p">]</span>
-    <span class="n">Y</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s">&#39;POSY&#39;</span><span class="p">]</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="n">layout</span><span class="p">[</span><span class="s">&#39;MIRAREA&#39;</span><span class="p">]</span>
-    <span class="n">A</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">132</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">9.5</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">))</span>
 
-    <span class="n">ad</span> <span class="o">=</span> <span class="n">ArrayDisplay</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;HESS&quot;</span><span class="p">)</span>
+    <span class="c"># load up an example table that has the telescope positions and</span>
+    <span class="c"># mirror areas in it:</span>
+    <span class="n">arrayfile</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s">&quot;PROD2_telconfig.fits.gz&quot;</span><span class="p">)</span>
+    <span class="n">tels</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">arrayfile</span><span class="p">,</span> <span class="n">hdu</span><span class="o">=</span><span class="s">&quot;TELESCOPE_LEVEL0&quot;</span><span class="p">)</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">tels</span><span class="p">[</span><span class="s">&#39;TelX&#39;</span><span class="p">]</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">tels</span><span class="p">[</span><span class="s">&#39;TelY&#39;</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">tels</span><span class="p">[</span><span class="s">&#39;MirrorArea&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c"># exaggerate scale a bit</span>
+
+    <span class="c"># display the array, and set the color value to 50</span>
+    <span class="n">ad</span> <span class="o">=</span> <span class="n">ArrayDisplay</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Prod 2 Full Array&quot;</span><span class="p">)</span>
+    <span class="n">ad</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">ones_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span>
 
     <span class="c"># label them</span>
-    <span class="k">for</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">layout</span><span class="p">:</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;CT{tid}:{tclass}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tid</span><span class="o">=</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;TELID&#39;</span><span class="p">],</span>
-                                         <span class="n">tclass</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">tel_class_name</span><span class="p">(</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;CLASS&#39;</span><span class="p">]))</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;POSX&#39;</span><span class="p">],</span> <span class="n">tel</span><span class="p">[</span><span class="s">&#39;POSY&#39;</span><span class="p">],</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tel</span> <span class="ow">in</span> <span class="n">tels</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;CT{tid}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tid</span><span class="o">=</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;TelID&#39;</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tel</span><span class="p">[</span><span class="s">&#39;TelX&#39;</span><span class="p">],</span> <span class="n">tel</span><span class="p">[</span><span class="s">&#39;TelY&#39;</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
-    <span class="n">ad</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
-    <span class="n">ad</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">ad</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ad</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -344,7 +360,7 @@ to render displays, but in the future more rendering methods may be supported.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev301',
+            VERSION:'0.0.dev308',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

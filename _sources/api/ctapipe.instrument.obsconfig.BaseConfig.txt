@@ -1,0 +1,27 @@
+
+
+BaseConfig
+=======================================
+
+.. currentmodule:: ctapipe.instrument.obsconfig
+
+.. autoclass:: BaseConfig
+   :show-inheritance:
+
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

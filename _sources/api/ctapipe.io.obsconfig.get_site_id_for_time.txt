@@ -1,8 +1,0 @@
-
-
-get_site_id_for_time
-=========================================
-
-.. currentmodule:: ctapipe.io.obsconfig
-
-.. autofunction:: get_site_id_for_time

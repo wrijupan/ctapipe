@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev301</title>
+  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev308</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev301" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev308" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -107,6 +107,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a><ul>
@@ -367,23 +373,26 @@
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_sci</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 
 <div class="viewcode-block" id="CameraDisplay.set_image"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.set_image">[docs]</a>    <span class="k">def</span> <span class="nf">set_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;set_image(x) is deprecated:&quot;</span>
                     <span class="s">&quot; use CameraDisplay.image = x instead&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
-        </div>
+</div>
 <div class="viewcode-block" id="CameraDisplay.update"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; signal a redraw if necessary &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">autoupdate</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </div>
-<div class="viewcode-block" id="CameraDisplay.add_colorbar"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_colorbar">[docs]</a>    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; add a colobar to the camera plot &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
+<div class="viewcode-block" id="CameraDisplay.add_colorbar"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_colorbar">[docs]</a>    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        add a colobar to the camera plot</span>
+<span class="sd">        kwargs are passed to figure.colorbar(self.pixels, **kwargs)</span>
+<span class="sd">        See matplotlib documentation for the supported kwargs:</span>
+<span class="sd">        http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="CameraDisplay.add_ellipse"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_ellipse">[docs]</a>    <span class="k">def</span> <span class="nf">add_ellipse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">asymmetry</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                     <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -484,16 +493,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">telescopes</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&quot;Intensity&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s">&quot;Value&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">intensities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">telescopes</span><span class="o">.</span><span class="n">get_array</span><span class="p">()</span>
-        
-    <span class="nd">@intensities.setter</span>
-    <span class="k">def</span> <span class="nf">intensities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intensities</span><span class="p">):</span>
+
+    <span class="nd">@values.setter</span>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; set the telescope colors to display  &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">telescopes</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">intensities</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">telescopes</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -532,7 +541,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev301',
+            VERSION:'0.0.dev308',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
