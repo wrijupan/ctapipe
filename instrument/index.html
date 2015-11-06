@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Instrument &mdash; ctapipe v0.0.dev308</title>
+  <title>Instrument &mdash; ctapipe v0.0.dev317</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev308" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev317" href="../index.html"/>
         <link rel="next" title="get_site_id_for_run" href="../api/ctapipe.instrument.obsconfig.get_site_id_for_run.html"/>
         <link rel="prev" title="Maintainer info" href="../development/maintainer-info.html"/> 
 
@@ -190,6 +190,31 @@ In <strong>blue</strong> are items that change for every <em>run</em>, in <stron
 <em>run-type</em>, and in <strong>white</strong> for every <em>array version</em> (which is updated
 when there are changes to the array, telescope, or camera
 configurations associated with a site)</p>
+<p class="graphviz">
+<img src="../_images/graphviz-269f04ffaddef22307b3a454c50b5b9d1e58a5c5.svg" alt="digraph config {
+
+        node [shape=record fontsize=12 fontname=&quot;Arial&quot;];
+        edge [fontname = &quot;Arial&quot; fontsize = 10 dir=back]
+
+
+        ObsConfig [fillcolor=dodgerblue3, fontcolor=white, style=filled]
+        SubarrayConfig [fillcolor=dodgerblue3, fontcolor=white, style=filled] 
+        ArrayTriggerConfig [fillcolor=goldenrod4,
+                            fontcolor=white, style=filled]
+        TelescopeTriggerConfig [fillcolor=goldenrod4,
+                                fontcolor=white, style=filled]
+
+        ObsConfig -&gt; SubarrayConfig [label=&quot;run_id&quot;];
+        ObsConfig -&gt; ArrayTriggerConfig [label=&quot;run_type&quot;];
+        ArrayTriggerConfig -&gt; TelescopeTriggerConfig [label=&quot;run_type,\ntel_id&quot;];       
+        SubarrayConfig -&gt; ArrayConfig [label=&quot;site_id,\nversion&quot;]      
+        ArrayConfig -&gt; TelescopeConfig [label=&quot;tel_id&quot;];
+        TelescopeConfig -&gt; CameraConfig [label=&quot;tel_id&quot;];
+        TelescopeConfig -&gt; OpticsConfig [label=&quot;tel_id&quot;];
+
+
+}" />
+</p>
 </div>
 <div class="section" id="reference-api">
 <h2>Reference/API<a class="headerlink" href="#reference-api" title="Permalink to this headline">¶</a></h2>
@@ -264,7 +289,7 @@ Monte-Carlo information</p>
 <div class="section" id="class-inheritance-diagram">
 <h4>Class Inheritance Diagram<a class="headerlink" href="#class-inheritance-diagram" title="Permalink to this headline">¶</a></h4>
 <p class="graphviz">
-<img src="../_images/inheritance-cb5e6ef43bf7f206652ebd99e3741357a264ae45.svg" alt="Inheritance diagram of ctapipe.instrument.obsconfig.BaseConfig, ctapipe.instrument.obsconfig.CameraConfig, ctapipe.instrument.obsconfig.ArrayTriggerConfig, ctapipe.instrument.obsconfig.TelescopeTriggerConfig, ctapipe.instrument.obsconfig.TelescopeConfig, ctapipe.instrument.obsconfig.ArrayConfig, ctapipe.instrument.obsconfig.OpticsConfig, ctapipe.instrument.obsconfig.SubarrayConfig, ctapipe.instrument.obsconfig.ObsConfig, ctapipe.instrument.obsconfig.SimObsConfig" class="inheritance"/>
+<img src="../_images/inheritance-b2a490bda30e62b3482a6b03a8eefb9b69a7465f.svg" alt="Inheritance diagram of ctapipe.instrument.obsconfig.BaseConfig, ctapipe.instrument.obsconfig.CameraConfig, ctapipe.instrument.obsconfig.ArrayTriggerConfig, ctapipe.instrument.obsconfig.TelescopeTriggerConfig, ctapipe.instrument.obsconfig.TelescopeConfig, ctapipe.instrument.obsconfig.ArrayConfig, ctapipe.instrument.obsconfig.OpticsConfig, ctapipe.instrument.obsconfig.SubarrayConfig, ctapipe.instrument.obsconfig.ObsConfig, ctapipe.instrument.obsconfig.SimObsConfig" class="inheritance"/>
 </p>
 </div>
 </div>
@@ -290,7 +315,7 @@ Monte-Carlo information</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 05 Nov 2015.
+      Last updated on 06 Nov 2015.
     </p>
   </div>
 
@@ -311,7 +336,7 @@ Monte-Carlo information</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev308',
+            VERSION:'0.0.dev317',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
