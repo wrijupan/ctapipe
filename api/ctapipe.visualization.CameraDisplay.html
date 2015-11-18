@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev317</title>
+  <title>CameraDisplay &mdash; ctapipe v0.0.dev336</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev317" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
         <link rel="up" title="Visualization" href="../visualization/index.html"/>
         <link rel="prev" title="ArrayDisplay" href="ctapipe.visualization.ArrayDisplay.html"/> 
 
@@ -67,6 +67,14 @@
           
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
@@ -102,14 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
@@ -118,7 +118,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
@@ -181,7 +181,7 @@
 <h1>CameraDisplay<a class="headerlink" href="#cameradisplay" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.visualization.CameraDisplay">
-<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>image=None</em>, <em>ax=None</em>, <em>title='Camera'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>image=None</em>, <em>ax=None</em>, <em>title='Camera'</em>, <em>norm='lin'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Camera Display using matplotlib.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -200,9 +200,18 @@
 <blockquote>
 <div><p>A matplotlib axes object to plot on, or None to create a new one</p>
 </div></blockquote>
-<p><strong>title</strong> : str</p>
+<p><strong>title</strong> : str (default &#8220;Camera&#8221;)</p>
 <blockquote>
 <div><p>Title to put on camera plot</p>
+</div></blockquote>
+<p><strong>norm</strong> : str or matplotlib.color.Normalize instance (default &#8216;lin&#8217;)</p>
+<blockquote>
+<div><p>Normalization for the color scale.
+Supported str arguments are</p>
+<blockquote>
+<div><p>&#8216;lin&#8217;: linear scale
+&#8216;log&#8217;: logarithmic scale (base 10)</p>
+</div></blockquote>
 </div></blockquote>
 <p><strong>allow_pick</strong> : bool (default False)</p>
 <blockquote>
@@ -255,6 +264,9 @@ plt.savefig(filename). This includes <code class="xref py py-obj docutils litera
 <tr class="row-even"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.image" title="ctapipe.visualization.CameraDisplay.image"><code class="xref py py-obj docutils literal"><span class="pre">image</span></code></a></td>
 <td></td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ctapipe.visualization.CameraDisplay.norm" title="ctapipe.visualization.CameraDisplay.norm"><code class="xref py py-obj docutils literal"><span class="pre">norm</span></code></a></td>
+<td>The norm instance of the Display Possible values:     &#8220;lin&#8221;: linear scale     &#8220;log&#8221;: log scale     any matplotlib.colors.Normalize instance, e.</td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Methods Summary</p>
@@ -276,6 +288,17 @@ plt.savefig(filename). This includes <code class="xref py py-obj docutils litera
 <dt id="ctapipe.visualization.CameraDisplay.image">
 <code class="descname">image</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.image" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctapipe.visualization.CameraDisplay.norm">
+<code class="descname">norm</code><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The norm instance of the Display
+Possible values:</p>
+<blockquote>
+<div>&#8220;lin&#8221;: linear scale
+&#8220;log&#8221;: log scale
+any matplotlib.colors.Normalize instance, e. g. PowerNorm(gamma=-2)</div></blockquote>
+</dd></dl>
 
 <p class="rubric">Methods Documentation</p>
 <dl class="method">
@@ -379,6 +402,11 @@ or linewidth=6)</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctapipe.visualization.CameraDisplay.show">
+<code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.update">
 <code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>signal a redraw if necessary</p>
@@ -405,7 +433,7 @@ or linewidth=6)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Nov 2015.
+      Last updated on 18 Nov 2015.
     </p>
   </div>
 
@@ -426,7 +454,7 @@ or linewidth=6)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev317',
+            VERSION:'0.0.dev336',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

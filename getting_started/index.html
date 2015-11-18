@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; ctapipe v0.0.dev317</title>
+  <title>Getting Started &mdash; ctapipe v0.0.dev336</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev317" href="../index.html"/>
-        <link rel="next" title="Analysis" href="../analysis/index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
+        <link rel="next" title="Development Resources" href="../development/index.html"/>
         <link rel="prev" title="CTA Experimental Pipeline Framework (ctapipe)" href="../index.html"/> 
 
   
@@ -67,6 +67,14 @@
           
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
@@ -102,14 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
@@ -118,7 +118,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
@@ -177,15 +177,19 @@
             
   <div class="section" id="getting-started">
 <span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>Check out the <a class="reference external" href="https://github.com/cta-observatory/ctapipe">ctapipe</a> repo from Github:</p>
-<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/cta-observatory/ctapipe.git   <span class="c"># if you like HTTPS</span>
-git clone git@github.com:cta-observatory/ctapipe.git       <span class="c"># if you like SSH</span>
+<p>If you want to access SimTelArrray data files (recommended), you must first install the <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code> package.  This can be done by:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/cta-observatory/pyhessio
+conda build pyhessio
+conda install pyhessio
 </pre></div>
 </div>
-<p>Clone the <a class="reference external" href="https://github.com/cta-observatory/ctapipe-extra">ctapipe-extra</a> git submodule repo from Github:</p>
+<p>Next, check out the <a class="reference external" href="https://github.com/cta-observatory/ctapipe">ctapipe</a> repo:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/cta-observatory/ctapipe.git   <span class="c"># if you like HTTPS</span>
+</pre></div>
+</div>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>ctapipe
-git submodule init
-git submodule update
+make init     <span class="c"># will fetch required sub-repos and set up package</span>
+make develop  <span class="c"># will make symlinks in your python library dir</span>
 </pre></div>
 </div>
 <p>Make sure the tests and examples code finds the test and example files.
@@ -194,7 +198,7 @@ Run the tests to make sure everything is OK:</p>
 </pre></div>
 </div>
 <p>Build the HTML docs locally and open them in your web browser:</p>
-<div class="highlight-bash"><div class="highlight"><pre>make docshow
+<div class="highlight-bash"><div class="highlight"><pre>make doc-show
 </pre></div>
 </div>
 <p>Run the example Python scripts:</p>
@@ -213,7 +217,7 @@ of your checked-out working directory in your local (user) python
 package library directory (which is usually something like
 <code class="xref py py-obj docutils literal"><span class="pre">$HOME/.local/lib/python/site-packages/</span></code>. Then you can access the development
 <code class="xref py py-obj docutils literal"><span class="pre">ctapipe</span></code> from anywhere on your system.</p>
-<div class="highlight-bash"><div class="highlight"><pre>python setup.py develop
+<div class="highlight-bash"><div class="highlight"><pre>make develop
 edit .
 </pre></div>
 </div>
@@ -232,7 +236,7 @@ to your local working copy):</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../analysis/index.html" class="btn btn-neutral float-right" title="Analysis">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../development/index.html" class="btn btn-neutral float-right" title="Development Resources">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="CTA Experimental Pipeline Framework (ctapipe)"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -245,7 +249,7 @@ to your local working copy):</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Nov 2015.
+      Last updated on 18 Nov 2015.
     </p>
   </div>
 
@@ -266,7 +270,7 @@ to your local working copy):</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev317',
+            VERSION:'0.0.dev336',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

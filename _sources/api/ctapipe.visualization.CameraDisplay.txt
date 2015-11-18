@@ -21,6 +21,7 @@ CameraDisplay
    
       ~CameraDisplay.cmap
       ~CameraDisplay.image
+      ~CameraDisplay.norm
 
    
    
@@ -40,6 +41,7 @@ CameraDisplay
       ~CameraDisplay.set_image
       ~CameraDisplay.set_limits_minmax
       ~CameraDisplay.set_limits_percent
+      ~CameraDisplay.show
       ~CameraDisplay.update
 
    
@@ -53,6 +55,7 @@ CameraDisplay
    
    .. autoattribute:: cmap
    .. autoattribute:: image
+   .. autoattribute:: norm
 
    
    
@@ -71,6 +74,7 @@ CameraDisplay
    .. automethod:: set_image
    .. automethod:: set_limits_minmax
    .. automethod:: set_limits_percent
+   .. automethod:: show
    .. automethod:: update
 
    

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Reconstruction &mdash; ctapipe v0.0.dev317</title>
+  <title>Reconstruction &mdash; ctapipe v0.0.dev336</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev317" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
         <link rel="next" title="generate_2d_shower_model" href="../api/ctapipe.reco.generate_2d_shower_model.html"/>
         <link rel="prev" title="RawCameraData" href="../api/ctapipe.io.containers.RawCameraData.html"/> 
 
@@ -67,6 +67,14 @@
           
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
@@ -102,14 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
@@ -118,7 +118,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
@@ -261,14 +261,8 @@ define the columns somehow: in a class? a namedtiple?)</li>
 <tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.reco.hillas_parameters.html#ctapipe.reco.hillas_parameters" title="ctapipe.reco.hillas_parameters"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;image)</td>
 <td>Compute Hillas parameters for a given shower image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.reco.hillas_parameters_2.html#ctapipe.reco.hillas_parameters_2" title="ctapipe.reco.hillas_parameters_2"><code class="xref py py-obj docutils literal"><span class="pre">hillas_parameters_2</span></code></a>(pix_x,&nbsp;pix_y,&nbsp;image)</td>
-<td>Compute Hillas parameters for a given shower image.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/ctapipe.reco.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image" title="ctapipe.reco.make_mock_shower_image"><code class="xref py py-obj docutils literal"><span class="pre">make_mock_shower_image</span></code></a>(geom,&nbsp;showerpdf[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.reco.make_mock_shower_image.html#ctapipe.reco.make_mock_shower_image" title="ctapipe.reco.make_mock_shower_image"><code class="xref py py-obj docutils literal"><span class="pre">make_mock_shower_image</span></code></a>(geom,&nbsp;showerpdf[,&nbsp;...])</td>
 <td>Generates a pedestal-subtracted shower image from a statistical shower model (as generated by <code class="xref py py-obj docutils literal"><span class="pre">shower_model</span></code>).</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/ctapipe.reco.tailcuts_clean.html#ctapipe.reco.tailcuts_clean" title="ctapipe.reco.tailcuts_clean"><code class="xref py py-obj docutils literal"><span class="pre">tailcuts_clean</span></code></a>(geom,&nbsp;image,&nbsp;pedvars[,&nbsp;...])</td>
-<td>Clean an image by selection pixels that pass a two-threshold tail-cuts procedure.</td>
 </tr>
 </tbody>
 </table>
@@ -343,7 +337,7 @@ define the columns somehow: in a class? a namedtiple?)</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Nov 2015.
+      Last updated on 18 Nov 2015.
     </p>
   </div>
 
@@ -364,7 +358,7 @@ define the columns somehow: in a class? a namedtiple?)</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev317',
+            VERSION:'0.0.dev336',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

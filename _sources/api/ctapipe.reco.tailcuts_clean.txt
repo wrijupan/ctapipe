@@ -1,8 +1,0 @@
-
-
-tailcuts_clean
-===========================
-
-.. currentmodule:: ctapipe.reco
-
-.. autofunction:: tailcuts_clean

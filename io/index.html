@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Input/Output &mdash; ctapipe v0.0.dev317</title>
+  <title>Input/Output &mdash; ctapipe v0.0.dev336</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev317" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
         <link rel="next" title="make_rectangular_camera_geometry" href="../api/ctapipe.io.camera.make_rectangular_camera_geometry.html"/>
         <link rel="prev" title="SimObsConfig" href="../api/ctapipe.instrument.obsconfig.SimObsConfig.html"/> 
 
@@ -67,6 +67,14 @@
           
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
@@ -102,14 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
@@ -118,7 +118,7 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a></li>
 </ul>
 </li>
@@ -185,12 +185,12 @@ data structures related to the observatory layout, like
 <a class="reference internal" href="../api/ctapipe.io.camera.CameraGeometry.html#ctapipe.io.camera.CameraGeometry" title="ctapipe.io.camera.CameraGeometry"><code class="xref py py-class docutils literal"><span class="pre">CameraGeometry</span></code></a>, but those will likely move
 soon to an instrument package.</p>
 </div>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acces-to-raw-data">
+<h2>Acces to Raw Data<a class="headerlink" href="#acces-to-raw-data" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="#module-ctapipe.io.hessio" title="ctapipe.io.hessio"><code class="xref py py-obj docutils literal"><span class="pre">ctapipe.io.hessio</span></code></a> package provides a convenient wrapper to
 reading <em>simtelarray</em> data files, like those used in CTA monte-carlo
-productions. It requires the <code class="xref py py-obj docutils literal"><span class="pre">hessio</span></code> (<em>pyhessioxxx</em>) package to be
-installed.</p>
+productions. It requires the <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code> package to be installed (see
+<a class="reference internal" href="../getting_started/index.html#getting-started"><span>Getting Started</span></a> for instructions installing <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code>).</p>
 <div class="figure" id="id3">
 <img alt="../_images/shower.png" src="../_images/shower.png" />
 <p class="caption"><span class="caption-text">an image read from a <em>simtelarray</em> data file.</span></p>
@@ -293,7 +293,7 @@ installed.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Nov 2015.
+      Last updated on 18 Nov 2015.
     </p>
   </div>
 
@@ -314,7 +314,7 @@ installed.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev317',
+            VERSION:'0.0.dev336',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

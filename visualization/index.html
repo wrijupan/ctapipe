@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Visualization &mdash; ctapipe v0.0.dev317</title>
+  <title>Visualization &mdash; ctapipe v0.0.dev336</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev317" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
         <link rel="next" title="ArrayDisplay" href="../api/ctapipe.visualization.ArrayDisplay.html"/>
         <link rel="prev" title="info" href="../api/ctapipe.tools.info.html"/> 
 
@@ -67,6 +67,14 @@
           
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
@@ -102,14 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
@@ -118,7 +118,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../io/index.html#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
@@ -198,7 +198,7 @@ to render displays, but in the future more rendering methods may be supported.</
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">ctapipe</span> <span class="kn">import</span> <span class="n">io</span><span class="p">,</span> <span class="n">visualization</span>
 <span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">mock</span>
-<span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">hillas_parameters_2</span> <span class="k">as</span> <span class="n">hillas_parameters</span>
+<span class="kn">from</span> <span class="nn">ctapipe.reco</span> <span class="kn">import</span> <span class="n">hillas_parameters</span>
 
 
 <span class="k">def</span> <span class="nf">draw_neighbors</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">pixel_index</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -339,7 +339,7 @@ to render displays, but in the future more rendering methods may be supported.</
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Nov 2015.
+      Last updated on 18 Nov 2015.
     </p>
   </div>
 
@@ -360,7 +360,7 @@ to render displays, but in the future more rendering methods may be supported.</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev317',
+            VERSION:'0.0.dev336',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

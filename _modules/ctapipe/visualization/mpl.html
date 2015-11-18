@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev317</title>
+  <title>ctapipe.visualization.mpl &mdash; ctapipe v0.0.dev336</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev317" href="../../../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev336" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -66,6 +66,14 @@
           
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/code-guidelines.html">Code Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis/index.html">Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../analysis/index.html#getting-started">Getting Started</a></li>
@@ -101,14 +109,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../instrument/index.html">Instrument</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../instrument/index.html#getting-started">Getting Started</a></li>
@@ -117,7 +117,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#acces-to-raw-data">Acces to Raw Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../io/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
@@ -183,6 +183,7 @@
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">PatchCollection</span>
 <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Ellipse</span><span class="p">,</span> <span class="n">RegularPolygon</span><span class="p">,</span> <span class="n">Rectangle</span><span class="p">,</span> <span class="n">Circle</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span><span class="p">,</span> <span class="n">LogNorm</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -206,8 +207,13 @@
 <span class="sd">        array of values corresponding to the pixels in the CameraGeometry.</span>
 <span class="sd">    ax : `matplotlib.axes.Axes`</span>
 <span class="sd">        A matplotlib axes object to plot on, or None to create a new one</span>
-<span class="sd">    title : str</span>
+<span class="sd">    title : str (default &quot;Camera&quot;)</span>
 <span class="sd">        Title to put on camera plot</span>
+<span class="sd">    norm : str or matplotlib.color.Normalize instance (default &#39;lin&#39;)</span>
+<span class="sd">        Normalization for the color scale.</span>
+<span class="sd">        Supported str arguments are</span>
+<span class="sd">           &#39;lin&#39;: linear scale</span>
+<span class="sd">           &#39;log&#39;: logarithmic scale (base 10)</span>
 <span class="sd">    allow_pick : bool (default False)</span>
 <span class="sd">        if True, allow user to click and select a pixel</span>
 <span class="sd">    autoupdate : bool (default True)</span>
@@ -242,8 +248,17 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Camera&quot;</span><span class="p">,</span>
-                 <span class="n">allow_pick</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">autoupdate</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">geometry</span><span class="p">,</span>
+            <span class="n">image</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s">&quot;Camera&quot;</span><span class="p">,</span>
+            <span class="n">norm</span><span class="o">=</span><span class="s">&quot;lin&quot;</span><span class="p">,</span>
+            <span class="n">allow_pick</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+            <span class="n">autoupdate</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="n">antialiased</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+            <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span> <span class="n">ax</span> <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">geom</span> <span class="o">=</span> <span class="n">geometry</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span> <span class="o">=</span> <span class="bp">None</span>
@@ -312,6 +327,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">pix_id</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
+
 <div class="viewcode-block" id="CameraDisplay.enable_pixel_picker"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.enable_pixel_picker">[docs]</a>    <span class="k">def</span> <span class="nf">enable_pixel_picker</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; enable ability to click on pixels &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">set_picker</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>  <span class="c"># enable click</span>
@@ -333,6 +350,31 @@
         <span class="n">frac</span> <span class="o">=</span> <span class="n">percent</span> <span class="o">/</span> <span class="mf">100.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_limits_minmax</span><span class="p">(</span><span class="n">zmin</span><span class="p">,</span> <span class="n">zmax</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">frac</span><span class="p">)</span> <span class="o">*</span> <span class="n">dz</span><span class="p">)</span>
 </div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        The norm instance of the Display</span>
+<span class="sd">        Possible values:</span>
+<span class="sd">            &quot;lin&quot;: linear scale</span>
+<span class="sd">            &quot;log&quot;: log scale</span>
+<span class="sd">            any matplotlib.colors.Normalize instance, e. g. PowerNorm(gamma=-2)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span>
+
+    <span class="nd">@norm.setter</span>
+    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">norm</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">norm</span> <span class="o">==</span> <span class="s">&#39;lin&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">norm</span> <span class="o">==</span> <span class="s">&#39;log&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">LogNorm</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">Normalize</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&#39;Unsupported norm: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">norm</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">changed</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">()</span>
@@ -386,9 +428,10 @@
 <div class="viewcode-block" id="CameraDisplay.update"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; signal a redraw if necessary &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">autoupdate</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">update_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">draw_all</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span><span class="o">.</span><span class="n">draw_all</span><span class="p">()</span>
 </div>
 <div class="viewcode-block" id="CameraDisplay.add_colorbar"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_colorbar">[docs]</a>    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -403,6 +446,7 @@
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">colorbar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixels</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 </div>
 <div class="viewcode-block" id="CameraDisplay.add_ellipse"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.add_ellipse">[docs]</a>    <span class="k">def</span> <span class="nf">add_ellipse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">centroid</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">asymmetry</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                     <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -474,6 +518,9 @@
 <span class="sd">        when a pixel is clicked</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&quot;Clicked pixel_id {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pix_id</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="CameraDisplay.show"><a class="viewcode-back" href="../../../api/ctapipe.visualization.CameraDisplay.html#ctapipe.visualization.CameraDisplay.show">[docs]</a>    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 </div></div>
 <div class="viewcode-block" id="ArrayDisplay"><a class="viewcode-back" href="../../../api/ctapipe.visualization.ArrayDisplay.html#ctapipe.visualization.ArrayDisplay">[docs]</a><span class="k">class</span> <span class="nc">ArrayDisplay</span><span class="p">:</span>
@@ -530,7 +577,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015, ctapipe developers.
-      Last updated on 06 Nov 2015.
+      Last updated on 18 Nov 2015.
     </p>
   </div>
 
@@ -551,7 +598,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.dev317',
+            VERSION:'0.0.dev336',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

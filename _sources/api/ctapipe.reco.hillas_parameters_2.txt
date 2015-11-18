@@ -1,8 +1,0 @@
-
-
-hillas_parameters_2
-================================
-
-.. currentmodule:: ctapipe.reco
-
-.. autofunction:: hillas_parameters_2
