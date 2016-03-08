@@ -18,6 +18,7 @@ TiltedTelescopeFrame
    .. autosummary::
    
       ~TiltedTelescopeFrame.default_representation
+      ~TiltedTelescopeFrame.frame_attributes
       ~TiltedTelescopeFrame.frame_specific_representation_info
       ~TiltedTelescopeFrame.name
       ~TiltedTelescopeFrame.pointing_direction
@@ -37,6 +38,7 @@ TiltedTelescopeFrame
 
    
    .. autoattribute:: default_representation
+   .. autoattribute:: frame_attributes
    .. autoattribute:: frame_specific_representation_info
    .. autoattribute:: name
    .. autoattribute:: pointing_direction

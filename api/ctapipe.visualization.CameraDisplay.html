@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CameraDisplay &mdash; ctapipe v0.0.dev336</title>
+  <title>CameraDisplay &mdash; ctapipe v0.0.dev358</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev358" href="../index.html"/>
         <link rel="up" title="Visualization" href="../visualization/index.html"/>
         <link rel="prev" title="ArrayDisplay" href="ctapipe.visualization.ArrayDisplay.html"/> 
 
@@ -181,7 +181,7 @@
 <h1>CameraDisplay<a class="headerlink" href="#cameradisplay" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctapipe.visualization.CameraDisplay">
-<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>image=None</em>, <em>ax=None</em>, <em>title='Camera'</em>, <em>norm='lin'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctapipe.visualization.</code><code class="descname">CameraDisplay</code><span class="sig-paren">(</span><em>geometry</em>, <em>image=None</em>, <em>ax=None</em>, <em>title='Camera'</em>, <em>norm='lin'</em>, <em>cmap='hot'</em>, <em>allow_pick=False</em>, <em>autoupdate=True</em>, <em>autoscale=True</em>, <em>antialiased=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/3/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Camera Display using matplotlib.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -196,7 +196,7 @@
 <blockquote>
 <div><p>array of values corresponding to the pixels in the CameraGeometry.</p>
 </div></blockquote>
-<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
+<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a></p>
 <blockquote>
 <div><p>A matplotlib axes object to plot on, or None to create a new one</p>
 </div></blockquote>
@@ -204,7 +204,7 @@
 <blockquote>
 <div><p>Title to put on camera plot</p>
 </div></blockquote>
-<p><strong>norm</strong> : str or matplotlib.color.Normalize instance (default &#8216;lin&#8217;)</p>
+<p><strong>norm</strong> : str or <code class="xref py py-obj docutils literal"><span class="pre">matplotlib.color.Normalize</span></code> instance (default &#8216;lin&#8217;)</p>
 <blockquote>
 <div><p>Normalization for the color scale.
 Supported str arguments are</p>
@@ -213,6 +213,10 @@ Supported str arguments are</p>
 &#8216;log&#8217;: logarithmic scale (base 10)</p>
 </div></blockquote>
 </div></blockquote>
+<p><strong>cmap</strong> : str or <a class="reference external" href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code></a> (default &#8216;hot&#8217;)</p>
+<blockquote>
+<div><p>Color map to use (see <a class="reference external" href="http://matplotlib.org/api/cm_api.html#module-matplotlib.cm" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.cm</span></code></a>)</p>
+</div></blockquote>
 <p><strong>allow_pick</strong> : bool (default False)</p>
 <blockquote>
 <div><p>if True, allow user to click and select a pixel</p>
@@ -220,6 +224,12 @@ Supported str arguments are</p>
 <p><strong>autoupdate</strong> : bool (default True)</p>
 <blockquote>
 <div><p>redraw automatically (otherwise need to call plt.draw())</p>
+</div></blockquote>
+<p><strong>autoscale</strong> : bool (default True)</p>
+<blockquote>
+<div><p>rescale the vmin/vmax values when the image changes.
+This is set to False if <code class="xref py py-obj docutils literal"><span class="pre">set_limits_*</span></code> is called to explicity
+set data limits.</p>
 </div></blockquote>
 <p><strong>antialiased</strong> : bool  (default True)</p>
 <blockquote class="last">
@@ -242,7 +252,7 @@ instance, and change the data, rather than generating new
 CameraDisplays.</dd>
 <dt>Pixel Implementation:</dt>
 <dd>Pixels are rendered as a
-<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.5.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
+<a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.PatchCollection" title="(in Matplotlib v1.5.1)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.collections.PatchCollection</span></code></a> of Polygons (either 6
 or 4 sided).  You can access the PatchCollection directly (to
 e.g. change low-level style parameters) via
 <code class="xref py py-obj docutils literal"><span class="pre">CameraDisplay.pixels</span></code></dd>
@@ -385,11 +395,6 @@ or linewidth=6)</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctapipe.visualization.CameraDisplay.set_image">
-<code class="descname">set_image</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.set_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.set_image" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctapipe.visualization.CameraDisplay.set_limits_minmax">
 <code class="descname">set_limits_minmax</code><span class="sig-paren">(</span><em>zmin</em>, <em>zmax</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/visualization/mpl.html#CameraDisplay.set_limits_minmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.visualization.CameraDisplay.set_limits_minmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>set the color scale limits from min to max</p>
@@ -432,8 +437,8 @@ or linewidth=6)</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, ctapipe developers.
-      Last updated on 18 Nov 2015.
+        &copy; Copyright 2016, ctapipe developers.
+      Last updated on 19 Jan 2016.
     </p>
   </div>
 
@@ -454,7 +459,7 @@ or linewidth=6)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev336',
+            VERSION:'0.0.dev358',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

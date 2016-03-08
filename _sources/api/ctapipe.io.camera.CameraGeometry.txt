@@ -27,6 +27,7 @@ CameraGeometry
       ~CameraGeometry.from_name
       ~CameraGeometry.guess
       ~CameraGeometry.rotate
+      ~CameraGeometry.to_table
 
    
    
@@ -45,6 +46,7 @@ CameraGeometry
    .. automethod:: from_name
    .. automethod:: guess
    .. automethod:: rotate
+   .. automethod:: to_table
 
    
    

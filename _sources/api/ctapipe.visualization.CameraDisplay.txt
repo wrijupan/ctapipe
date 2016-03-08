@@ -38,7 +38,6 @@ CameraDisplay
       ~CameraDisplay.enable_pixel_picker
       ~CameraDisplay.on_pixel_clicked
       ~CameraDisplay.overlay_moments
-      ~CameraDisplay.set_image
       ~CameraDisplay.set_limits_minmax
       ~CameraDisplay.set_limits_percent
       ~CameraDisplay.show
@@ -71,7 +70,6 @@ CameraDisplay
    .. automethod:: enable_pixel_picker
    .. automethod:: on_pixel_clicked
    .. automethod:: overlay_moments
-   .. automethod:: set_image
    .. automethod:: set_limits_minmax
    .. automethod:: set_limits_percent
    .. automethod:: show

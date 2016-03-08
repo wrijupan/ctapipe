@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>hessio_event_source &mdash; ctapipe v0.0.dev336</title>
+  <title>hessio_event_source &mdash; ctapipe v0.0.dev358</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev336" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev358" href="../index.html"/>
         <link rel="up" title="Input/Output" href="../io/index.html"/>
         <link rel="next" title="RawData" href="ctapipe.io.containers.RawData.html"/>
         <link rel="prev" title="CameraGeometry" href="ctapipe.io.camera.CameraGeometry.html"/> 
@@ -182,7 +182,7 @@
 <h1>hessio_event_source<a class="headerlink" href="#hessio-event-source" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="ctapipe.io.hessio.hessio_event_source">
-<code class="descclassname">ctapipe.io.hessio.</code><code class="descname">hessio_event_source</code><span class="sig-paren">(</span><em>url</em>, <em>max_events=None</em>, <em>single_tel=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/hessio.html#hessio_event_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.hessio.hessio_event_source" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctapipe.io.hessio.</code><code class="descname">hessio_event_source</code><span class="sig-paren">(</span><em>url</em>, <em>max_events=None</em>, <em>allowed_tels=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ctapipe/io/hessio.html#hessio_event_source"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ctapipe.io.hessio.hessio_event_source" title="Permalink to this definition">¶</a></dt>
 <dd><p>A generator that streams data from an EventIO/HESSIO MC data file
 (e.g. a standard CTA data file.)</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -197,12 +197,12 @@
 <blockquote>
 <div><p>maximum number of events to read</p>
 </div></blockquote>
-<p><strong>single_tel</strong> : int</p>
+<p><strong>allowed_tels</strong> : list[int]</p>
 <blockquote class="last">
-<div><p>select only a single telescope, if None, all are read. This is
-to emulate the final CTA data format, where there would be 1
-telescope per file (whereas in current monte-carlo, they are
-all interleaved into one file)</p>
+<div><p>select only a subset of telescope, if None, all are read. This can
+be used for example emulate the final CTA data format, where there
+would be 1 telescope per file (whereas in current monte-carlo,
+they are all interleaved into one file)</p>
 </div></blockquote>
 </td>
 </tr>
@@ -230,8 +230,8 @@ all interleaved into one file)</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, ctapipe developers.
-      Last updated on 18 Nov 2015.
+        &copy; Copyright 2016, ctapipe developers.
+      Last updated on 19 Jan 2016.
     </p>
   </div>
 
@@ -252,7 +252,7 @@ all interleaved into one file)</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev336',
+            VERSION:'0.0.dev358',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

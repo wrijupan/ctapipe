@@ -1,0 +1,29 @@
+
+
+MCShowerData
+==================================
+
+.. currentmodule:: ctapipe.io.containers
+
+.. autoclass:: MCShowerData
+   :show-inheritance:
+
+   
+     
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
