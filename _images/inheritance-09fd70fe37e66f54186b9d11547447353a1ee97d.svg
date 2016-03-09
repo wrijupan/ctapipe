@@ -19,7 +19,7 @@
 </g>
 <!-- Configuration -->
 <g id="node4" class="node"><title>Configuration</title>
-<g id="a_node4"><a xlink:href="../api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration" xlink:title="Configuration initialization if other is not None and its type is">
+<g id="a_node4"><a xlink:href="../../api/ctapipe.configuration.Configuration.html#ctapipe.configuration.Configuration" xlink:title="Configuration initialization if other is not None and its type is" target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="357,-37 281,-37 281,-18 357,-18 357,-37"/>
 <text text-anchor="middle" x="319" y="-25" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">Configuration</text>
 </a>
@@ -55,7 +55,7 @@
 </g>
 <!-- ConfigurationException -->
 <g id="node5" class="node"><title>ConfigurationException</title>
-<g id="a_node5"><a xlink:href="../api/ctapipe.configuration.ConfigurationException.html#ctapipe.configuration.ConfigurationException" xlink:title="ConfigurationException">
+<g id="a_node5"><a xlink:href="../../api/ctapipe.configuration.ConfigurationException.html#ctapipe.configuration.ConfigurationException" xlink:title="ConfigurationException" target="_top">
 <polygon fill="none" stroke="black" stroke-width="0.5" points="120,-93 0,-93 0,-74 120,-74 120,-93"/>
 <text text-anchor="middle" x="60" y="-81" font-family="Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans" font-size="10.00">ConfigurationException</text>
 </a>

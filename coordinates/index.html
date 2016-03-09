@@ -5,9 +5,10 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Coordinates &mdash; ctapipe v0.0.dev386</title>
+  <title>Coordinates &mdash; ctapipe v0.0.dev388</title>
   
 
   
@@ -16,7 +17,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
   
   
@@ -32,12 +32,12 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev386" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev388" href="../index.html"/>
         <link rel="next" title="CameraFrame" href="../api/ctapipe.coordinates.CameraFrame.html"/>
         <link rel="prev" title="ConfigurationException" href="../api/ctapipe.configuration.ConfigurationException.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -47,11 +47,27 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
-          <a href="../index.html" class="fa fa-home"> ctapipe</a>
-        
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ctapipe
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.dev388
+              </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -59,93 +75,48 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
           
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-              <ul class="current">
+            
+            
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/style-guide.html">Style Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/code-guidelines.html">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/support-libraries.html">Support Libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/futureplans.html">Future Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/maintainer-info.html">Maintainer info</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../analysis/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../calib/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/index.html">Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calib/index.html">Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Coordinates</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#todo">TODO:</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-api">Reference/API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-ctapipe.coordinates">ctapipe.coordinates Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../core/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../core/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datasets/index.html#reference-api">Reference/API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../instrument/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#acces-to-raw-data">Acces to Raw Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../io/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reco/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tools/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../visualization/index.html#reference-api">Reference/API</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/index.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../instrument/index.html">Instrument</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reco/index.html">Reconstruction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Command line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualization/index.html">Visualization</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -160,20 +131,29 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
     <li>Coordinates</li>
       <li class="wy-breadcrumbs-aside">
         
-          <a href="../_sources/coordinates/index.txt" rel="nofollow"> View page source</a>
+          
+            <a href="../_sources/coordinates/index.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="coordinates">
 <span id="id1"></span><h1>Coordinates<a class="headerlink" href="#coordinates" title="Permalink to this headline">¶</a></h1>
@@ -200,7 +180,7 @@ Terrestrial Time with a specific MJD_offset.</li>
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Coordinate frames and transformations aren&#8217;t implemented yet.</p>
 <p>Except for this super-simple example of dividing by the focal length ...</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">astropy.units</span> <span class="kn">as</span> <span class="nn">u</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">astropy.units</span> <span class="kn">as</span> <span class="nn">u</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ctapipe.coordinates</span> <span class="kn">import</span> <span class="n">CameraFrame</span><span class="p">,</span> <span class="n">TelescopeFrame</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera_coord</span> <span class="o">=</span> <span class="n">CameraFrame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">camera_coord</span><span class="p">)</span>
@@ -215,19 +195,19 @@ Terrestrial Time with a specific MJD_offset.</li>
 <p>Note that Coordinate objects can accept arrays as input, so if one
 wants to transform a large list of coordinates from one frame to
 another, it is most efficient to pass them all at once.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">astropy.units</span> <span class="kn">as</span> <span class="nn">u</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">astropy.units</span> <span class="kn">as</span> <span class="nn">u</span>
 <span class="kn">from</span> <span class="nn">ctapipe.coordinates</span> <span class="kn">import</span> <span class="n">CameraFrame</span><span class="p">,</span> <span class="n">TelescopeFrame</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="o">-</span><span class="mf">0.6</span><span class="p">])</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
 <span class="n">camera_coord</span> <span class="o">=</span> <span class="n">CameraFrame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
 <span class="n">telescope_coord</span> <span class="o">=</span> <span class="n">camera_coord</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">TelescopeFrame</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">telescope_coord</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;X:&quot;</span><span class="p">,</span><span class="n">telescope_coord</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Y:&quot;</span><span class="p">,</span><span class="n">telescope_coord</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;X:&quot;</span><span class="p">,</span><span class="n">telescope_coord</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Y:&quot;</span><span class="p">,</span><span class="n">telescope_coord</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The result is a set of coordinates:</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;TelescopeFrame Coordinate (focal_length=15.0 m): (x, y, z) [dimensionless]
+<div class="highlight-python"><div class="highlight"><pre><span></span>&lt;TelescopeFrame Coordinate (focal_length=15.0 m): (x, y, z) [dimensionless]
    [(0.00666667, -0.00666667, 0.0), (0.01333333, 0.02666667, 0.0),
    (0.02, -0.02666667, 0.0), (0.02666667, 0.04, 0.0),
    (0.03333333, -0.04, 0.0)]&gt;
@@ -269,15 +249,16 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api/ctapipe.coordinates.CameraFrame.html" class="btn btn-neutral float-right" title="CameraFrame">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../api/ctapipe.coordinates.CameraFrame.html" class="btn btn-neutral float-right" title="CameraFrame" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../api/ctapipe.configuration.ConfigurationException.html" class="btn btn-neutral" title="ConfigurationException"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../api/ctapipe.configuration.ConfigurationException.html" class="btn btn-neutral" title="ConfigurationException" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -288,12 +269,13 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
     <p>
         &copy; Copyright 2016, ctapipe developers.
       Last updated on 09 Mar 2016.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-  
 </footer>
+
         </div>
       </div>
 
@@ -308,7 +290,7 @@ Y: [-0.00666667  0.02666667 -0.02666667  0.04       -0.04      ]
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev386',
+            VERSION:'0.0.dev388',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
