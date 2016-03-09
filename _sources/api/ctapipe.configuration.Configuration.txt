@@ -38,8 +38,11 @@ Configuration
    .. autosummary::
    
       ~Configuration.add
+      ~Configuration.dynamic_class_from_module
       ~Configuration.get
       ~Configuration.get_comment
+      ~Configuration.get_list
+      ~Configuration.get_section_list
       ~Configuration.has_key
       ~Configuration.list
       ~Configuration.parse_args
@@ -73,8 +76,11 @@ Configuration
 
    
    .. automethod:: add
+   .. automethod:: dynamic_class_from_module
    .. automethod:: get
    .. automethod:: get_comment
+   .. automethod:: get_list
+   .. automethod:: get_section_list
    .. automethod:: has_key
    .. automethod:: list
    .. automethod:: parse_args
