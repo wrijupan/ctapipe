@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; ctapipe v0.0.dev384</title>
+  <title>Getting Started &mdash; ctapipe v0.0.dev385</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="ctapipe v0.0.dev384" href="../index.html"/>
+    <link rel="top" title="ctapipe v0.0.dev385" href="../index.html"/>
         <link rel="next" title="Development Resources" href="../development/index.html"/>
         <link rel="prev" title="CTA Experimental Pipeline Framework (ctapipe)" href="../index.html"/> 
 
@@ -177,6 +177,20 @@
             
   <div class="section" id="getting-started">
 <span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This guide assumes you are using the <em>Anaconda</em> python distribution, installed locally (<em>miniconda</em> should also work).</p>
+<p>First you should create a virtual environment in which to do your developement (this will allow you to control the dependency libraries independently of other projects). You can use either python 3.4 or python 3.5. Here we will create a virtualenv called &#8220;cta&#8221; (but you can choose another name if you like)</p>
+<div class="highlight-bash"><div class="highlight"><pre>conda env create -n cta <span class="nv">python</span><span class="o">=</span>3.5 astropy matplotlib scipy scikit-learn
+</pre></div>
+</div>
+<p>Next, switch to this new virtual environment</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">source </span>activate cta
+</pre></div>
+</div>
+<p>Next, you should create a directory where you can store the software you check out. For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir ctasoft
+<span class="nb">cd </span>ctasoft
+</pre></div>
+</div>
 <p>If you want to access SimTelArrray data files (recommended), you must first install the <code class="xref py py-obj docutils literal"><span class="pre">pyhessio</span></code> package.  This can be done by:</p>
 <div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/cta-observatory/pyhessio
 conda build pyhessio
@@ -187,6 +201,7 @@ conda install --use-local pyhessio
 <div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/cta-observatory/ctapipe.git   <span class="c"># if you like HTTPS</span>
 </pre></div>
 </div>
+<p>Now setup this checked out version for development:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>ctapipe
 make init     <span class="c"># will fetch required sub-repos and set up package</span>
 make develop  <span class="c"># will make symlinks in your python library dir</span>
@@ -270,7 +285,7 @@ to your local working copy):</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.0.dev384',
+            VERSION:'0.0.dev385',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
