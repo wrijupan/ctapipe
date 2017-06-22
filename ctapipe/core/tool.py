@@ -1,9 +1,18 @@
-from traitlets import Unicode
-from traitlets.config import Application
 from abc import abstractmethod
 
-from ctapipe import version
+from traitlets import Unicode
+from traitlets.config import Application
+import logging
+logging.basicConfig(level=logging.WARNING)
 
+from ctapipe import __version__ as version
+from .logging import ColoredFormatter
+from . import Provenance
+
+class ToolConfigurationError(Exception):
+    def __init__(self, message):
+        # Call the base class constructor with the parameters it needs
+        self.message = message
 
 class Tool(Application):
     """A base class for all executable tools (applications) that handles
@@ -91,6 +100,8 @@ class Tool(Application):
                                 "parameters to load in addition to "
                                 "command-line parameters")).tag(config=True)
 
+    _log_formatter_cls = ColoredFormatter
+
     def __init__(self, **kwargs):
         # make sure there are some default aliases in all Tools:
         if self.aliases:
@@ -103,13 +114,14 @@ class Tool(Application):
         self.is_setup = False
 
 
+
     def initialize(self, argv=None):
         """ handle config and any other low-level setup """
         self.parse_command_line(argv)
         if self.config_file != '':
             self.log.debug("Loading config from '{}'".format(self.config_file))
             self.load_config_file(self.config_file)
-        self.log.info("version {}".format(self.version_string))
+        self.log.info("ctapipe version {}".format(self.version_string))
         self.setup()
         self.is_setup = True
 
@@ -135,21 +147,40 @@ class Tool(Application):
     def run(self, argv=None):
         """Run the tool. This automatically calls `initialize()`,
         `start()` and `finish()`
+
+        Parameters
+        ----------
+
+        argv: list(str)
+            command-line arguments, or None to get them 
+            from sys.argv automatically
         """
         try:
             self.initialize(argv)
             self.log.info("Starting: {}".format(self.name))
             self.log.debug("CONFIG: {}".format(self.config))
+            Provenance().start_activity(self.name)
+            Provenance().add_config(self.config)
             self.start()
             self.finish()
-        except ValueError as err:
-            self.log.error('{}'.format(err))
+            Provenance().finish_activity(activity_name=self.name)
+        except ToolConfigurationError as err:
+            self.log.error('{}.  Use --help for more info'.format(err))
         except RuntimeError as err:
             self.log.error('Caught unexpected exception: {}'.format(err))
+            self.finish()
+            Provenance().finish_activity(activity_name=self.name,
+                                         status='error')
+        except KeyboardInterrupt as err:
+            self.log.warning("WAS INTERRUPTED BY CTRL-C")
+            self.finish()
+            Provenance().finish_activity(activity_name=self.name,
+                                         status='interrupted')
+        finally:
+            self.log.debug("PROVENANCE: '%s'", Provenance().as_json())
+
 
     @property
     def version_string(self):
         """ a formatted version string with version, release, and git hash"""
-        return "{} [release={}] [githash={}]".format(version.version,
-                                                     version.release,
-                                                     version.githash)
+        return "{}".format(version)

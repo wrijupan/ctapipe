@@ -41,8 +41,10 @@ class GraphWidget(QWidget):
         qp.end()
 
     def pipechange(self, steps):
-        """Called by GuiConnexion instance when it receives zmq message from Flow.
+        """
+        Called by GuiConnexion instance when it receives zmq message from Flow.
         Update pipeline state (self.steps) and force to update drawing
+
         Parameters
         ----------
         steps: list of (StagerRep)
@@ -59,8 +61,8 @@ class GraphWidget(QWidget):
 
     def build_graph(self):
         """
-        Return
-        ======
+        Returns
+        -------
         graphiz.Digraph
             It contains nodes and links corresponding to self.steps
         """
@@ -72,19 +74,19 @@ class GraphWidget(QWidget):
                 str_shape = 'doubleoctagon'
             if step.type == StagerRep.PRODUCER:
                 str_shape = 'Mdiamond'
-            name = step.name.split('$$processus')[0]
-            name = self.format_name(step.name.split('$$processus')[0])
+            name = step.name.split('$$process')[0]
+            name = self.format_name(step.name.split('$$process')[0])
             if step.running > 0:
                 g.node(name,color='lightblue', style='filled',shape=str_shape,area='0.5')
             else:
                 g.node(name,shape=str_shape,color='blue',area='0.5')
         #Create edges
         for step in self.steps:
-            step_name = self.format_name(step.name.split('$$processus')[0])
+            step_name = self.format_name(step.name.split('$$process')[0])
             for next_step_name in step.next_steps:
-                next_step = self.get_step_by_name(next_step_name.split('$$processus')[0])
+                next_step = self.get_step_by_name(next_step_name.split('$$process')[0])
                 if next_step:
-                    next_step_name_formated = self.format_name(next_step.name.split('$$processus')[0])
+                    next_step_name_formated = self.format_name(next_step.name.split('$$process')[0])
                     g.edge(step_name, next_step_name_formated)
                     g.edge_attr.update(arrowhead='empty', arrowsize='1',color='purple')
         return g
@@ -92,8 +94,9 @@ class GraphWidget(QWidget):
     def format_name(self,name, max_car=15):
         """
         trim name if its length is more than max_car and add 3 points
-        Return
-        ======
+
+        Returns
+        -------
         Name triped or not
         """
         if len(name) > max_car:
@@ -103,12 +106,16 @@ class GraphWidget(QWidget):
     def get_step_by_name(self, name):
         ''' Find a PipeStep in self.producer_step or  self.stager_steps or
         self.consumer_step
-        Parameters:
-        ===========
+
+        Parameters
+        ----------
         name : str Step name
-        Return: PipeStep if found, otherwise None
+
+        Returns
+        -------
+        PipeStep if found, otherwise None
         '''
         for step in self.steps:
-            if step.name.split('$$processus')[0] == name:
+            if step.name.split('$$process')[0] == name:
                 return step
         return None

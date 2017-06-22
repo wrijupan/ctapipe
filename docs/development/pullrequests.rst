@@ -1,3 +1,4 @@
+.. _pullrequests:
 
 Making and Accepting Pull Requests
 ==================================
@@ -21,7 +22,7 @@ small bug fix and not a new feature or design change):
   #ISSUENUMBER syntax to link it)
 
 
-Note that you can include syntax-hlighted code examples by using 3 back-tics:
+Note that you can include syntax-highlighted code examples by using 3 back-tics:
 
 .. code-block:: none
 		
@@ -31,6 +32,15 @@ Note that you can include syntax-hlighted code examples by using 3 back-tics:
    
    ```
 
+Keep in mind
+------------
+
+* make sure you remember to update the **documentation** as well as the code!
+  (see the `docs/` directory), and make sure it builds with no errors (`make
+  doc`)
+
+* Pull requests that cause tests to fail on *Travis* (the continuous
+  integration system) will not be accepted until those tests pass.
 
 
 Accepting a Pull Request

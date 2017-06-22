@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 class PrepareDisplayStep(Component):
     """PrepareDisplayStep` class represents a Stage for pipeline.
         it prepares Display for the next stage
-        This stage is time comsuming, so in multiprocessus mode you should
+        This stage is time comsuming, so in multiprocess mode you should
         activate several process for it i.e.("nb_process" : 4)
     """
     def init(self):
@@ -20,8 +20,8 @@ class PrepareDisplayStep(Component):
         calibrated_event,  geom_dict = inputs
         for tel_id in calibrated_event.dl0.tels_with_data:
             self.fig.clear()
-            cam_dimensions = (calibrated_event.dl0.tel[tel_id].num_pixels,
-                              calibrated_event.meta.optical_foclen[tel_id])
+            cam_dimensions = (calibrated_event.inst.num_pixels[tel_id],
+                              calibrated_event.inst.optical_foclen[tel_id])
             self.fig.suptitle("EVENT {} {:.1e} @({:.1f},{:.1f}) @{:.1f}"
                          .format(calibrated_event.dl1.event_id, calibrated_event.mc.energy,
                                  calibrated_event.mc.alt,
@@ -41,7 +41,7 @@ class PrepareDisplayStep(Component):
             # be added in CameraPlotter
             plotter = CameraPlotter(calibrated_event, geom_dict)
 
-            signals = calibrated_event.dl1.tel[tel_id].pe_charge
+            signals = calibrated_event.dl1.tel[tel_id].calibrated_image
             camera1 = plotter.draw_camera(tel_id, signals, ax1)
             cmaxmin = (max(signals) - min(signals))
             color_list = [(0 / cmaxmin, 'darkblue'),
